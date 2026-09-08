@@ -1,0 +1,4526 @@
+{
+  "flood_prone_areas": [
+    {
+      "source_row": 4,
+      "region": "NCR",
+      "deo": "North Manila DEO",
+      "city_municipality": "Manila City",
+      "barangay": "Sampaloc",
+      "road_name": "España Blvd."
+    },
+    {
+      "source_row": 6,
+      "region": "NCR",
+      "deo": "North Manila DEO",
+      "city_municipality": "Manila City",
+      "barangay": "Sta. Mesa",
+      "road_name": "Ramon Magsaysay Blvd."
+    },
+    {
+      "source_row": 7,
+      "region": "NCR",
+      "deo": "North Manila DEO",
+      "city_municipality": "Manila City",
+      "barangay": "Santa Cruz",
+      "road_name": "Blumentritt Road"
+    },
+    {
+      "source_row": 8,
+      "region": "NCR",
+      "deo": "North Manila DEO",
+      "city_municipality": "Manila City",
+      "barangay": "Tondo",
+      "road_name": "Jose Abad Santos Ave."
+    },
+    {
+      "source_row": 10,
+      "region": "NCR",
+      "deo": "North Manila DEO",
+      "city_municipality": "Manila City",
+      "barangay": "Tondo",
+      "road_name": "Mel Lopez Blvd."
+    },
+    {
+      "source_row": 11,
+      "region": "NCR",
+      "deo": "South Manila DEO",
+      "city_municipality": "Manila City",
+      "barangay": "Ermita",
+      "road_name": "T.M. Kalaw St."
+    },
+    {
+      "source_row": 13,
+      "region": "NCR",
+      "deo": "South Manila DEO",
+      "city_municipality": "Pasay City",
+      "barangay": "Malibay / San Jose",
+      "road_name": "Buendia Extension"
+    },
+    {
+      "source_row": 14,
+      "region": "NCR",
+      "deo": "South Manila DEO",
+      "city_municipality": "Pasay City",
+      "barangay": "Brgy. 145-153 / Malibay",
+      "road_name": "EDSA"
+    },
+    {
+      "source_row": 15,
+      "region": "NCR",
+      "deo": "South Manila DEO",
+      "city_municipality": "Manila City",
+      "barangay": "Malate",
+      "road_name": "Taft Avenue"
+    },
+    {
+      "source_row": 16,
+      "region": "NCR",
+      "deo": "South Manila DEO",
+      "city_municipality": "Manila City",
+      "barangay": "Ermita / Malate",
+      "road_name": "Taft Avenue"
+    },
+    {
+      "source_row": 17,
+      "region": "NCR",
+      "deo": "South Manila DEO",
+      "city_municipality": "Pasay City",
+      "barangay": "Brgy. 76",
+      "road_name": "P. Ocampo St."
+    },
+    {
+      "source_row": 18,
+      "region": "NCR",
+      "deo": "South Manila DEO",
+      "city_municipality": "Manila City",
+      "barangay": "Malate",
+      "road_name": "Roxas Blvd"
+    },
+    {
+      "source_row": 19,
+      "region": "NCR",
+      "deo": "South Manila DEO",
+      "city_municipality": "Pasay City",
+      "barangay": "Brgy. 76",
+      "road_name": "Roxas Blvd Service Road"
+    },
+    {
+      "source_row": 20,
+      "region": "NCR",
+      "deo": "South Manila DEO",
+      "city_municipality": "Manila City",
+      "barangay": "Ermita / Malate",
+      "road_name": "Roxas Blvd Service Road"
+    },
+    {
+      "source_row": 21,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Fairview",
+      "road_name": "Fairview Avenue"
+    },
+    {
+      "source_row": 22,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Greater Lagro",
+      "road_name": "Regalado Avenue (North)"
+    },
+    {
+      "source_row": 23,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Batasan Hills",
+      "road_name": "Commonwealth Avenue"
+    },
+    {
+      "source_row": 24,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Commonwealth",
+      "road_name": "Commonwealth Avenue"
+    },
+    {
+      "source_row": 25,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "New Era",
+      "road_name": "Central Avenue"
+    },
+    {
+      "source_row": 26,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Talayan",
+      "road_name": "G. Araneta Avenue"
+    },
+    {
+      "source_row": 27,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Sto. Domingo",
+      "road_name": "Sto. Domingo"
+    },
+    {
+      "source_row": 28,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Sto. Domingo",
+      "road_name": "Maria Clara Street"
+    },
+    {
+      "source_row": 29,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Nagkaisang Nayon",
+      "road_name": "General Luis Street"
+    },
+    {
+      "source_row": 30,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Unang Sigaw",
+      "road_name": "Epifanio de los Santos Avenue"
+    },
+    {
+      "source_row": 31,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Apolonio Samson",
+      "road_name": "Epifanio de los Santos Avenue"
+    },
+    {
+      "source_row": 32,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Vasra",
+      "road_name": "Visayas Avenue"
+    },
+    {
+      "source_row": 33,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Commonwealth",
+      "road_name": "Payatas Road"
+    },
+    {
+      "source_row": 34,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Payatas",
+      "road_name": "Payatas Road"
+    },
+    {
+      "source_row": 35,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Commonwealth",
+      "road_name": "Batasan Road"
+    },
+    {
+      "source_row": 36,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Sto. Domingo",
+      "road_name": "Quezon Avenue"
+    },
+    {
+      "source_row": 37,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Balingasa",
+      "road_name": "A. Bonifacio Avenue"
+    },
+    {
+      "source_row": 38,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Pag-ibig sa Nayon",
+      "road_name": "Sgt. Rivera Avenue"
+    },
+    {
+      "source_row": 39,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Culiat",
+      "road_name": "Luzon Avenue"
+    },
+    {
+      "source_row": 43,
+      "region": "NCR",
+      "deo": "Quezon City 1st DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Bagong Pag-asa",
+      "road_name": "Epifanio de los Santos Avenue"
+    },
+    {
+      "source_row": 44,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Cubao / Loyola Heights",
+      "road_name": "Aurora Blvd."
+    },
+    {
+      "source_row": 45,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "New Manila",
+      "road_name": "Aurora Blvd."
+    },
+    {
+      "source_row": 46,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Ugong Norte",
+      "road_name": "C-5 Road"
+    },
+    {
+      "source_row": 47,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Libis",
+      "road_name": "C-5 Road"
+    },
+    {
+      "source_row": 48,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Damayang Lagi / Doña Imelda",
+      "road_name": "E. Rodriguez Sr."
+    },
+    {
+      "source_row": 49,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Pinyahan / Central",
+      "road_name": "East Ave."
+    },
+    {
+      "source_row": 50,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Pinyahan",
+      "road_name": "East Ave."
+    },
+    {
+      "source_row": 51,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Cubao",
+      "road_name": "EDSA"
+    },
+    {
+      "source_row": 52,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Socorro",
+      "road_name": "EDSA"
+    },
+    {
+      "source_row": 53,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Camp Aguinaldo",
+      "road_name": "EDSA"
+    },
+    {
+      "source_row": 54,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Central",
+      "road_name": "Elliptical Rd"
+    },
+    {
+      "source_row": 55,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Doña Imelda",
+      "road_name": "G. Araneta Ave."
+    },
+    {
+      "source_row": 56,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Santol",
+      "road_name": "G. Araneta Ave."
+    },
+    {
+      "source_row": 57,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Kamias / West Kamias",
+      "road_name": "Kamias Rd."
+    },
+    {
+      "source_row": 58,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "South Triangle",
+      "road_name": "Mo. Ignacia St."
+    },
+    {
+      "source_row": 59,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Paligsahan",
+      "road_name": "Mo. Ignacia St."
+    },
+    {
+      "source_row": 60,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "South Triangle",
+      "road_name": "Quezon Ave."
+    },
+    {
+      "source_row": 61,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Paligsahan",
+      "road_name": "Quezon Ave."
+    },
+    {
+      "source_row": 62,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "South Triangle / Paligsahan",
+      "road_name": "South Ave./Timog Ave."
+    },
+    {
+      "source_row": 63,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Sacred Heart / Sikatuna Village",
+      "road_name": "Tomas Morato Ave."
+    },
+    {
+      "source_row": 64,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Pinyahan",
+      "road_name": "V. Luna Road"
+    },
+    {
+      "source_row": 65,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Sikatuna Village",
+      "road_name": "V. Luna Road"
+    },
+    {
+      "source_row": 66,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Malaya",
+      "road_name": "V. Luna Road"
+    },
+    {
+      "source_row": 67,
+      "region": "NCR",
+      "deo": "Quezon City 2nd DEO",
+      "city_municipality": "Quezon City",
+      "barangay": "Kaunlaran / Socorro",
+      "road_name": "P. Tuazon Blvd."
+    },
+    {
+      "source_row": 68,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Mandaluyong City",
+      "barangay": "Plainview / San Jose",
+      "road_name": "Boni Avenue"
+    },
+    {
+      "source_row": 69,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Mandaluyong City",
+      "barangay": "Ilaya / Poblacion",
+      "road_name": "Boni Avenue"
+    },
+    {
+      "source_row": 70,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Mandaluyong City",
+      "barangay": "Wack-Wack Greenhills / Highway Hills",
+      "road_name": "EDSA"
+    },
+    {
+      "source_row": 71,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Mandaluyong City",
+      "barangay": "Wack-Wack Greenhills / Addition Hills",
+      "road_name": "Shaw Boulevard"
+    },
+    {
+      "source_row": 72,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Mandaluyong City",
+      "barangay": "Mauway",
+      "road_name": "Psychopathic Hospital Road"
+    },
+    {
+      "source_row": 73,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Pasig City",
+      "barangay": "Dela Paz",
+      "road_name": "Imelda Avenue"
+    },
+    {
+      "source_row": 74,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Pasig City",
+      "barangay": "Manggahan / Santolan",
+      "road_name": "Amang Rodriguez Road"
+    },
+    {
+      "source_row": 75,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Pasig City",
+      "barangay": "San Joaquin / Kalawaan",
+      "road_name": "Manila East Road"
+    },
+    {
+      "source_row": 76,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Pasig City",
+      "barangay": "Ugong / Bagong Ilog",
+      "road_name": "C-5 Road"
+    },
+    {
+      "source_row": 77,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Taguig City",
+      "barangay": "Fort Bonifacio",
+      "road_name": "Fort Bonifacio Nichols Field Road"
+    },
+    {
+      "source_row": 78,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Taguig City",
+      "barangay": "Western Bicutan",
+      "road_name": "Libingan ng mga Bayani Road"
+    },
+    {
+      "source_row": 79,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Taguig City",
+      "barangay": "Ususan / Pinagsama",
+      "road_name": "C-5 Road"
+    },
+    {
+      "source_row": 80,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Taguig City",
+      "barangay": "Pinagsama",
+      "road_name": "C-5 Kalayaan Service Road"
+    },
+    {
+      "source_row": 81,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "San Juan City",
+      "barangay": "Batis / San Perfecto",
+      "road_name": "F. Manalo Street"
+    },
+    {
+      "source_row": 82,
+      "region": "NCR",
+      "deo": "Metro Manila 3rd DEO",
+      "city_municipality": "Marikina City",
+      "barangay": "San Roque / Santo Niño",
+      "road_name": "Sumulong Highway"
+    },
+    {
+      "source_row": 83,
+      "region": "NCR",
+      "deo": "Las Piñas-Muntinlupa DEO",
+      "city_municipality": "Parañaque City",
+      "barangay": "San Dionisio / San Antonio",
+      "road_name": "Parañaque-Sucat Road"
+    },
+    {
+      "source_row": 84,
+      "region": "NCR",
+      "deo": "Las Piñas-Muntinlupa DEO",
+      "city_municipality": "Makati City",
+      "barangay": "Magallanes",
+      "road_name": "Pasong Tamo Magallanes Tunnel"
+    },
+    {
+      "source_row": 85,
+      "region": "NCR",
+      "deo": "Las Piñas-Muntinlupa DEO",
+      "city_municipality": "Parañaque City",
+      "barangay": "BF Homes",
+      "road_name": "Parañaque-Sucat Road"
+    },
+    {
+      "source_row": 86,
+      "region": "NCR",
+      "deo": "Las Piñas-Muntinlupa DEO",
+      "city_municipality": "Parañaque City",
+      "barangay": "Santo Niño",
+      "road_name": "Ninoy Aquino SB"
+    },
+    {
+      "source_row": 87,
+      "region": "NCR",
+      "deo": "Las Piñas-Muntinlupa DEO",
+      "city_municipality": "Parañaque City",
+      "barangay": "Moonwalk",
+      "road_name": "Parañaque-Sucat Road"
+    },
+    {
+      "source_row": 88,
+      "region": "NCR",
+      "deo": "Las Piñas-Muntinlupa DEO",
+      "city_municipality": "Makati City",
+      "barangay": "Bangkal / Magallanes",
+      "road_name": "South Super Highway"
+    },
+    {
+      "source_row": 89,
+      "region": "NCR",
+      "deo": "Las Piñas-Muntinlupa DEO",
+      "city_municipality": "Makati City",
+      "barangay": "San Isidro / Pio del Pilar",
+      "road_name": "South Super Highway"
+    },
+    {
+      "source_row": 90,
+      "region": "NCR",
+      "deo": "Las Piñas-Muntinlupa DEO",
+      "city_municipality": "Makati City",
+      "barangay": "Bel-Air / San Lorenzo",
+      "road_name": "Gil Puyat Ave."
+    },
+    {
+      "source_row": 91,
+      "region": "NCR",
+      "deo": "Las Piñas-Muntinlupa DEO",
+      "city_municipality": "Makati City",
+      "barangay": "Pio del Pilar",
+      "road_name": "Pasong Tamo"
+    },
+    {
+      "source_row": 92,
+      "region": "NCR",
+      "deo": "Las Piñas-Muntinlupa DEO",
+      "city_municipality": "Makati City",
+      "barangay": "La Paz / Singkamas",
+      "road_name": "Vito Cruz Extension"
+    },
+    {
+      "source_row": 93,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Valenzuela City",
+      "barangay": "Dalandanan",
+      "road_name": "G. Lazaro St."
+    },
+    {
+      "source_row": 94,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Valenzuela City",
+      "barangay": "Lingunan",
+      "road_name": "Gov. T. Santiago St."
+    },
+    {
+      "source_row": 95,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Caloocan City",
+      "barangay": "Grace Park East",
+      "road_name": "C-3 Road"
+    },
+    {
+      "source_row": 96,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Valenzuela City",
+      "barangay": "Marulas",
+      "road_name": "Mac Arthur Highway"
+    },
+    {
+      "source_row": 97,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Valenzuela City",
+      "barangay": "Karuhatan",
+      "road_name": "Mac Arthur Highway"
+    },
+    {
+      "source_row": 98,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Valenzuela City",
+      "barangay": "Malinta",
+      "road_name": "Mac Arthur Highway"
+    },
+    {
+      "source_row": 99,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Valenzuela City",
+      "barangay": "Malanday",
+      "road_name": "Mac Arthur Highway"
+    },
+    {
+      "source_row": 100,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Valenzuela City",
+      "barangay": "Paso de Blas",
+      "road_name": "East Service Road"
+    },
+    {
+      "source_row": 101,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Valenzuela City",
+      "barangay": "Polo / Poblacion",
+      "road_name": "Polo-Novaliches Road"
+    },
+    {
+      "source_row": 102,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Caloocan City",
+      "barangay": "Grace Park West",
+      "road_name": "10th Avenue"
+    },
+    {
+      "source_row": 103,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Caloocan City",
+      "barangay": "Grace Park East",
+      "road_name": "Mac Arthur Highway"
+    },
+    {
+      "source_row": 104,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Caloocan City",
+      "barangay": "Brgy. 167 (Llano / Deparo)",
+      "road_name": "Deparo-Camarin Road"
+    },
+    {
+      "source_row": 105,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Caloocan City",
+      "barangay": "Brgy. 168 (Deparo)",
+      "road_name": "Deparo-Bagumbong Road"
+    },
+    {
+      "source_row": 106,
+      "region": "NCR",
+      "deo": "Metro Manila 1st DEO",
+      "city_municipality": "Caloocan City",
+      "barangay": "Bagumbong",
+      "road_name": "Congressional Road"
+    },
+    {
+      "source_row": 107,
+      "region": "NCR",
+      "deo": "Metro Manila 2nd DEO",
+      "city_municipality": "Las Piñas City",
+      "barangay": "Zapote",
+      "road_name": "MSR - Quirino Avenue"
+    },
+    {
+      "source_row": 108,
+      "region": "NCR",
+      "deo": "Metro Manila 2nd DEO",
+      "city_municipality": "Las Piñas City",
+      "barangay": "CAA / BF International",
+      "road_name": "CAA Int'l. Receiver Road"
+    },
+    {
+      "source_row": 109,
+      "region": "NCR",
+      "deo": "Metro Manila 2nd DEO",
+      "city_municipality": "Las Piñas City",
+      "barangay": "Talon Singko",
+      "road_name": "Marcos Alvarez Road"
+    },
+    {
+      "source_row": 110,
+      "region": "NCR",
+      "deo": "Metro Manila 2nd DEO",
+      "city_municipality": "Las Piñas City",
+      "barangay": "Talon Uno",
+      "road_name": "Marcos Alvarez Road"
+    },
+    {
+      "source_row": 111,
+      "region": "NCR",
+      "deo": "Metro Manila 2nd DEO",
+      "city_municipality": "Las Piñas City",
+      "barangay": "Zapote / Pamplona Uno",
+      "road_name": "Zapote-Alabang Road"
+    },
+    {
+      "source_row": 112,
+      "region": "NCR",
+      "deo": "Metro Manila 2nd DEO",
+      "city_municipality": "Muntinlupa City",
+      "barangay": "Tunasan",
+      "road_name": "Maharlika Highway"
+    },
+    {
+      "source_row": 113,
+      "region": "NCR",
+      "deo": "Metro Manila 2nd DEO",
+      "city_municipality": "Muntinlupa City",
+      "barangay": "Poblacion",
+      "road_name": "Maharlika Highway"
+    },
+    {
+      "source_row": 114,
+      "region": "NCR",
+      "deo": "Metro Manila 2nd DEO",
+      "city_municipality": "Muntinlupa City",
+      "barangay": "Alabang",
+      "road_name": "West Service Road"
+    },
+    {
+      "source_row": 115,
+      "region": "NCR",
+      "deo": "Metro Manila 2nd DEO",
+      "city_municipality": "Muntinlupa City",
+      "barangay": "Putatan",
+      "road_name": "PPTA Road"
+    },
+    {
+      "source_row": 116,
+      "region": "NCR",
+      "deo": "Malabon-Navotas DEO",
+      "city_municipality": "Malabon City",
+      "barangay": "Potrero",
+      "road_name": "Gov. W. Pascual Ave."
+    },
+    {
+      "source_row": 117,
+      "region": "NCR",
+      "deo": "Malabon-Navotas DEO",
+      "city_municipality": "Malabon City",
+      "barangay": "Tugatog",
+      "road_name": "Gov. W. Pascual Ave."
+    },
+    {
+      "source_row": 118,
+      "region": "NCR",
+      "deo": "Malabon-Navotas DEO",
+      "city_municipality": "Malabon City",
+      "barangay": "Dampalit",
+      "road_name": "C. Arellano St."
+    },
+    {
+      "source_row": 119,
+      "region": "NCR",
+      "deo": "Malabon-Navotas DEO",
+      "city_municipality": "Malabon City",
+      "barangay": "Dampalit",
+      "road_name": "M.H. del Pilar St."
+    },
+    {
+      "source_row": 120,
+      "region": "NCR",
+      "deo": "Malabon-Navotas DEO",
+      "city_municipality": "Malabon City",
+      "barangay": "Tinajeros",
+      "road_name": "M.H. del Pilar St."
+    },
+    {
+      "source_row": 121,
+      "region": "NCR",
+      "deo": "Malabon-Navotas DEO",
+      "city_municipality": "Malabon City",
+      "barangay": "Maysilo",
+      "road_name": "M.H. del Pilar St."
+    },
+    {
+      "source_row": 122,
+      "region": "NCR",
+      "deo": "Malabon-Navotas DEO",
+      "city_municipality": "Malabon City",
+      "barangay": "Ibaba",
+      "road_name": "Don Basilio Bautista St."
+    },
+    {
+      "source_row": 123,
+      "region": "NCR",
+      "deo": "Malabon-Navotas DEO",
+      "city_municipality": "Malabon City",
+      "barangay": "Niugan",
+      "road_name": "P. Aquino St."
+    },
+    {
+      "source_row": 124,
+      "region": "NCR",
+      "deo": "Malabon-Navotas DEO",
+      "city_municipality": "Malabon City",
+      "barangay": "Longos",
+      "road_name": "P. Aquino St."
+    },
+    {
+      "source_row": 125,
+      "region": "NCR",
+      "deo": "Malabon-Navotas DEO",
+      "city_municipality": "Malabon City",
+      "barangay": "Tañong",
+      "road_name": "Sevilla Blvd."
+    },
+    {
+      "source_row": 126,
+      "region": "NCR",
+      "deo": "Malabon-Navotas DEO",
+      "city_municipality": "Malabon City",
+      "barangay": "Tugatog",
+      "road_name": "JCT Women's Club"
+    },
+    {
+      "source_row": 128,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Laoag City",
+      "barangay": "Brgy. San Isidro",
+      "road_name": "A.Castro (S00036LZ)"
+    },
+    {
+      "source_row": 129,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Laoag City",
+      "barangay": "Brgy. San Guillermo",
+      "road_name": "Ablan Avenue (S00037LZ)"
+    },
+    {
+      "source_row": 130,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Laoag City",
+      "barangay": "Brgy. San Pedro",
+      "road_name": "Bonifacio Road (S04137LZ)"
+    },
+    {
+      "source_row": 131,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Laoag City",
+      "barangay": "Brgy. Santa Balbina",
+      "road_name": "Manila North Road (S00034LZ)"
+    },
+    {
+      "source_row": 132,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Laoag City",
+      "barangay": "Brgy. Salet",
+      "road_name": "Manila North Road (S00034LZ)"
+    },
+    {
+      "source_row": 133,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Bacarra",
+      "barangay": "Brgy. Buyon",
+      "road_name": "Manila North Road (S00034LZ)"
+    },
+    {
+      "source_row": 134,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Pasuquin",
+      "barangay": "Brgy. Ngabangab",
+      "road_name": "Manila North Road (S00034LZ)"
+    },
+    {
+      "source_row": 135,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Pasuquin",
+      "barangay": "Brgy. Batuli",
+      "road_name": "Manila North Road (S00034LZ)"
+    },
+    {
+      "source_row": 136,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Pasuquin",
+      "barangay": "Brgy. Nasnanga",
+      "road_name": "Manila North Road (S00034LZ)"
+    },
+    {
+      "source_row": 137,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Pagudpud",
+      "barangay": "Brgy. Pancian",
+      "road_name": "Manila North Road (S00034LZ)"
+    },
+    {
+      "source_row": 140,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Laoag City",
+      "barangay": "Brgy. Buttong",
+      "road_name": "Laoag-Airport Road (S05018LZ)"
+    },
+    {
+      "source_row": 141,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Laoag City",
+      "barangay": "Brgy. Cabungaan A & Brgy. Tangid",
+      "road_name": "Laoag-Airport Road (S05019LZ)"
+    },
+    {
+      "source_row": 142,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Laoag City",
+      "barangay": "Brgy. San Matias",
+      "road_name": "Laoag-Cadri Road (S04142LZ)"
+    },
+    {
+      "source_row": 143,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Laoag City",
+      "barangay": "Brgy. Santa Balbina",
+      "road_name": "Laoag-Sarrat-Piddig-Solsona Road (S04139LZ)"
+    },
+    {
+      "source_row": 144,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Sarrat",
+      "barangay": "Brgy. Cabuloan",
+      "road_name": "Laoag-Sarrat-Piddig-Solsona Road (S04139LZ)"
+    },
+    {
+      "source_row": 145,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Piddig",
+      "barangay": "Brgy. Aruey-ay",
+      "road_name": "Laoag-Sarrat-Piddig-Solsona Road (S04139LZ)"
+    },
+    {
+      "source_row": 146,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Sarrat",
+      "barangay": "Brgy. San Marcos",
+      "road_name": "Ilocos Norte-Apayao Road (S00052LZ)"
+    },
+    {
+      "source_row": 147,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "Batac City",
+      "barangay": "Baay",
+      "road_name": "Manila North Road (S00049LZ) (San Nicolas Section)"
+    },
+    {
+      "source_row": 148,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "Batac City",
+      "barangay": "Tabug",
+      "road_name": "Manila North Road (S00049LZ)"
+    },
+    {
+      "source_row": 149,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "Paoay",
+      "barangay": "San Blas",
+      "road_name": "Batac - Paoay Road (S00041LZ)"
+    },
+    {
+      "source_row": 150,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "Batac City",
+      "barangay": "Naguirangan",
+      "road_name": "Batac - Banna (Espiritu) Road (S00070LZ)"
+    },
+    {
+      "source_row": 151,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "Dingras",
+      "barangay": "Pancel",
+      "road_name": "Ilocos Norte - Abra Road (S00060LZ)"
+    },
+    {
+      "source_row": 152,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "Marcos",
+      "barangay": "Dacquiog",
+      "road_name": "Ilocos Norte - Abra Road (S00060LZ)"
+    },
+    {
+      "source_row": 153,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "Banna",
+      "barangay": "Hilario",
+      "road_name": "Ilocos Norte - Abra Road (S00060LZ)"
+    },
+    {
+      "source_row": 154,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "Batac City",
+      "barangay": "Quiom",
+      "road_name": "Batac - Pinili Road (S04765LZ)"
+    },
+    {
+      "source_row": 155,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "Dingras",
+      "barangay": "Suyo",
+      "road_name": "Ilocos Norte - Apayao Road (S06004LZ)"
+    },
+    {
+      "source_row": 156,
+      "region": "Region I",
+      "deo": "Ilocos Norte 1st DEO",
+      "city_municipality": "Solsona",
+      "barangay": "Barcelona",
+      "road_name": "Laoag - Sarrat - Piddig - Solsona Road (S04777LZ)"
+    },
+    {
+      "source_row": 157,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "San Nicolas",
+      "barangay": "Brgy. 22",
+      "road_name": "Ilocos Norte - Apayao Road (S06004LZ) (San Nicolas Section)"
+    },
+    {
+      "source_row": 158,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "San Nicolas",
+      "barangay": "San Nicolas",
+      "road_name": "Manila North Road (S00049LZ) (San Nicolas Section)"
+    },
+    {
+      "source_row": 159,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "San Nicolas",
+      "barangay": "San Lorenzo",
+      "road_name": "Manila North Road (S00049LZ) (San Nicolas Section)"
+    },
+    {
+      "source_row": 160,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "Badoc",
+      "barangay": "Brgy. Pati (Badoc Entrance)",
+      "road_name": "Manila North Road (S00049LZ)"
+    },
+    {
+      "source_row": 161,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "Batac City",
+      "barangay": "Brgy. Laub",
+      "road_name": "Batac-Banna (Espiritu) Road"
+    },
+    {
+      "source_row": 162,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "Paoay",
+      "barangay": "Brgy. San Juan",
+      "road_name": "Pias-Currimao-Paoay-Batac Road"
+    },
+    {
+      "source_row": 163,
+      "region": "Region I",
+      "deo": "Ilocos Norte 2nd DEO",
+      "city_municipality": "San Nicolas",
+      "barangay": "Brgy. 23",
+      "road_name": "Ilocos Norte-Apayao Road (San Nicolas Section)"
+    },
+    {
+      "source_row": 164,
+      "region": "Region I",
+      "deo": "Ilocos Sur 1st DEO",
+      "city_municipality": "Bantay",
+      "barangay": "Brgy. Banaoang",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 166,
+      "region": "Region I",
+      "deo": "Ilocos Sur 1st DEO",
+      "city_municipality": "Bantay",
+      "barangay": "Brgy. Balaleng",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 167,
+      "region": "Region I",
+      "deo": "Ilocos Sur 1st DEO",
+      "city_municipality": "Bantay",
+      "barangay": "Brgy. Guimod",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 168,
+      "region": "Region I",
+      "deo": "Ilocos Sur 1st DEO",
+      "city_municipality": "Sto. Domingo",
+      "barangay": "Brgy. San Pablo",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 169,
+      "region": "Region I",
+      "deo": "Ilocos Sur 1st DEO",
+      "city_municipality": "Cabugao",
+      "barangay": "Brgy. Pug-os",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 170,
+      "region": "Region I",
+      "deo": "Ilocos Sur 1st DEO",
+      "city_municipality": "Bantay",
+      "barangay": "Zone VI",
+      "road_name": "Bantay - Vigan Road Extension"
+    },
+    {
+      "source_row": 171,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Galimuyod",
+      "barangay": "Rubio",
+      "road_name": "Jct. Candon - Salcedo - Del Pilar Road"
+    },
+    {
+      "source_row": 172,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Galimuyod",
+      "barangay": "Patac",
+      "road_name": "Jct. Candon - Salcedo - Del Pilar Road"
+    },
+    {
+      "source_row": 174,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Salcedo",
+      "barangay": "Balidbid",
+      "road_name": "Jct. Candon - Salcedo - Del Pilar Road"
+    },
+    {
+      "source_row": 178,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Salcedo",
+      "barangay": "Bulala-Leguey",
+      "road_name": "Jct. Candon - Salcedo - Del Pilar Road"
+    },
+    {
+      "source_row": 179,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Sta. Lucia",
+      "barangay": "Conconig West",
+      "road_name": "Jct. Candon - Salcedo - Del Pilar Road"
+    },
+    {
+      "source_row": 180,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Sta. Lucia",
+      "barangay": "Conconig East",
+      "road_name": "Jct. Candon - Salcedo - Del Pilar Road"
+    },
+    {
+      "source_row": 181,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Sta. Lucia",
+      "barangay": "Palali Sur",
+      "road_name": "Jct. Candon - Salcedo - Del Pilar Road"
+    },
+    {
+      "source_row": 182,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Sta. Lucia",
+      "barangay": "Namatican",
+      "road_name": "Jct. Candon - Salcedo - Del Pilar Road"
+    },
+    {
+      "source_row": 183,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Sta. Lucia",
+      "barangay": "Nagtablaaan",
+      "road_name": "Jct. Candon - Salcedo - Del Pilar Road"
+    },
+    {
+      "source_row": 184,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Tagudin",
+      "barangay": "Dardarat",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 185,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Tagudin",
+      "barangay": "Libtong",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 186,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Sta. Lucia",
+      "barangay": "San Juan to Barangobong",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 187,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Candon City",
+      "barangay": "San Nicolas to Bagar",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 188,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Sta. Maria",
+      "barangay": "Maynganay Sur to Maynganay Norte",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 189,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Narvacan",
+      "barangay": "Nangneng",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 190,
+      "region": "Region I",
+      "deo": "Ilocos Sur 2nd DEO",
+      "city_municipality": "Narvacan",
+      "barangay": "Quinarayan",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 191,
+      "region": "Region I",
+      "deo": "Ilocos Sur 1st DEO",
+      "city_municipality": "Santa",
+      "barangay": "Labut Norte",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 192,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "San Fernando City",
+      "barangay": "Sevilla",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 193,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "Bacnotan",
+      "barangay": "Baroro",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 194,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "Bacnotan",
+      "barangay": "Poblacion",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 195,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "Bacnotan",
+      "barangay": "Bitlag",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 196,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "Luna / Bangar",
+      "barangay": "Rimoc, Luna - Paratong, Bangar",
+      "road_name": "Luna Bangar Road"
+    },
+    {
+      "source_row": 197,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "San Fernando City",
+      "barangay": "Poro",
+      "road_name": "San Fernando Port Road"
+    },
+    {
+      "source_row": 198,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "San Fernando City",
+      "barangay": "Canaoey",
+      "road_name": "Access Road to Airport"
+    },
+    {
+      "source_row": 199,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "San Fernando City",
+      "barangay": "Pagdaracan",
+      "road_name": "San Fernando Bypass Road"
+    },
+    {
+      "source_row": 200,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "San Fernando City",
+      "barangay": "Biday",
+      "road_name": "San Fernando Bypass Road Extension Channel A"
+    },
+    {
+      "source_row": 201,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "San Fernando City",
+      "barangay": "Bangcusay",
+      "road_name": "San Fernando Bypass Road Extension"
+    },
+    {
+      "source_row": 202,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "San Juan",
+      "barangay": "Il Sur",
+      "road_name": "San Fernando Bypass Road Extension"
+    },
+    {
+      "source_row": 203,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "San Fernando City",
+      "barangay": "Santiago Norte",
+      "road_name": "San Fernando Bagulin Road"
+    },
+    {
+      "source_row": 204,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "San Fernando City",
+      "barangay": "Tanqui",
+      "road_name": "San Fernando Bagulin Road"
+    },
+    {
+      "source_row": 205,
+      "region": "Region I",
+      "deo": "La Union 1st DEO",
+      "city_municipality": "San Fernando City",
+      "barangay": "Cabaroan",
+      "road_name": "San Fernando Bagulin Road"
+    },
+    {
+      "source_row": 206,
+      "region": "Region I",
+      "deo": "La Union 2nd DEO",
+      "city_municipality": "Bauang",
+      "barangay": "Dila-o-or",
+      "road_name": "Manila North Road (S06258LZ)"
+    },
+    {
+      "source_row": 207,
+      "region": "Region I",
+      "deo": "La Union 2nd DEO",
+      "city_municipality": "Bauang",
+      "barangay": "Calumbaya",
+      "road_name": "Manila North Road (S06258LZ)"
+    },
+    {
+      "source_row": 209,
+      "region": "Region I",
+      "deo": "La Union 2nd DEO",
+      "city_municipality": "Bauang",
+      "barangay": "Central East",
+      "road_name": "Bauang-Bagulin Road WYE-1 (S06262LZ)"
+    },
+    {
+      "source_row": 210,
+      "region": "Region I",
+      "deo": "La Union 2nd DEO",
+      "city_municipality": "Santo Tomas",
+      "barangay": "Cupang",
+      "road_name": "Manila North Road (S06258LZ)"
+    },
+    {
+      "source_row": 211,
+      "region": "Region I",
+      "deo": "La Union 2nd DEO",
+      "city_municipality": "Rosario",
+      "barangay": "Udao",
+      "road_name": "Manila North Road (S06257LZ)"
+    },
+    {
+      "source_row": 212,
+      "region": "Region I",
+      "deo": "Pangasinan 1st DEO",
+      "city_municipality": "Dasol",
+      "barangay": "Amangbela",
+      "road_name": "Pangasinan-Zambales Road"
+    },
+    {
+      "source_row": 213,
+      "region": "Region I",
+      "deo": "Pangasinan 1st DEO",
+      "city_municipality": "Alaminos",
+      "barangay": "Tanaytay",
+      "road_name": "Pangasinan-Zambales Road"
+    },
+    {
+      "source_row": 215,
+      "region": "Region I",
+      "deo": "Pangasinan 1st DEO",
+      "city_municipality": "Alaminos",
+      "barangay": "Poblacion",
+      "road_name": "Pangasinan-Zambales Road"
+    },
+    {
+      "source_row": 216,
+      "region": "Region I",
+      "deo": "Pangasinan 1st DEO",
+      "city_municipality": "Sual",
+      "barangay": "Caayaan",
+      "road_name": "Pangasinan-Zambales Road"
+    },
+    {
+      "source_row": 217,
+      "region": "Region I",
+      "deo": "Pangasinan 1st DEO",
+      "city_municipality": "Alaminos",
+      "barangay": "Pogo",
+      "road_name": "Alaminos-Bolinao"
+    },
+    {
+      "source_row": 218,
+      "region": "Region I",
+      "deo": "Pangasinan 1st DEO",
+      "city_municipality": "Alaminos",
+      "barangay": "Lucap",
+      "road_name": "Alaminos-Lucao"
+    },
+    {
+      "source_row": 220,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Labrador",
+      "barangay": "Brgy. Bolo",
+      "road_name": "Pangasinan-Zambales Road"
+    },
+    {
+      "source_row": 221,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Labrador",
+      "barangay": "Brgy. Bongalon",
+      "road_name": "Pangasinan-Zambales Road"
+    },
+    {
+      "source_row": 222,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Bugallon",
+      "barangay": "Brgy. Poblacion-Brgy. Salasa",
+      "road_name": "Pangasinan-Tarlac Road"
+    },
+    {
+      "source_row": 223,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Mangatarem",
+      "barangay": "Brgy. Bogtong Nyog - Brgy. Bogtong Centro",
+      "road_name": "Pangasinan-Tarlac Road"
+    },
+    {
+      "source_row": 224,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Aguilar",
+      "barangay": "Brgy. Poblacion",
+      "road_name": "Pangasinan-Tarlac Road"
+    },
+    {
+      "source_row": 225,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Lingayen",
+      "barangay": "Brgy. Poblacion",
+      "road_name": "Lingayen Capitol Loop (Right Side)"
+    },
+    {
+      "source_row": 226,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Lingayen",
+      "barangay": "Brgy. Poblacion",
+      "road_name": "Lingayen Capitol Loop (Left Side)"
+    },
+    {
+      "source_row": 227,
+      "region": "Region I",
+      "deo": "Pangasinan 4th DEO",
+      "city_municipality": "San Fabian",
+      "barangay": "Brgy. Alacan",
+      "road_name": "Pangasinan-La Union Road"
+    },
+    {
+      "source_row": 228,
+      "region": "Region I",
+      "deo": "Pangasinan 4th DEO",
+      "city_municipality": "San Fabian",
+      "barangay": "Brgy. Tiblong",
+      "road_name": "Pangasinan-La Union Road"
+    },
+    {
+      "source_row": 229,
+      "region": "Region I",
+      "deo": "Pangasinan 4th DEO",
+      "city_municipality": "San Jacinto",
+      "barangay": "Brgy. Magsaysay",
+      "road_name": "Manaoag-Mangaldan-Binalonan Road"
+    },
+    {
+      "source_row": 230,
+      "region": "Region I",
+      "deo": "Pangasinan 4th DEO",
+      "city_municipality": "Mangaldan",
+      "barangay": "Brgy. Banaoang",
+      "road_name": "Sta. Barbara-Mangaldan Road"
+    },
+    {
+      "source_row": 231,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Dagupan City",
+      "barangay": "Lucao-Tapuc - AB Fernandez",
+      "road_name": "Urdaneta Jct'n.-Dagupan-Lingayen Road (via Zambales)"
+    },
+    {
+      "source_row": 232,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Dagupan City",
+      "barangay": "Brgy. Caranglaan - Brgy. Mayombo",
+      "road_name": "Urdaneta Jct'n.-Dagupan-Lingayen Road (via Tarlac)"
+    },
+    {
+      "source_row": 233,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Dagupan City",
+      "barangay": "Perez",
+      "road_name": "Urdaneta Jct'n.-Dagupan-Lingayen Road (via Perez)"
+    },
+    {
+      "source_row": 234,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Dagupan City",
+      "barangay": "Banaoang - Lucao",
+      "road_name": "Judge Jose De Venecia Sr. Avenue"
+    },
+    {
+      "source_row": 235,
+      "region": "Region I",
+      "deo": "Pangasinan 6th DEO",
+      "city_municipality": "Rosales",
+      "barangay": "Balincanaway",
+      "road_name": "Pangasinan - Nueva Ecija Road"
+    },
+    {
+      "source_row": 236,
+      "region": "Region I",
+      "deo": "Pangasinan 6th DEO",
+      "city_municipality": "Umingan",
+      "barangay": "Maseil-seil and Don Montano",
+      "road_name": "Bakit-Bakit Jct. - Umingan Road"
+    },
+    {
+      "source_row": 237,
+      "region": "Region I",
+      "deo": "Pangasinan 6th DEO",
+      "city_municipality": "Umingan",
+      "barangay": "Permenta",
+      "road_name": "Bakit-Bakit Jct. - Umingan Road"
+    },
+    {
+      "source_row": 238,
+      "region": "Region I",
+      "deo": "Pangasinan 6th DEO",
+      "city_municipality": "Balungao",
+      "barangay": "Mauban",
+      "road_name": "Bakit-Bakit Jct. - Umingan Road"
+    },
+    {
+      "source_row": 239,
+      "region": "Region I",
+      "deo": "Pangasinan 6th DEO",
+      "city_municipality": "Rosales",
+      "barangay": "Bakit-Bakit",
+      "road_name": "Bakit-Bakit Jct. - Umingan Road"
+    },
+    {
+      "source_row": 240,
+      "region": "Region I",
+      "deo": "Pangasinan 6th DEO",
+      "city_municipality": "Natividad",
+      "barangay": "San Miguel",
+      "road_name": "San Nicolas-Natividad-San Quintin-Umingan-Galimba Road"
+    },
+    {
+      "source_row": 241,
+      "region": "Region I",
+      "deo": "Pangasinan 6th DEO",
+      "city_municipality": "Rosales",
+      "barangay": "Carmen East",
+      "road_name": "Pangasinan - Nueva Vizcaya Road"
+    },
+    {
+      "source_row": 243,
+      "region": "Region I",
+      "deo": "Pangasinan 6th DEO",
+      "city_municipality": "Rosales",
+      "barangay": "Tomana West",
+      "road_name": "Pangasinan - Nueva Vizcaya Road"
+    },
+    {
+      "source_row": 244,
+      "region": "Region I",
+      "deo": "Pangasinan 6th DEO",
+      "city_municipality": "San Nicolas",
+      "barangay": "Sta. Maria East to Malico",
+      "road_name": "Pangasinan - Nueva Vizcaya Road"
+    },
+    {
+      "source_row": 245,
+      "region": "Region I",
+      "deo": "Pangasinan 5th DEO",
+      "city_municipality": "Villasis",
+      "barangay": "Bacag",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 246,
+      "region": "Region I",
+      "deo": "Pangasinan 5th DEO",
+      "city_municipality": "Urdaneta",
+      "barangay": "Nancayasan",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 248,
+      "region": "Region I",
+      "deo": "Pangasinan 5th DEO",
+      "city_municipality": "Binalonan",
+      "barangay": "Sumnabit",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 249,
+      "region": "Region I",
+      "deo": "Pangasinan 5th DEO",
+      "city_municipality": "Binalonan",
+      "barangay": "Bued",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 250,
+      "region": "Region I",
+      "deo": "Pangasinan 5th DEO",
+      "city_municipality": "Pozorrubio",
+      "barangay": "Rosario",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 251,
+      "region": "Region I",
+      "deo": "Pangasinan 5th DEO",
+      "city_municipality": "Pozorrubio",
+      "barangay": "Alipangpang",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 253,
+      "region": "Region I",
+      "deo": "Pangasinan 5th DEO",
+      "city_municipality": "Pozorrubio",
+      "barangay": "Palac-Palac and Bobonan",
+      "road_name": "Manila North Road"
+    },
+    {
+      "source_row": 254,
+      "region": "Region I",
+      "deo": "Pangasinan 5th DEO",
+      "city_municipality": "Urdaneta",
+      "barangay": "Pimmaludpod",
+      "road_name": "Urdaneta Jct.-Dagupan-Lingayen Road"
+    },
+    {
+      "source_row": 255,
+      "region": "Region I",
+      "deo": "Pangasinan 4th DEO",
+      "city_municipality": "Sta. Barbara",
+      "barangay": "Sapang",
+      "road_name": "Camiling-Wawa-Bayambang-Malasiqui-Sta. Barbara Road"
+    },
+    {
+      "source_row": 256,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Calasiao",
+      "barangay": "Nalsian and San Miguel",
+      "road_name": "Urdaneta Jct. - Dagupan Road"
+    },
+    {
+      "source_row": 257,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Calasiao",
+      "barangay": "San Miguel",
+      "road_name": "Calasiao Old Road"
+    },
+    {
+      "source_row": 258,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Calasiao",
+      "barangay": "Banaoang",
+      "road_name": "Judge Jose De Venecia Sr. Ave. Road"
+    },
+    {
+      "source_row": 259,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Calasiao",
+      "barangay": "Nalsian",
+      "road_name": "Judge Jose De Venecia Sr. Ave. Road"
+    },
+    {
+      "source_row": 260,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Calasiao",
+      "barangay": "Malabago",
+      "road_name": "San Carlos - Calasiao Road"
+    },
+    {
+      "source_row": 261,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Calasiao",
+      "barangay": "Mancup",
+      "road_name": "San Carlos - Calasiao Road"
+    },
+    {
+      "source_row": 262,
+      "region": "Region I",
+      "deo": "Pangasinan 2nd DEO",
+      "city_municipality": "Calasiao",
+      "barangay": "Poblacion East",
+      "road_name": "San Carlos - Calasiao Road"
+    },
+    {
+      "source_row": 342,
+      "region": "Region VII",
+      "deo": "Bohol 1st DEO",
+      "city_municipality": "Cortes",
+      "barangay": "De la Paz, Liloan, Upper De la Paz",
+      "road_name": "Cortes-Balilihan-Catigbian Macaas (Tubigon) Rd"
+    },
+    {
+      "source_row": 343,
+      "region": "Region VII",
+      "deo": "Bohol 1st DEO",
+      "city_municipality": "Balilihan",
+      "barangay": "Poblacion, Boyog Norte, Salamague",
+      "road_name": "Cortes-Balilihan-Catigbian Macaas (Tubigon) Rd"
+    },
+    {
+      "source_row": 344,
+      "region": "Region VII",
+      "deo": "Bohol 1st DEO",
+      "city_municipality": "Balilihan",
+      "barangay": "Hanopol Norte, Hanopol Sur",
+      "road_name": "Balilihan-Hanopol-Batuan Road"
+    },
+    {
+      "source_row": 345,
+      "region": "Region VII",
+      "deo": "Bohol 1st DEO",
+      "city_municipality": "Dauis",
+      "barangay": "Tangnan, Mariveles, Biron Sinsin",
+      "road_name": "Anos Fonacier Circumferential Rd via Tangnan (Dauis-Panglao Rd)"
+    },
+    {
+      "source_row": 346,
+      "region": "Region VII",
+      "deo": "Bohol 1st DEO",
+      "city_municipality": "Panglao",
+      "barangay": "Biking, Bingag, Bolod",
+      "road_name": "Anos Fonacier Circumferential Rd via Biking (Dauis-Panglao Rd)"
+    },
+    {
+      "source_row": 347,
+      "region": "Region VII",
+      "deo": "Bohol 1st DEO",
+      "city_municipality": "Tagbilaran City",
+      "barangay": "Cogon, Poblacion I, Dao, Dampas",
+      "road_name": "The President Carlos P. Garcia Circumferential Rd"
+    },
+    {
+      "source_row": 348,
+      "region": "Region VII",
+      "deo": "Bohol 1st DEO",
+      "city_municipality": "Tagbilaran City",
+      "barangay": "Poblacion I, Poblacion II",
+      "road_name": "Jct. (TNR) Ma. Clara Wharf Rd"
+    },
+    {
+      "source_row": 349,
+      "region": "Region VII",
+      "deo": "Bohol 1st DEO",
+      "city_municipality": "Corella",
+      "barangay": "Poblacion, Can-Suhay",
+      "road_name": "Tagbilaran City–Corella–Sikatuna–Loboc Rd"
+    },
+    {
+      "source_row": 350,
+      "region": "Region VII",
+      "deo": "Bohol 2nd DEO",
+      "city_municipality": "Ubay",
+      "barangay": "Poblacion, Tuboran, Buni, Tipolo",
+      "road_name": "The President Carlos P. Garcia Circumferential Rd"
+    },
+    {
+      "source_row": 351,
+      "region": "Region VII",
+      "deo": "Bohol 3rd DEO",
+      "city_municipality": "Loboc / Loay",
+      "barangay": "Poblacion (Loay), Agape (Loboc), Valladolid",
+      "road_name": "Loay Interior Rd"
+    },
+    {
+      "source_row": 352,
+      "region": "Region VII",
+      "deo": "Cebu 1st DEO",
+      "city_municipality": "Talisay City",
+      "barangay": "Cansojong, Dumlog, San Roque, Poblacion",
+      "road_name": "Cebu South Coastal Rd"
+    },
+    {
+      "source_row": 353,
+      "region": "Region VII",
+      "deo": "Cebu 1st DEO",
+      "city_municipality": "Talisay City",
+      "barangay": "Bulacao, Lawaan I, Lawaan II, Tabunok",
+      "road_name": "N. Bacalso Ave. (Cebu South Rd)"
+    },
+    {
+      "source_row": 354,
+      "region": "Region VII",
+      "deo": "Cebu 1st DEO",
+      "city_municipality": "Minglanilla",
+      "barangay": "Calajo-an, Poblacion Ward I & II, Tungkil",
+      "road_name": "N. Bacalso Ave. (Cebu South Rd)"
+    },
+    {
+      "source_row": 355,
+      "region": "Region VII",
+      "deo": "Cebu 1st DEO",
+      "city_municipality": "San Fernando",
+      "barangay": "Pitalo, South Poblacion, Balungag",
+      "road_name": "N. Bacalso Ave. (Cebu South Rd)"
+    },
+    {
+      "source_row": 356,
+      "region": "Region VII",
+      "deo": "Cebu 1st DEO",
+      "city_municipality": "Naga City",
+      "barangay": "Tinaan, Mainit, Inayagan, Poblacion",
+      "road_name": "Naga-Uling Road"
+    },
+    {
+      "source_row": 357,
+      "region": "Region VII",
+      "deo": "Cebu 1st DEO",
+      "city_municipality": "Carcar City",
+      "barangay": "Tuyom, Poblacion I, Ocaña",
+      "road_name": "N. Bacalso Ave. (Cebu South Rd)"
+    },
+    {
+      "source_row": 358,
+      "region": "Region VII",
+      "deo": "Cebu 1st DEO",
+      "city_municipality": "Talisay City",
+      "barangay": "Dumlog, Poblacion, Cansojong",
+      "road_name": "Cebu-Toledo Wharf Rd (Jct. Naga-Uling)"
+    },
+    {
+      "source_row": 359,
+      "region": "Region VII",
+      "deo": "Cebu 1st DEO",
+      "city_municipality": "Naga City",
+      "barangay": "East Poblacion, West Poblacion, Tinaan",
+      "road_name": "N. Bacalso Ave. (Cebu South Rd)"
+    },
+    {
+      "source_row": 360,
+      "region": "Region VII",
+      "deo": "Cebu 1st DEO",
+      "city_municipality": "Argao",
+      "barangay": "Taloot, Bulasa, Poblacion",
+      "road_name": "N. Bacalso Ave. (Cebu South Rd)"
+    },
+    {
+      "source_row": 361,
+      "region": "Region VII",
+      "deo": "Cebu 2nd DEO",
+      "city_municipality": "Argao",
+      "barangay": "Casay, Guiwanon",
+      "road_name": "N. Bacalso Ave. (Cebu South Rd)"
+    },
+    {
+      "source_row": 362,
+      "region": "Region VII",
+      "deo": "Cebu 2nd DEO",
+      "city_municipality": "Dalaguete",
+      "barangay": "Poblacion, Mantalongon, Ablayan",
+      "road_name": "Dalaguete-Mantalongon-Badian Rd"
+    },
+    {
+      "source_row": 363,
+      "region": "Region VII",
+      "deo": "Cebu 2nd DEO",
+      "city_municipality": "Dalaguete",
+      "barangay": "Casay, Poblacion, Cawayan",
+      "road_name": "N. Bacalso Ave. (Cebu South Rd)"
+    },
+    {
+      "source_row": 364,
+      "region": "Region VII",
+      "deo": "Cebu 2nd DEO",
+      "city_municipality": "Oslob",
+      "barangay": "Tan-awan, Lagunde, Poblacion",
+      "road_name": "N. Bacalso Ave. (Cebu South Rd)"
+    },
+    {
+      "source_row": 365,
+      "region": "Region VII",
+      "deo": "Cebu 2nd DEO",
+      "city_municipality": "Santander",
+      "barangay": "Talisay, Poblacion, Liloan",
+      "road_name": "N. Bacalso Ave. (Cebu South Rd)"
+    },
+    {
+      "source_row": 366,
+      "region": "Region VII",
+      "deo": "Cebu 2nd DEO",
+      "city_municipality": "Samboan",
+      "barangay": "Poblacion, Suba, Colase",
+      "road_name": "Santander-Barili-Toledo Rd"
+    },
+    {
+      "source_row": 367,
+      "region": "Region VII",
+      "deo": "Cebu 3rd DEO",
+      "city_municipality": "Tuburan",
+      "barangay": "Poblacion 1-8, Colonia, Mangga",
+      "road_name": "Toledo-Tabuelan-Sn. Remigio Rd"
+    },
+    {
+      "source_row": 368,
+      "region": "Region VII",
+      "deo": "Cebu 3rd DEO",
+      "city_municipality": "Asturias",
+      "barangay": "Poblacion, Owak, Langub",
+      "road_name": "Toledo-Tabuelan-Sn. Remigio Rd"
+    },
+    {
+      "source_row": 369,
+      "region": "Region VII",
+      "deo": "Cebu 3rd DEO",
+      "city_municipality": "Balamban / Asturias",
+      "barangay": "Buanoy, Owak, Santa Lucia",
+      "road_name": "Toledo-Tabuelan-Sn. Remigio Rd"
+    },
+    {
+      "source_row": 370,
+      "region": "Region VII",
+      "deo": "Cebu 3rd DEO",
+      "city_municipality": "Balamban",
+      "barangay": "Cansomoroy, Gaas, Prenza, Poblacion",
+      "road_name": "Cebu-Balamban Transcentral Highway"
+    },
+    {
+      "source_row": 371,
+      "region": "Region VII",
+      "deo": "Cebu 3rd DEO",
+      "city_municipality": "Balamban",
+      "barangay": "Buanoy, Poblacion, Nangka",
+      "road_name": "Toledo-Tabuelan-Sn. Remigio Rd"
+    },
+    {
+      "source_row": 372,
+      "region": "Region VII",
+      "deo": "Cebu 3rd DEO",
+      "city_municipality": "Toledo City",
+      "barangay": "Sangi, Poblacion, Ilihan, Matab-ang",
+      "road_name": "Toledo-Tabuelan-Sn. Remigio Rd"
+    },
+    {
+      "source_row": 373,
+      "region": "Region VII",
+      "deo": "Cebu 3rd DEO",
+      "city_municipality": "Toledo City",
+      "barangay": "Sangi, Poblacion, Don Andres Soriano",
+      "road_name": "Cebu-Toledo Wharf Rd (Uling-Toledo Wharf)"
+    },
+    {
+      "source_row": 374,
+      "region": "Region VII",
+      "deo": "Cebu 3rd DEO",
+      "city_municipality": "Barili",
+      "barangay": "Poblacion, Guibuangan, Mayana",
+      "road_name": "Carcar-Barili Rd to Santander-Barili-Toledo Rd"
+    },
+    {
+      "source_row": 375,
+      "region": "Region VII",
+      "deo": "Cebu 3rd DEO",
+      "city_municipality": "Barili",
+      "barangay": "Poblacion, Mantayupan",
+      "road_name": "Barili-Mantayupan Rd"
+    },
+    {
+      "source_row": 376,
+      "region": "Region VII",
+      "deo": "Cebu 3rd DEO",
+      "city_municipality": "Aloguinsan",
+      "barangay": "Poblacion, Bonbon, Kantabogon",
+      "road_name": "Toledo-Pinamungahan-Aloguinsan-Mantalongon Rd"
+    },
+    {
+      "source_row": 377,
+      "region": "Region VII",
+      "deo": "Cebu 3rd DEO",
+      "city_municipality": "Toledo City",
+      "barangay": "Uling, Magdugo, Don Andres Soriano",
+      "road_name": "Cebu-Toledo Wharf Rd (Jct. Naga-Uling)"
+    },
+    {
+      "source_row": 378,
+      "region": "Region VII",
+      "deo": "Cebu 4th DEO",
+      "city_municipality": "Tabogon",
+      "barangay": "Poblacion, Managase, Ilihan",
+      "road_name": "Cebu North Hagnaya Wharf Rd"
+    },
+    {
+      "source_row": 379,
+      "region": "Region VII",
+      "deo": "Cebu 4th DEO",
+      "city_municipality": "Medellin",
+      "barangay": "Curva, Poblacion, Antipolo",
+      "road_name": "Bogo-Curva-Medellin-Daanbantayan-Maya Rd"
+    },
+    {
+      "source_row": 380,
+      "region": "Region VII",
+      "deo": "Cebu 4th DEO",
+      "city_municipality": "Daanbantayan",
+      "barangay": "Maya, Poblacion, Agujo",
+      "road_name": "Bogo-Curva-Medellin-Daanbantayan-Maya Rd"
+    },
+    {
+      "source_row": 381,
+      "region": "Region VII",
+      "deo": "Cebu 4th DEO",
+      "city_municipality": "San Remigio",
+      "barangay": "Poblacion, Victoria, Argawanon",
+      "road_name": "Antonio y De Pio H-way"
+    },
+    {
+      "source_row": 382,
+      "region": "Region VII",
+      "deo": "Cebu 4th DEO",
+      "city_municipality": "Tabuelan",
+      "barangay": "Poblacion, Maravilla, Mabunao",
+      "road_name": "Sogod-Tabuelan Rd"
+    },
+    {
+      "source_row": 383,
+      "region": "Region VII",
+      "deo": "Cebu 4th DEO",
+      "city_municipality": "Tabuelan",
+      "barangay": "Poblacion, Tabunok",
+      "road_name": "Toledo-Tabuelan Rd"
+    },
+    {
+      "source_row": 384,
+      "region": "Region VII",
+      "deo": "Cebu 4th DEO",
+      "city_municipality": "Bogo City",
+      "barangay": "Poblacion, Taytayan, Nailon",
+      "road_name": "Cebu North Hagnaya Wharf Rd"
+    },
+    {
+      "source_row": 385,
+      "region": "Region VII",
+      "deo": "Cebu 5th DEO",
+      "city_municipality": "Liloan",
+      "barangay": "Poblacion, Tayud, Yati",
+      "road_name": "Cebu North Hagnaya Wharf Road"
+    },
+    {
+      "source_row": 386,
+      "region": "Region VII",
+      "deo": "Cebu 5th DEO",
+      "city_municipality": "Danao City",
+      "barangay": "Poblacion, Suba, Taytay",
+      "road_name": "Cebu North Hagnaya Wharf Road (Old Route)"
+    },
+    {
+      "source_row": 387,
+      "region": "Region VII",
+      "deo": "Cebu 5th DEO",
+      "city_municipality": "Liloan",
+      "barangay": "Tayud, Poblacion",
+      "road_name": "Consolacion-Tayud-Liloan Rd"
+    },
+    {
+      "source_row": 388,
+      "region": "Region VII",
+      "deo": "Cebu 6th DEO",
+      "city_municipality": "Mandaue City",
+      "barangay": "Tipolo, Subangdaku, Guizo, Looc",
+      "road_name": "Cebu North Hagnaya Wharf Rd"
+    },
+    {
+      "source_row": 389,
+      "region": "Region VII",
+      "deo": "Cebu 6th DEO",
+      "city_municipality": "Mandaue City",
+      "barangay": "Banilad, Bakilid, Cabancalan",
+      "road_name": "AS Fortuna St"
+    },
+    {
+      "source_row": 390,
+      "region": "Region VII",
+      "deo": "Cebu 6th DEO",
+      "city_municipality": "Mandaue City",
+      "barangay": "Ibabao-Estancia, Looc, Umapad",
+      "road_name": "AC Cortes Avenue"
+    },
+    {
+      "source_row": 391,
+      "region": "Region VII",
+      "deo": "Cebu 6th DEO",
+      "city_municipality": "Mandaue City",
+      "barangay": "Umapad, Opao, Alang-alang",
+      "road_name": "UN Avenue (CB)"
+    },
+    {
+      "source_row": 392,
+      "region": "Region VII",
+      "deo": "Cebu 6th DEO",
+      "city_municipality": "Lapu-Lapu City",
+      "barangay": "Pajo, Basak, Marigondon",
+      "road_name": "Pajo-Basak Marigondon Rd"
+    },
+    {
+      "source_row": 393,
+      "region": "Region VII",
+      "deo": "Cebu 7th DEO",
+      "city_municipality": "Dumanjug",
+      "barangay": "Poblacion, Tangil, Tubod-Bitoon",
+      "road_name": "Santander-Barili-Toledo Rd"
+    },
+    {
+      "source_row": 394,
+      "region": "Region VII",
+      "deo": "Cebu 7th DEO",
+      "city_municipality": "Ronda",
+      "barangay": "Poblacion, Palanas, Santa Cruz",
+      "road_name": "Santander-Barili-Toledo Rd"
+    },
+    {
+      "source_row": 395,
+      "region": "Region VII",
+      "deo": "Cebu 7th DEO",
+      "city_municipality": "Alcantara",
+      "barangay": "Poblacion, Palanas",
+      "road_name": "Santander-Barili-Toledo Rd"
+    },
+    {
+      "source_row": 396,
+      "region": "Region VII",
+      "deo": "Cebu 7th DEO",
+      "city_municipality": "Badian",
+      "barangay": "Poblacion, Matutinao, Bugas",
+      "road_name": "Santander-Barili-Toledo Rd"
+    },
+    {
+      "source_row": 397,
+      "region": "Region VII",
+      "deo": "Cebu 7th DEO",
+      "city_municipality": "Malabuyoc",
+      "barangay": "Poblacion, Looc, Santo Niño",
+      "road_name": "Santander-Barili-Toledo Rd"
+    },
+    {
+      "source_row": 398,
+      "region": "Region VII",
+      "deo": "Cebu City DEO",
+      "city_municipality": "Cebu City",
+      "barangay": "Tinago, San Roque, Tejero",
+      "road_name": "S. Osmeña Blvd / Jct. R. Palma St / Jct. Sanciangko St. to Jct. Legaspi Ext."
+    },
+    {
+      "source_row": 399,
+      "region": "Region VII",
+      "deo": "Cebu City DEO",
+      "city_municipality": "Cebu City",
+      "barangay": "Lorega, San Roque, Tejero",
+      "road_name": "MJ Cuenco Ave / Cebu South Coastal Rd / Jct. Quezon Blvd"
+    },
+    {
+      "source_row": 400,
+      "region": "Region VII",
+      "deo": "Cebu City DEO",
+      "city_municipality": "Cebu City",
+      "barangay": "San Roque, Ermita, Subangdaku",
+      "road_name": "Cebu South Coastal Rd"
+    },
+    {
+      "source_row": 401,
+      "region": "Region VII",
+      "deo": "Cebu City DEO",
+      "city_municipality": "Cebu City",
+      "barangay": "Pahina Central, Duljo, San Nicolas",
+      "road_name": "N. Bacalso Ave. (Cebu South Rd)"
+    },
+    {
+      "source_row": 402,
+      "region": "Region VII",
+      "deo": "Cebu City DEO",
+      "city_municipality": "Cebu City",
+      "barangay": "Parian, Santo Niño, Kalubihan",
+      "road_name": "Colon St"
+    },
+    {
+      "source_row": 403,
+      "region": "Region VII",
+      "deo": "Cebu City DEO",
+      "city_municipality": "Cebu City",
+      "barangay": "Mabolo, Carreta, Lorega",
+      "road_name": "Cebu North Rd"
+    },
+    {
+      "source_row": 404,
+      "region": "Region VII",
+      "deo": "Cebu City DEO",
+      "city_municipality": "Cebu City",
+      "barangay": "Lahug, Kasambagan",
+      "road_name": "Salinas Drive"
+    },
+    {
+      "source_row": 405,
+      "region": "Region VII",
+      "deo": "Cebu City DEO",
+      "city_municipality": "Cebu City",
+      "barangay": "Kasambagan, Banilad",
+      "road_name": "Gov. Cuenco Ave"
+    },
+    {
+      "source_row": 406,
+      "region": "Region VII",
+      "deo": "Cebu City DEO",
+      "city_municipality": "Cebu City",
+      "barangay": "Mabolo, Tejero, Carreta",
+      "road_name": "MJ Cuenco Ave"
+    },
+    {
+      "source_row": 407,
+      "region": "Region VII",
+      "deo": "Cebu City DEO",
+      "city_municipality": "Cebu City",
+      "barangay": "Pahina Central, Mambaling",
+      "road_name": "N. Bacalso Ave. (Cebu South Coastal Rd)"
+    },
+    {
+      "source_row": 408,
+      "region": "Region VII",
+      "deo": "Cebu City DEO",
+      "city_municipality": "Cebu City",
+      "barangay": "Pahina Central, Kalubihan",
+      "road_name": "Sanciangko St"
+    },
+    {
+      "source_row": 410,
+      "region": "Region IX",
+      "deo": "Zamboanga City 2nd DEO",
+      "city_municipality": "Zamboanga City",
+      "barangay": "Sangali",
+      "road_name": "Maharlika Highway (Pagadian City-Zamboanga City Road)"
+    },
+    {
+      "source_row": 411,
+      "region": "Region IX",
+      "deo": "Zamboanga City 2nd DEO",
+      "city_municipality": "Zamboanga City",
+      "barangay": "Putik",
+      "road_name": "Maharlika Highway (Pagadian City-Zamboanga City Road)"
+    },
+    {
+      "source_row": 412,
+      "region": "Region IX",
+      "deo": "Zamboanga City 2nd DEO",
+      "city_municipality": "Zamboanga City",
+      "barangay": "Guiwan",
+      "road_name": "Maharlika Highway (Pagadian City-Zamboanga City Road)"
+    },
+    {
+      "source_row": 413,
+      "region": "Region IX",
+      "deo": "Zamboanga City 2nd DEO",
+      "city_municipality": "Zamboanga City",
+      "barangay": "Tetuan",
+      "road_name": "Maharlika Highway (Pagadian City-Zamboanga City Road)"
+    },
+    {
+      "source_row": 414,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 1st DEO",
+      "city_municipality": "Dapitan City",
+      "barangay": "Ilaya",
+      "road_name": "Dipolog-Oroquieta National Rd"
+    },
+    {
+      "source_row": 415,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 1st DEO",
+      "city_municipality": "Dapitan City",
+      "barangay": "Burgos",
+      "road_name": "Dipolog-Oroquieta National Rd"
+    },
+    {
+      "source_row": 416,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 1st DEO",
+      "city_municipality": "Dapitan City",
+      "barangay": "Oyan",
+      "road_name": "Dipolog-Oroquieta National Rd"
+    },
+    {
+      "source_row": 417,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 1st DEO",
+      "city_municipality": "Dapitan City",
+      "barangay": "Sulangon",
+      "road_name": "Dipolog-Oroquieta National Rd"
+    },
+    {
+      "source_row": 418,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 1st DEO",
+      "city_municipality": "Polanco",
+      "barangay": "Sianib",
+      "road_name": "Polanco-Macleodes Rd."
+    },
+    {
+      "source_row": 419,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 2nd DEO",
+      "city_municipality": "Katipunan",
+      "barangay": "Rizal",
+      "road_name": "Dipolog-Sindangan-Liloy Road"
+    },
+    {
+      "source_row": 420,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 2nd DEO",
+      "city_municipality": "Katipunan",
+      "barangay": "Uno",
+      "road_name": "Dipolog-Sindangan-Liloy Road"
+    },
+    {
+      "source_row": 421,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 2nd DEO",
+      "city_municipality": "Jose Dalman",
+      "barangay": "Tamil",
+      "road_name": "Dipolog-Sindangan-Liloy Road"
+    },
+    {
+      "source_row": 422,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 2nd DEO",
+      "city_municipality": "Jose Dalman",
+      "barangay": "Manawan",
+      "road_name": "Dipolog-Sindangan-Liloy Road"
+    },
+    {
+      "source_row": 423,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 2nd DEO",
+      "city_municipality": "Sindangan",
+      "barangay": "Goleo",
+      "road_name": "Dipolog-Sindangan-Liloy Road"
+    },
+    {
+      "source_row": 424,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 2nd DEO",
+      "city_municipality": "Sindangan",
+      "barangay": "Motbot",
+      "road_name": "Dipolog-Sindangan-Liloy Road"
+    },
+    {
+      "source_row": 425,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 2nd DEO",
+      "city_municipality": "Sindangan",
+      "barangay": "Siare",
+      "road_name": "Dipolog-Sindangan-Liloy Road"
+    },
+    {
+      "source_row": 426,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Norte 2nd DEO",
+      "city_municipality": "Dipolog",
+      "barangay": "Sacayab",
+      "road_name": "Dipolog-Oroquieta Road"
+    },
+    {
+      "source_row": 427,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Sur 1st DEO",
+      "city_municipality": "Pagadian",
+      "barangay": "Tuburan",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd. / Maharlika Highway"
+    },
+    {
+      "source_row": 428,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Sur 1st DEO",
+      "city_municipality": "Labangan",
+      "barangay": "New Labangan",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd. / Jct. Aurora - Monte Alegre - Jct. Labangan Road"
+    },
+    {
+      "source_row": 429,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Sur 1st DEO",
+      "city_municipality": "Ramon Magsaysay",
+      "barangay": "Switch",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd. / Jct. Monte Alegre - Jct Switch Road"
+    },
+    {
+      "source_row": 430,
+      "region": "Region IX",
+      "deo": "Zamboanga Del Sur 1st DEO",
+      "city_municipality": "Molave",
+      "barangay": "Dipolo",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd. / Jct. Aurora - Ozamis City Road"
+    },
+    {
+      "source_row": 431,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Ipil",
+      "barangay": "Sanito",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd."
+    },
+    {
+      "source_row": 432,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Ipil",
+      "barangay": "Poblacion",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd."
+    },
+    {
+      "source_row": 433,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "R.T. Lim",
+      "barangay": "Silingan",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd."
+    },
+    {
+      "source_row": 434,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Tungawan",
+      "barangay": "Baluran",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd."
+    },
+    {
+      "source_row": 435,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Tungawan",
+      "barangay": "Masao",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd."
+    },
+    {
+      "source_row": 436,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Tungawan",
+      "barangay": "Tigbanuang",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd."
+    },
+    {
+      "source_row": 437,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Tungawan",
+      "barangay": "Langon",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd."
+    },
+    {
+      "source_row": 438,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Tungawan",
+      "barangay": "Upper Tungawan",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd."
+    },
+    {
+      "source_row": 439,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Tungawan",
+      "barangay": "Lower Tungawan",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd."
+    },
+    {
+      "source_row": 440,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Tungawan",
+      "barangay": "Tigpalay",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd."
+    },
+    {
+      "source_row": 441,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Tungawan",
+      "barangay": "San Pedro",
+      "road_name": "Lanao-Pagadian-Zamboanga City Rd."
+    },
+    {
+      "source_row": 442,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Titay",
+      "barangay": "Tirso Babiera",
+      "road_name": "Ipil-Liloy-Sindangan Rd."
+    },
+    {
+      "source_row": 443,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Naga",
+      "barangay": "Sta. Clara",
+      "road_name": "Crossing Sta. Clara - Sandayong Rd."
+    },
+    {
+      "source_row": 444,
+      "region": "Region IX",
+      "deo": "Zamboanga Sibugay 2nd DEO",
+      "city_municipality": "Naga",
+      "barangay": "Marsolo",
+      "road_name": "Crossing Sta. Clara - Sandayong Rd."
+    },
+    {
+      "source_row": 488,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": null,
+      "road_name": "Along Davao River"
+    },
+    {
+      "source_row": 489,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": null,
+      "road_name": "Along Matina River"
+    },
+    {
+      "source_row": 490,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": null,
+      "road_name": "Along Talomo River"
+    },
+    {
+      "source_row": 491,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": null,
+      "road_name": "Along Bago River"
+    },
+    {
+      "source_row": 492,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Obrero (Barangay 18-B) / Agdao",
+      "road_name": "Veloso St., leading to Dacudao Main Drain, Davao City"
+    },
+    {
+      "source_row": 493,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Barangay 21-C / Barangay 22-C",
+      "road_name": "Marginal St. (S00031MN) – Chainage 0 to Chainage 167.6 Outfall"
+    },
+    {
+      "source_row": 494,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Barangay 26-C / Barangay 27-C",
+      "road_name": "Magsaysay Ave. (S01444MN) – K1510 + 200 to K1511 + 100"
+    },
+    {
+      "source_row": 495,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Barangay 21-C / Barangay 22-C",
+      "road_name": "Suazo St. to Ponce Main Drain, Davao City"
+    },
+    {
+      "source_row": 496,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Barangay 21-C / Barangay 22-C",
+      "road_name": "Drain Outfall, Davao City, Ponce Main Drain"
+    },
+    {
+      "source_row": 497,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Poblacion (Barangay 11-B / 12-B)",
+      "road_name": "Quirino Ave. (S01331MN) – K1510 + 655 to K1510 + 165"
+    },
+    {
+      "source_row": 498,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Bucana (Barangay 76-A) / Matina Crossing",
+      "road_name": "Maharlika Highway (S00039MN), Davao City–Jct Digos Section – K1512 + 430 to K1512 + 590"
+    },
+    {
+      "source_row": 499,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Matina Crossing / Matina Aplaya",
+      "road_name": "Maharlika Highway (S00039MN), Davao City–Jct Digos Section – K1513 + 000 to K1513 + 760"
+    },
+    {
+      "source_row": 500,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Matina Pangi / Talomo",
+      "road_name": "Maharlika Highway (S00039MN), Davao City–Jct Digos Section – K1515 + 540 to K1516 + 280"
+    },
+    {
+      "source_row": 501,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Matina Aplaya / Bucana",
+      "road_name": "G. Torres-Ecoland Avenue–Matina Aplaya Rd. (S01580MN)"
+    },
+    {
+      "source_row": 502,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Matina Crossing / Talomo Proper",
+      "road_name": "Davao-Cotabato Old Road (S01335MN)"
+    },
+    {
+      "source_row": 503,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Talomo Proper",
+      "road_name": "Talomo Creek to Talomo River"
+    },
+    {
+      "source_row": 504,
+      "region": "REGION XI",
+      "deo": "Davao City DEO",
+      "city_municipality": "Davao City",
+      "barangay": "Binugao / Sirawan",
+      "road_name": "Maharlika Highway (Davao City–Jct Digos Section) K1591+380"
+    },
+    {
+      "source_row": 505,
+      "region": "REGION XI",
+      "deo": "Davao Del Norte 2nd DEO",
+      "city_municipality": "Panabo City",
+      "barangay": "Santo Niño / New Pandan",
+      "road_name": "Tagum-Panabo Circumferential Road (S01365MN) – K1523+190 to K1523+260"
+    },
+    {
+      "source_row": 506,
+      "region": "REGION XI",
+      "deo": "Davao Del Norte 2nd DEO",
+      "city_municipality": "Panabo City",
+      "barangay": "Santo Niño / Gredu",
+      "road_name": "Maharlika Highway (S01364MN) – K1479+480 to K1479+620"
+    },
+    {
+      "source_row": 507,
+      "region": "REGION XI",
+      "deo": "Davao Del Norte 2nd DEO",
+      "city_municipality": "Panabo City",
+      "barangay": "Santo Niño",
+      "road_name": "Maharlika Highway (S01364MN) – K1478+025 to K1478+300"
+    },
+    {
+      "source_row": 508,
+      "region": "REGION XI",
+      "deo": "Davao Del Norte 2nd DEO",
+      "city_municipality": "Island Garden City of Samal",
+      "barangay": null,
+      "road_name": null
+    },
+    {
+      "source_row": 509,
+      "region": "REGION XI",
+      "deo": "Davao Del Norte 2nd DEO",
+      "city_municipality": "Island Garden City of Samal",
+      "barangay": "Babak / Villarica",
+      "road_name": "Babak-Samal-Kaputian Road (S00095MN) – K1507+600 to K1509+150"
+    },
+    {
+      "source_row": 510,
+      "region": "REGION XI",
+      "deo": "Davao Del Norte 2nd DEO",
+      "city_municipality": "Carmen",
+      "barangay": "Ising / Tuganay",
+      "road_name": "Maharlika Highway (S01364MN) – K1467+300 to K1467+500"
+    },
+    {
+      "source_row": 511,
+      "region": "REGION XI",
+      "deo": "Davao Del Norte 2nd DEO",
+      "city_municipality": "Carmen",
+      "barangay": "Ising",
+      "road_name": "Maharlika Highway (S01364MN) – K1468+000 to K1468+200"
+    },
+    {
+      "source_row": 512,
+      "region": "REGION XI",
+      "deo": "Davao Oriental 1st DEO",
+      "city_municipality": "Cateel",
+      "barangay": "Poblacion / San Rafael",
+      "road_name": "K1541+000 – K1542+000"
+    },
+    {
+      "source_row": 513,
+      "region": "REGION XI",
+      "deo": "Davao Oriental 1st DEO",
+      "city_municipality": "Cateel",
+      "barangay": "Baybay",
+      "road_name": "K1547+700 – K1548+000"
+    },
+    {
+      "source_row": 514,
+      "region": "REGION XI",
+      "deo": "Davao Oriental 1st DEO",
+      "city_municipality": "Cateel",
+      "barangay": "Taytayan",
+      "road_name": "K1562+000 – K1563+000"
+    },
+    {
+      "source_row": 515,
+      "region": "REGION XI",
+      "deo": "Davao Oriental 1st DEO",
+      "city_municipality": "Baganga",
+      "barangay": "Poblacion / Kinablangan",
+      "road_name": "K1604+000 – K1605+000"
+    },
+    {
+      "source_row": 516,
+      "region": "REGION XI",
+      "deo": "Davao Oriental 1st DEO",
+      "city_municipality": "Caraga",
+      "barangay": "Poblacion / Pichon",
+      "road_name": "K1630+000 – K1631+000"
+    },
+    {
+      "source_row": 517,
+      "region": "REGION XI",
+      "deo": "Davao Oriental 1st DEO",
+      "city_municipality": "Cateel",
+      "barangay": "Mainit / Alegre",
+      "road_name": "K1652+000 – K1653+600"
+    },
+    {
+      "source_row": 518,
+      "region": "REGION XI",
+      "deo": "Davao Oriental 1st DEO",
+      "city_municipality": "Cateel",
+      "barangay": "San Alfonso",
+      "road_name": "K1554+300 – K1554+800"
+    },
+    {
+      "source_row": 519,
+      "region": "REGION XI",
+      "deo": "Davao Oriental 1st DEO",
+      "city_municipality": "Cateel",
+      "barangay": "Taytayan",
+      "road_name": "K1564+672 – K1565+047"
+    },
+    {
+      "source_row": 520,
+      "region": "REGION XI",
+      "deo": "Davao Oriental 1st DEO",
+      "city_municipality": "Cateel",
+      "barangay": "Taytayan / Aliwagwag",
+      "road_name": "K1566+800 – K1567+300"
+    },
+    {
+      "source_row": 521,
+      "region": "REGION XI",
+      "deo": "Davao Oriental 1st DEO",
+      "city_municipality": "Cateel",
+      "barangay": "Aliwagwag",
+      "road_name": "K1568+600 – K1569+000"
+    },
+    {
+      "source_row": 522,
+      "region": "REGION XI",
+      "deo": "Davao Oriental 1st DEO",
+      "city_municipality": "Cateel",
+      "barangay": "Aliwagwag",
+      "road_name": "K1569+100 – K1569+250"
+    },
+    {
+      "source_row": 523,
+      "region": "REGION XI",
+      "deo": "Davao Oriental 1st DEO",
+      "city_municipality": "Cateel",
+      "barangay": "Magagong",
+      "road_name": "K1578+500 – K1578+530"
+    },
+    {
+      "source_row": 525,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Bacolod DEO",
+      "city_municipality": "Bacolod City",
+      "barangay": "Bata",
+      "road_name": "Bacolod North Road (S00078NR)"
+    },
+    {
+      "source_row": 526,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Bacolod DEO",
+      "city_municipality": "Bacolod City",
+      "barangay": "Mandalagan",
+      "road_name": "Bacolod North Road (S00078NR)"
+    },
+    {
+      "source_row": 527,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Bacolod DEO",
+      "city_municipality": "Bacolod City",
+      "barangay": "Banago",
+      "road_name": "Bacolod Circumferential Road (S00131NR)"
+    },
+    {
+      "source_row": 528,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Bacolod DEO",
+      "city_municipality": "Bacolod City",
+      "barangay": "Banago",
+      "road_name": "Sto. Niño-Banago Rd (North) (S00101NR)"
+    },
+    {
+      "source_row": 529,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Bacolod DEO",
+      "city_municipality": "Bacolod City",
+      "barangay": "Singcang-Airport",
+      "road_name": "Bacolod South Road (S00132NR)"
+    },
+    {
+      "source_row": 530,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Bacolod DEO",
+      "city_municipality": "Bacolod City",
+      "barangay": "Taculing",
+      "road_name": "Bacolod Circumferential Road (South) (S00097NR)"
+    },
+    {
+      "source_row": 531,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Bacolod DEO",
+      "city_municipality": "Bacolod City",
+      "barangay": "Pahanocoy",
+      "road_name": "Bacolod South Road (S00133NR)"
+    },
+    {
+      "source_row": 532,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 1st DEO",
+      "city_municipality": "Talisay City",
+      "barangay": "Zone 15",
+      "road_name": "Bacolod North Road"
+    },
+    {
+      "source_row": 533,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 1st DEO",
+      "city_municipality": "Manapla",
+      "barangay": "1A",
+      "road_name": "Manapla By-Pass Rd"
+    },
+    {
+      "source_row": 534,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 1st DEO",
+      "city_municipality": "Sagay City",
+      "barangay": "Paraiso",
+      "road_name": "Bacolod North Road (Old Route)"
+    },
+    {
+      "source_row": 535,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 1st DEO",
+      "city_municipality": "Sagay City",
+      "barangay": "Paraiso",
+      "road_name": "Bacolod North Road"
+    },
+    {
+      "source_row": 536,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 1st DEO",
+      "city_municipality": "Sagay City",
+      "barangay": "Old Sagay",
+      "road_name": "Jct New Sagay-Old Sagay Rd"
+    },
+    {
+      "source_row": 537,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 2nd DEO",
+      "city_municipality": "Hinigaran",
+      "barangay": "Pilar",
+      "road_name": "Bacolod South Road (S00134NR)"
+    },
+    {
+      "source_row": 538,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 2nd DEO",
+      "city_municipality": "Binalbagan",
+      "barangay": "Marina",
+      "road_name": "Bacolod South Road (S00134NR)"
+    },
+    {
+      "source_row": 539,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 2nd DEO",
+      "city_municipality": "Binalbagan",
+      "barangay": "San Vicente",
+      "road_name": "Bacolod South Road (S00134NR)"
+    },
+    {
+      "source_row": 540,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 2nd DEO",
+      "city_municipality": "La Castellana",
+      "barangay": "Robles",
+      "road_name": "Vallehermoso-Canlaon City-La Castellana Rd (S00189NR)"
+    },
+    {
+      "source_row": 541,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 2nd DEO",
+      "city_municipality": "La Castellana",
+      "barangay": "Robles",
+      "road_name": "Jct. Bagonawa-La Castellana-Isabela Rd (S00178NR)"
+    },
+    {
+      "source_row": 542,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 2nd DEO",
+      "city_municipality": "Isabela",
+      "barangay": "Bulad",
+      "road_name": "Jct. Bagonawa-La Castellana-Isabela Rd (S00178NR)"
+    },
+    {
+      "source_row": 543,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 2nd DEO",
+      "city_municipality": "Binalbagan",
+      "barangay": "San Jose",
+      "road_name": "Binalbagan-Isabela Rd (S00419NR)"
+    },
+    {
+      "source_row": 544,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 2nd DEO",
+      "city_municipality": "Isabela",
+      "barangay": "Maytubig, Tinongan",
+      "road_name": "Isabela-Libas Neg. Occ. Bdry Rd (S00374NR)"
+    },
+    {
+      "source_row": 545,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 2nd DEO",
+      "city_municipality": "Hinigaran",
+      "barangay": "Narauis",
+      "road_name": "Hinigaran-Isabela Rd (S00366NR)"
+    },
+    {
+      "source_row": 546,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 2nd DEO",
+      "city_municipality": "Hinigaran",
+      "barangay": "Linao",
+      "road_name": "Hinigaran-Isabela Rd (S00366NR)"
+    },
+    {
+      "source_row": 547,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Ilog",
+      "barangay": "Vista Alegre",
+      "road_name": "Bacolod South Road (Moog Bridge)"
+    },
+    {
+      "source_row": 548,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Ilog",
+      "barangay": "Bocana",
+      "road_name": "Bacolod South Road"
+    },
+    {
+      "source_row": 549,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Ilog",
+      "barangay": "Galicia",
+      "road_name": "Bacolod South Road"
+    },
+    {
+      "source_row": 550,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Cauayan",
+      "barangay": "Mambugsay",
+      "road_name": "Bacolod South Road (Dautan Bridge)"
+    },
+    {
+      "source_row": 551,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Cauayan",
+      "barangay": "Tiling",
+      "road_name": "Bacolod South Road"
+    },
+    {
+      "source_row": 552,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Cauayan",
+      "barangay": "Masaling",
+      "road_name": "Bacolod South Road"
+    },
+    {
+      "source_row": 553,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Cauayan",
+      "barangay": "Inayawan",
+      "road_name": "Bacolod South Road"
+    },
+    {
+      "source_row": 554,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Sipalay City",
+      "barangay": "Gil Montilla",
+      "road_name": "Bacolod South Road"
+    },
+    {
+      "source_row": 555,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Sipalay City",
+      "barangay": "Mambaroto",
+      "road_name": "Bacolod South Road"
+    },
+    {
+      "source_row": 556,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Candoni",
+      "barangay": "Gatuslao",
+      "road_name": "Dancalan-Candoni-Damutan Valley Road"
+    },
+    {
+      "source_row": 557,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Kabankalan City",
+      "barangay": "Linao",
+      "road_name": "Kabankalan Jct. Salong-Tapi-Dacongcogon-Bantayan Road"
+    },
+    {
+      "source_row": 558,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Kabankalan City",
+      "barangay": "Salong",
+      "road_name": "Kabankalan Jct. Salong-Tapi-Dacongcogon-Bantayan Road"
+    },
+    {
+      "source_row": 559,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Sipalay City",
+      "barangay": "Camindangan",
+      "road_name": "Candoni-Sipalay Road"
+    },
+    {
+      "source_row": 560,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 3rd DEO",
+      "city_municipality": "Sipalay City",
+      "barangay": "Mambaroto",
+      "road_name": "Candoni-Sipalay Road"
+    },
+    {
+      "source_row": 561,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 4th DEO",
+      "city_municipality": "Bago City",
+      "barangay": "Dulao",
+      "road_name": "Sum-ag-Abuanan Road (S00165NR)"
+    },
+    {
+      "source_row": 562,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 4th DEO",
+      "city_municipality": "Bago City",
+      "barangay": "Abuanan",
+      "road_name": "Sum-ag-Abuanan Road (S00165NR)"
+    },
+    {
+      "source_row": 563,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 4th DEO",
+      "city_municipality": "Bago City",
+      "barangay": "Tabunan",
+      "road_name": "Sum-ag-Abuanan Road (S00165NR)"
+    },
+    {
+      "source_row": 564,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 4th DEO",
+      "city_municipality": "Bago City",
+      "barangay": "Sampinit",
+      "road_name": "Bacolod South Road (Old) (S00124NR)"
+    },
+    {
+      "source_row": 565,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 4th DEO",
+      "city_municipality": "San Enrique",
+      "barangay": "Bagonawa",
+      "road_name": "Jct. San Enrique Pontevedra By Pass Road (S00203NR)"
+    },
+    {
+      "source_row": 566,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 4th DEO",
+      "city_municipality": "Pontevedra",
+      "barangay": "Marayo",
+      "road_name": "Jct. San Enrique Pontevedra By Pass Road (S00203NR)"
+    },
+    {
+      "source_row": 567,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 4th DEO",
+      "city_municipality": "Valladolid",
+      "barangay": "Mabini",
+      "road_name": "Bacolod South Road (S00127NR)"
+    },
+    {
+      "source_row": 568,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 5th DEO",
+      "city_municipality": "Escalante City",
+      "barangay": "Jonob-Jonob",
+      "road_name": "Bacolod North Rd (S00425NR)"
+    },
+    {
+      "source_row": 569,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 5th DEO",
+      "city_municipality": "Escalante City",
+      "barangay": "Mabini",
+      "road_name": "Bacolod North Rd (S00425NR)"
+    },
+    {
+      "source_row": 570,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 5th DEO",
+      "city_municipality": "Toboso",
+      "barangay": "Tabun-ac",
+      "road_name": "Bacolod North Rd (S00425NR)"
+    },
+    {
+      "source_row": 571,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 5th DEO",
+      "city_municipality": "Toboso",
+      "barangay": "Poblacion",
+      "road_name": "Jct. Curva Hagnaya-Poblacion-Maaswa Rd (S00018NR)"
+    },
+    {
+      "source_row": 572,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 5th DEO",
+      "city_municipality": "Toboso",
+      "barangay": "General Luna",
+      "road_name": "Jct. Curva Hagnaya-Poblacion-Maaswa Rd (S00018NR)"
+    },
+    {
+      "source_row": 573,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 5th DEO",
+      "city_municipality": "Toboso",
+      "barangay": "General Luna",
+      "road_name": "Bacolod North Rd (S00425NR)"
+    },
+    {
+      "source_row": 574,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 5th DEO",
+      "city_municipality": "San Carlos City",
+      "barangay": "Punao",
+      "road_name": "Bacolod North Rd (S00425NR)"
+    },
+    {
+      "source_row": 575,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 5th DEO",
+      "city_municipality": "San Carlos City",
+      "barangay": "Brgy. II & Brgy. III",
+      "road_name": "Bacolod North Rd (S00425NR)"
+    },
+    {
+      "source_row": 576,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Occidental 5th DEO",
+      "city_municipality": "San Carlos City",
+      "barangay": "Guadalupe",
+      "road_name": "Bacolod North Rd (S00425NR)"
+    },
+    {
+      "source_row": 577,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 1st DEO",
+      "city_municipality": "Manjuyod",
+      "barangay": "Suba",
+      "road_name": "Dumaguete North Road"
+    },
+    {
+      "source_row": 578,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 1st DEO",
+      "city_municipality": "Bindoy",
+      "barangay": "Malaga",
+      "road_name": "Dumaguete North Road"
+    },
+    {
+      "source_row": 579,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 1st DEO",
+      "city_municipality": "Bindoy",
+      "barangay": "Cabugan",
+      "road_name": "Dumaguete North Road"
+    },
+    {
+      "source_row": 580,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 1st DEO",
+      "city_municipality": "La Libertad",
+      "barangay": "North Poblacion",
+      "road_name": "Dumaguete North Road"
+    },
+    {
+      "source_row": 581,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 1st DEO",
+      "city_municipality": "Guihulngan City",
+      "barangay": "Hibaiyo",
+      "road_name": "Dumaguete North Road"
+    },
+    {
+      "source_row": 582,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 1st DEO",
+      "city_municipality": "Vallehermoso",
+      "barangay": "Ulay",
+      "road_name": "Vallehermoso-Canlaon City-La Castellana Road"
+    },
+    {
+      "source_row": 583,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 1st DEO",
+      "city_municipality": "Vallehermoso",
+      "barangay": "Tagbino",
+      "road_name": "Vallehermoso-Canlaon City-La Castellana Road"
+    },
+    {
+      "source_row": 584,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 1st DEO",
+      "city_municipality": "Vallehermoso",
+      "barangay": "Binalbagan",
+      "road_name": "Vallehermoso-Canlaon City-La Castellana Road"
+    },
+    {
+      "source_row": 585,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 1st DEO",
+      "city_municipality": "Canlaon City",
+      "barangay": "Panubigan",
+      "road_name": "Vallehermoso-Canlaon City-La Castellana Road (Malalba Bridge)"
+    },
+    {
+      "source_row": 586,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 1st DEO",
+      "city_municipality": "Canlaon City",
+      "barangay": "Linothangan",
+      "road_name": "Vallehermoso-Canlaon City-La Castellana Road"
+    },
+    {
+      "source_row": 587,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 1st DEO",
+      "city_municipality": "Guihulngan City",
+      "barangay": "Banwague",
+      "road_name": "Guihulngan-Baloc-Isabela Road"
+    },
+    {
+      "source_row": 588,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 2nd DEO",
+      "city_municipality": "Tanjay City",
+      "barangay": "Sta. Cruz Viejo (Sitio Tabla)",
+      "road_name": "Dumaguete North Road (S00353NR)"
+    },
+    {
+      "source_row": 589,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 2nd DEO",
+      "city_municipality": "Bais City",
+      "barangay": "Calasgaan",
+      "road_name": "Dumaguete North Road (S00353NR)"
+    },
+    {
+      "source_row": 590,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 2nd DEO",
+      "city_municipality": "Bais City",
+      "barangay": "Tamisu",
+      "road_name": "Dumaguete North Road (S00353NR)"
+    },
+    {
+      "source_row": 591,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 3rd DEO",
+      "city_municipality": "Dauin",
+      "barangay": "Lipayo",
+      "road_name": "Dumaguete South Road (S00275NR)"
+    },
+    {
+      "source_row": 592,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 3rd DEO",
+      "city_municipality": "Dauin",
+      "barangay": "Masaplod Norte",
+      "road_name": "Dumaguete South Road (S00275NR)"
+    },
+    {
+      "source_row": 593,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 3rd DEO",
+      "city_municipality": "Zamboanguita",
+      "barangay": "Malatapay",
+      "road_name": "Dumaguete South Road (S00275NR)"
+    },
+    {
+      "source_row": 594,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 3rd DEO",
+      "city_municipality": "Siaton",
+      "barangay": "Poblacion 1",
+      "road_name": "Dumaguete South Road (S00275NR)"
+    },
+    {
+      "source_row": 595,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 3rd DEO",
+      "city_municipality": "Siaton",
+      "barangay": "Mantuyop",
+      "road_name": "Dumaguete South Road (S00275NR)"
+    },
+    {
+      "source_row": 596,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 3rd DEO",
+      "city_municipality": "Siaton",
+      "barangay": "Maloh",
+      "road_name": "Dumaguete South Road (S00275NR)"
+    },
+    {
+      "source_row": 597,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 3rd DEO",
+      "city_municipality": "Siaton",
+      "barangay": "Bonawon",
+      "road_name": "Dumaguete South Road (S00275NR)"
+    },
+    {
+      "source_row": 598,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 3rd DEO",
+      "city_municipality": "Siaton",
+      "barangay": "Lico-lico",
+      "road_name": "Dumaguete South Road (S00275NR)"
+    },
+    {
+      "source_row": 599,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 3rd DEO",
+      "city_municipality": "Santa Catalina",
+      "barangay": "San Francisco",
+      "road_name": "Dumaguete South Road (S00275NR)"
+    },
+    {
+      "source_row": 600,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 3rd DEO",
+      "city_municipality": "Bayawan City",
+      "barangay": "Villareal",
+      "road_name": "Dumaguete South Road (S00275NR)"
+    },
+    {
+      "source_row": 601,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 3rd DEO",
+      "city_municipality": "Bayawan City",
+      "barangay": "Poblacion",
+      "road_name": "Bayawan-Kabankalan Road (S00270NR)"
+    },
+    {
+      "source_row": 602,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Negros Oriental 3rd DEO",
+      "city_municipality": "Basay",
+      "barangay": "Nagbo-alao",
+      "road_name": "Dumaguete South Road (S00275NR)"
+    },
+    {
+      "source_row": 603,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Siquijor DEO",
+      "city_municipality": "Larena",
+      "barangay": "Helen",
+      "road_name": "Siquijor Circumferential Road (Datag Bridge)"
+    },
+    {
+      "source_row": 604,
+      "region": "NEGROS ISLAND REGION",
+      "deo": "Siquijor DEO",
+      "city_municipality": "Larena",
+      "barangay": "Cangbagsa",
+      "road_name": "Siquijor Circumferential Road"
+    },
+    {
+      "source_row": 629,
+      "region": "Region XIII",
+      "deo": "Agusan del Norte DEO",
+      "city_municipality": "Santiago",
+      "barangay": "Barangay Tagbuyacan",
+      "road_name": "Maharlika Highway"
+    },
+    {
+      "source_row": 630,
+      "region": "Region XIII",
+      "deo": "Agusan del Norte DEO",
+      "city_municipality": "Santiago",
+      "barangay": "Barangay Poblacion 2",
+      "road_name": "Maharlika Highway"
+    },
+    {
+      "source_row": 631,
+      "region": "Region XIII",
+      "deo": "Agusan del Norte DEO",
+      "city_municipality": "Tubay",
+      "barangay": "Barangay Tagmamarkay",
+      "road_name": "Maharlika Highway"
+    },
+    {
+      "source_row": 632,
+      "region": "Region XIII",
+      "deo": "Agusan del Norte DEO",
+      "city_municipality": "RTR",
+      "barangay": "Barangay Basilisa",
+      "road_name": "Maharlika Highway"
+    },
+    {
+      "source_row": 633,
+      "region": "Region XIII",
+      "deo": "Agusan del Norte DEO",
+      "city_municipality": "RTR",
+      "barangay": "Barangay Poblacion 1",
+      "road_name": "Maharlika Highway"
+    },
+    {
+      "source_row": 634,
+      "region": "Region XIII",
+      "deo": "Agusan del Norte DEO",
+      "city_municipality": "RTR",
+      "barangay": "Barangay Poblacion 2",
+      "road_name": "Maharlika Highway"
+    },
+    {
+      "source_row": 635,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 1st DEO",
+      "city_municipality": "Prosperidad",
+      "barangay": "Brgy. Mapaga",
+      "road_name": "NRJ Bahbah - Talacogon Road"
+    },
+    {
+      "source_row": 636,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 1st DEO",
+      "city_municipality": "Prosperidad",
+      "barangay": "Brgy. La Suerte",
+      "road_name": "NRJ Bahbah - Talacogon Road"
+    },
+    {
+      "source_row": 637,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 1st DEO",
+      "city_municipality": "Prosperidad",
+      "barangay": "Brgy. Lucena",
+      "road_name": "NRJ Bahbah - Talacogon Road"
+    },
+    {
+      "source_row": 638,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 1st DEO",
+      "city_municipality": "Prosperidad",
+      "barangay": "Brgy. Salvacion",
+      "road_name": "Maharlika Highway (Agusan - Davao Sect)"
+    },
+    {
+      "source_row": 639,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 1st DEO",
+      "city_municipality": "Prosperidad",
+      "barangay": "Brgy. Patin-ay",
+      "road_name": "Maharlika Highway (Agusan - Davao Sect)"
+    },
+    {
+      "source_row": 640,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 1st DEO",
+      "city_municipality": "Prosperidad",
+      "barangay": "Brgy. Azpetia",
+      "road_name": "NRJ Awa - Lianga Road"
+    },
+    {
+      "source_row": 641,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 1st DEO",
+      "city_municipality": "Prosperidad",
+      "barangay": "Brgy. Anibongan",
+      "road_name": "NRJ Awa - Lianga Road"
+    },
+    {
+      "source_row": 642,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 1st DEO",
+      "city_municipality": "Prosperidad",
+      "barangay": "Brgy. Los Arcos",
+      "road_name": "NRJ Awa - Lianga Road"
+    },
+    {
+      "source_row": 643,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 1st DEO",
+      "city_municipality": "Sibagat",
+      "barangay": "Brgy. San Vicente",
+      "road_name": "Maharlika Highway (Agusan - Davao Sect)"
+    },
+    {
+      "source_row": 644,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 1st DEO",
+      "city_municipality": "Esperanza",
+      "barangay": "Brgy. Piglawigan",
+      "road_name": "Bayugan - Esperanza Road"
+    },
+    {
+      "source_row": 645,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 1st DEO",
+      "city_municipality": "Esperanza",
+      "barangay": "Brgy. Hawilian",
+      "road_name": "Bayugan - Esperanza Road"
+    },
+    {
+      "source_row": 646,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 1st DEO",
+      "city_municipality": "Talacogon",
+      "barangay": "Brgy. Poblacion",
+      "road_name": "Butuan City - Talacogon - Loreto - Veruela - Sta. Josefa Road"
+    },
+    {
+      "source_row": 647,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 2nd DEO",
+      "city_municipality": "Lanuza",
+      "barangay": "Barangay Nurcia",
+      "road_name": "Surigao - Davao Coastal Road (Lanuza - Cortes Section)"
+    },
+    {
+      "source_row": 648,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 2nd DEO",
+      "city_municipality": "La Paz",
+      "barangay": "Barangay Sagunto",
+      "road_name": "Butuan City - Talacogon - Veruela - Sta. Josefa Road"
+    },
+    {
+      "source_row": 649,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 2nd DEO",
+      "city_municipality": "La Paz",
+      "barangay": "Barangay Panagangan",
+      "road_name": "Butuan City - Talacogon - Veruela - Sta. Josefa Road"
+    },
+    {
+      "source_row": 650,
+      "region": "Region XIII",
+      "deo": "Agusan del Sur 2nd DEO",
+      "city_municipality": "Loreto",
+      "barangay": "Barangay Kiawan",
+      "road_name": "Butuan City - Talacogon - Veruela - Sta. Josefa Road"
+    },
+    {
+      "source_row": 651,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 1st DEO",
+      "city_municipality": "Del Carmen",
+      "barangay": "Barangay Sayak",
+      "road_name": "Dapa - Jct. Cancohoy Road"
+    },
+    {
+      "source_row": 652,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 1st DEO",
+      "city_municipality": "General Luna",
+      "barangay": "Barangay Sta. Cruz",
+      "road_name": "Dapa - Union - General Luna Road"
+    },
+    {
+      "source_row": 653,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 1st DEO",
+      "city_municipality": "Dapa",
+      "barangay": "Barangay Osmeña",
+      "road_name": "Jct. Osmeña - Pilar Road"
+    },
+    {
+      "source_row": 654,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 1st DEO",
+      "city_municipality": "Socorro",
+      "barangay": "Barangay Navarro",
+      "road_name": "Socorro - Nueva Estrella - Brgy. Pamosaingan Road"
+    },
+    {
+      "source_row": 655,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 2nd DEO",
+      "city_municipality": "Surigao City",
+      "barangay": "Washington",
+      "road_name": "Surigao Wharf Road"
+    },
+    {
+      "source_row": 656,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 2nd DEO",
+      "city_municipality": "Surigao City",
+      "barangay": "Luna",
+      "road_name": "Maharlika Highway (Surigao - Agusan Section)"
+    },
+    {
+      "source_row": 657,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 2nd DEO",
+      "city_municipality": "Surigao City",
+      "barangay": "Quezon",
+      "road_name": "Maharlika Highway (Surigao - Agusan Section)"
+    },
+    {
+      "source_row": 658,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 2nd DEO",
+      "city_municipality": "Surigao City",
+      "barangay": "Trinidad",
+      "road_name": "Maharlika Highway (Surigao - Agusan Section)"
+    },
+    {
+      "source_row": 659,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 2nd DEO",
+      "city_municipality": "Placer",
+      "barangay": "Mapaso",
+      "road_name": "Surigao - Davao Coastal Road"
+    },
+    {
+      "source_row": 660,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 2nd DEO",
+      "city_municipality": "Claver",
+      "barangay": "Ladgaron",
+      "road_name": "Surigao - Davao Coastal Road"
+    },
+    {
+      "source_row": 661,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 2nd DEO",
+      "city_municipality": "Claver",
+      "barangay": "Urbiztondo",
+      "road_name": "Surigao - Davao Coastal Road"
+    },
+    {
+      "source_row": 662,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 2nd DEO",
+      "city_municipality": "Claver",
+      "barangay": "Hayanggabon",
+      "road_name": "Surigao - Davao Coastal Road"
+    },
+    {
+      "source_row": 663,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 2nd DEO",
+      "city_municipality": "Surigao City",
+      "barangay": "Cagniog",
+      "road_name": "Quezon - Mapawa - Capalayan - Navarro Road"
+    },
+    {
+      "source_row": 664,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 2nd DEO",
+      "city_municipality": "Surigao City",
+      "barangay": "Capalayan",
+      "road_name": "Jct. Capalayan - Cabongbongan Road"
+    },
+    {
+      "source_row": 665,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 2nd DEO",
+      "city_municipality": "Surigao City",
+      "barangay": "Nabago",
+      "road_name": "Jct. Capalayan - Cabongbongan Road"
+    },
+    {
+      "source_row": 666,
+      "region": "Region XIII",
+      "deo": "Surigao del Norte 2nd DEO",
+      "city_municipality": "Surigao City",
+      "barangay": "Cabongbongan",
+      "road_name": "Jct. Capalayan - Cabongbongan Road"
+    },
+    {
+      "source_row": 667,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Carrascal",
+      "barangay": "Adlay",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 668,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Carrascal",
+      "barangay": "Saka",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 669,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Cantilan",
+      "barangay": "Magasang",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 670,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Cantilan",
+      "barangay": "Parang",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 671,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Carmen",
+      "barangay": "Antao",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 672,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Carmen",
+      "barangay": "Sta. Cruz",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 673,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Tago",
+      "barangay": "Gamut",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 674,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Tago",
+      "barangay": "Unaban",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 675,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Tago",
+      "barangay": "Unidos",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 676,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Tago",
+      "barangay": "Sumo-Sumo",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 677,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Bayabas",
+      "barangay": "Amag",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 678,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Cagwait",
+      "barangay": "Tagmalinao",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 679,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Marihatag",
+      "barangay": "Mararag",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 680,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Marihatag",
+      "barangay": "Amontay",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 681,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Lianga",
+      "barangay": "Poblacion",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 682,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "Lianga",
+      "barangay": "Payasan",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 683,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "San Miguel",
+      "barangay": "Tina",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 684,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 1st DEO",
+      "city_municipality": "San Miguel",
+      "barangay": "Magruyong",
+      "road_name": "Low Lying Area Section (Surigao - Davao Coastal Road)"
+    },
+    {
+      "source_row": 685,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 2nd DEO",
+      "city_municipality": "City of Bislig",
+      "barangay": "Barangay Comawas",
+      "road_name": "Surigao - Davao Coastal Road"
+    },
+    {
+      "source_row": 686,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 2nd DEO",
+      "city_municipality": "City of Bislig",
+      "barangay": "Barangay Poblacion",
+      "road_name": "Surigao - Davao Coastal Road"
+    },
+    {
+      "source_row": 687,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 2nd DEO",
+      "city_municipality": "Tagbina",
+      "barangay": "Barangay Tagongon",
+      "road_name": "Surigao - Davao Coastal Road"
+    },
+    {
+      "source_row": 688,
+      "region": "Region XIII",
+      "deo": "Surigao del Sur 2nd DEO",
+      "city_municipality": "Barobo",
+      "barangay": "Barangay Dughan",
+      "road_name": "Surigao - Davao Coastal Road"
+    },
+    {
+      "source_row": 689,
+      "region": "Region XIII",
+      "deo": "Butuan City DEO",
+      "city_municipality": "Butuan City",
+      "barangay": "Barangay Sto. Niño",
+      "road_name": "Daang Maharlika (Surigao - Agusan Section)"
+    },
+    {
+      "source_row": 690,
+      "region": "Region XIII",
+      "deo": "Butuan City DEO",
+      "city_municipality": "Butuan City",
+      "barangay": "Barangay Ampayon",
+      "road_name": "Butuan City - Cagayan De Oro - Iligan Road (Agusan - Mis. Or. Road)"
+    },
+    {
+      "source_row": 691,
+      "region": "Region XIII",
+      "deo": "Butuan City DEO",
+      "city_municipality": "Butuan City",
+      "barangay": "Barangay Danklas",
+      "road_name": "Butuan City - Malaybalay Road"
+    },
+    {
+      "source_row": 692,
+      "region": "Region XIII",
+      "deo": "Dinagat Islands DEO",
+      "city_municipality": "San Jose",
+      "barangay": "Don Ruben",
+      "road_name": "Dinagat - Loreto Road"
+    },
+    {
+      "source_row": 693,
+      "region": "Region XIII",
+      "deo": "Dinagat Islands DEO",
+      "city_municipality": "Libjo",
+      "barangay": "Gen. Aguinaldo",
+      "road_name": "Dinagat - Loreto Road"
+    },
+    {
+      "source_row": 695,
+      "region": "Region XIII",
+      "deo": "Dinagat Islands DEO",
+      "city_municipality": "Tubajon",
+      "barangay": "Navarro",
+      "road_name": "Dinagat - Loreto Road"
+    },
+    {
+      "source_row": 697,
+      "region": "MIMAROPA",
+      "deo": "Marinduque",
+      "city_municipality": "Boac",
+      "barangay": "Tampus, Balaring, Laylay, Bangbangalon, Bantay, Hinapulan",
+      "road_name": "Marinduque Circumferential Road, Dr. Damian Reyes Road (Boac Side)"
+    },
+    {
+      "source_row": 698,
+      "region": "MIMAROPA",
+      "deo": "Marinduque",
+      "city_municipality": "Mogpog",
+      "barangay": "Magapua, Tarug, Nangka, Laon, Balanacan",
+      "road_name": "Marinduque Circumferential Road, Mogpog-Balanacan Port Road"
+    },
+    {
+      "source_row": 699,
+      "region": "MIMAROPA",
+      "deo": "Marinduque",
+      "city_municipality": "Sta. Cruz",
+      "barangay": "Lipa, Manlibunan",
+      "road_name": "Marinduque Circumferential Road"
+    },
+    {
+      "source_row": 700,
+      "region": "MIMAROPA",
+      "deo": "Marinduque",
+      "city_municipality": "Torrijos",
+      "barangay": "Malinao, Cagpo, Malibago, Dampulan",
+      "road_name": "Marinduque Circumferential Road, Tigwi-Dampulan-Lipata-Yook-Buenavista Road"
+    },
+    {
+      "source_row": 701,
+      "region": "MIMAROPA",
+      "deo": "Marinduque",
+      "city_municipality": "Buenavista",
+      "barangay": "Malbog, Uno, Daykitin",
+      "road_name": "Marinduque Circumferential Road"
+    },
+    {
+      "source_row": 702,
+      "region": "MIMAROPA",
+      "deo": "Marinduque",
+      "city_municipality": "Gasan",
+      "barangay": "Pinggan, Bacong-Bacong, Matandang Gasan, Bangbang, Masiga",
+      "road_name": "Marinduque Circumferential Road"
+    },
+    {
+      "source_row": 703,
+      "region": "MIMAROPA",
+      "deo": "Mindoro Occidental",
+      "city_municipality": "Sablayan",
+      "barangay": "Ibud, Santo Niño",
+      "road_name": "Mindoro West Coastal Road"
+    },
+    {
+      "source_row": 704,
+      "region": "MIMAROPA",
+      "deo": "Mindoro Occidental",
+      "city_municipality": "Mamburao",
+      "barangay": "Brgy. 8",
+      "road_name": "Crossing MWCR (Pola)-Casague Jct. Rd."
+    },
+    {
+      "source_row": 705,
+      "region": "MIMAROPA",
+      "deo": "Mindoro Occidental",
+      "city_municipality": "Sta. Cruz",
+      "barangay": "Barahan (Sitio Pola), Pag-asa",
+      "road_name": "Mindoro West Coastal Road"
+    },
+    {
+      "source_row": 706,
+      "region": "MIMAROPA",
+      "deo": "Mindoro Occidental",
+      "city_municipality": "Calintaan",
+      "barangay": "Iriron",
+      "road_name": "San Jose Jct. Mapaya Road / Bulalacao"
+    },
+    {
+      "source_row": 707,
+      "region": "MIMAROPA",
+      "deo": "Mindoro Occidental",
+      "city_municipality": "San Jose",
+      "barangay": "Mapaya, Manggarin, Mabini, Labangan",
+      "road_name": "Occidental East Coastal Road, Mindoro West Coastal Road"
+    },
+    {
+      "source_row": 708,
+      "region": "MIMAROPA",
+      "deo": "Mindoro Occidental",
+      "city_municipality": "Abra de Ilog",
+      "barangay": "San Vicente, Tibag, Armado",
+      "road_name": "Mindoro West Coastal Road, Calapan South Road"
+    },
+    {
+      "source_row": 709,
+      "region": "MIMAROPA",
+      "deo": "Mindoro Oriental",
+      "city_municipality": "Calapan City",
+      "barangay": "Tawiran-Masipit, Sta. Rita",
+      "road_name": "Calapan South Road, Calapan North Road"
+    },
+    {
+      "source_row": 710,
+      "region": "MIMAROPA",
+      "deo": "Mindoro Oriental",
+      "city_municipality": "Naujan",
+      "barangay": "Barcenaga, Pinagsabangan II",
+      "road_name": "Calapan South Road"
+    },
+    {
+      "source_row": 711,
+      "region": "MIMAROPA",
+      "deo": "Mindoro Oriental",
+      "city_municipality": "Victoria",
+      "barangay": "Malinao-Adrialuna, Mabini, Antonio, Alcate",
+      "road_name": "Calapan South Road, Calapan North Road"
+    },
+    {
+      "source_row": 712,
+      "region": "MIMAROPA",
+      "deo": "Mindoro Oriental",
+      "city_municipality": "Socorro",
+      "barangay": "Zone III",
+      "road_name": "Calapan South Road"
+    },
+    {
+      "source_row": 713,
+      "region": "MIMAROPA",
+      "deo": "Mindoro Oriental",
+      "city_municipality": "Baco",
+      "barangay": "Poblacion, Alag-Sta. Rosa I",
+      "road_name": "Calapan North Road"
+    },
+    {
+      "source_row": 714,
+      "region": "MIMAROPA",
+      "deo": "Mindoro Oriental",
+      "city_municipality": "San Teodoro",
+      "barangay": "Bigaan",
+      "road_name": "Calapan North Road"
+    },
+    {
+      "source_row": 715,
+      "region": "MIMAROPA",
+      "deo": "Southern Mindoro",
+      "city_municipality": "Bansud",
+      "barangay": "Sumagui",
+      "road_name": "Calapan South Road"
+    },
+    {
+      "source_row": 716,
+      "region": "MIMAROPA",
+      "deo": "Southern Mindoro",
+      "city_municipality": "Bongabong",
+      "barangay": "Labasan, Sagana",
+      "road_name": "Calapan South Road, Roxas-San Aquilino Road"
+    },
+    {
+      "source_row": 717,
+      "region": "MIMAROPA",
+      "deo": "Southern Mindoro",
+      "city_municipality": "Mansalay",
+      "barangay": "Villa Celestial, Wasig",
+      "road_name": "Calapan South Road"
+    },
+    {
+      "source_row": 718,
+      "region": "MIMAROPA",
+      "deo": "Southern Mindoro",
+      "city_municipality": "Bulalacao",
+      "barangay": "Cambunang",
+      "road_name": "Calapan South Road"
+    },
+    {
+      "source_row": 719,
+      "region": "MIMAROPA",
+      "deo": "Palawan 1st",
+      "city_municipality": "Roxas",
+      "barangay": "Minara, Dumarao, New Cuyo",
+      "road_name": "Puerto Princesa North Road"
+    },
+    {
+      "source_row": 720,
+      "region": "MIMAROPA",
+      "deo": "Palawan 1st",
+      "city_municipality": "Taytay",
+      "barangay": "Abongan",
+      "road_name": "Puerto Princesa North Road"
+    },
+    {
+      "source_row": 721,
+      "region": "MIMAROPA",
+      "deo": "Palawan 1st",
+      "city_municipality": "El Nido",
+      "barangay": "Villa Libertad",
+      "road_name": "Puerto Princesa North Road"
+    },
+    {
+      "source_row": 722,
+      "region": "MIMAROPA",
+      "deo": "Palawan 2nd",
+      "city_municipality": "Narra",
+      "barangay": "Princess Urduja, Aramaywan, Tacras, Tacras-Burirao",
+      "road_name": "Puerto Princesa South Road"
+    },
+    {
+      "source_row": 723,
+      "region": "MIMAROPA",
+      "deo": "Palawan 2nd",
+      "city_municipality": "Sofronio Española",
+      "barangay": "Abo-abo, Panitian, Iraray",
+      "road_name": "Puerto Princesa South Road"
+    },
+    {
+      "source_row": 724,
+      "region": "MIMAROPA",
+      "deo": "Palawan 2nd",
+      "city_municipality": "Brooke's Point",
+      "barangay": "Curanga, Pangobilian, Tubtub",
+      "road_name": "Puerto Princesa South Road"
+    },
+    {
+      "source_row": 725,
+      "region": "MIMAROPA",
+      "deo": "Palawan 2nd",
+      "city_municipality": "Quezon",
+      "barangay": "Underground, Ladayon, Quinlogan, Tabon, Maasin, Aramaywan",
+      "road_name": "Quezon-Punta Baja Road, Quezon-Aramaywan Road"
+    },
+    {
+      "source_row": 726,
+      "region": "MIMAROPA",
+      "deo": "Palawan 2nd",
+      "city_municipality": "Rizal",
+      "barangay": "Salongsong, Culasian, Taburi",
+      "road_name": "Quezon-Punta Baja Road, Palawan Circumferential Road"
+    },
+    {
+      "source_row": 727,
+      "region": "MIMAROPA",
+      "deo": "Palawan 2nd",
+      "city_municipality": "Bataraza",
+      "barangay": "Culandanum",
+      "road_name": "Culandanum-Panalingan CCR"
+    },
+    {
+      "source_row": 728,
+      "region": "MIMAROPA",
+      "deo": "Palawan 3rd",
+      "city_municipality": "Puerto Princesa City",
+      "barangay": "Mandaragat, Bancao-Bancao, Irawan, Sta. Lourdes, Tiniguiban, Sta. Monica, Inagawan-Sub, Kamuning, Tagburos, San Jose, Bacungan, Sta. Cruz, Salvacion, Manalo, Lucbuan, Maoyon, Binduyan, Langogan, Bahile, Napsan",
+      "road_name": "Malvar Road, Capitol-Canigaran Road, Irawan-Tagburos Road, Puerto Princesa South Road, Puerto Princesa North Road, Tapul-Bahile Road, PPSR-Jct.-Napsan-Apurawan Road"
+    },
+    {
+      "source_row": 729,
+      "region": "MIMAROPA",
+      "deo": "Palawan 3rd",
+      "city_municipality": "Aborlan",
+      "barangay": "Plaridel, Aporawan",
+      "road_name": "Puerto Princesa South Road, Aramaywan-Berong-Pto. Princesa Road"
+    },
+    {
+      "source_row": 730,
+      "region": "MIMAROPA",
+      "deo": "Romblon",
+      "city_municipality": "Odiongan",
+      "barangay": "Tumingad, Libertad, Anahao, Tulay, Rizal",
+      "road_name": "Tablas Circumferential Road, Looc (Cogon-Tulay) Odiongan Road"
+    },
+    {
+      "source_row": 731,
+      "region": "MIMAROPA",
+      "deo": "Romblon",
+      "city_municipality": "San Andres",
+      "barangay": "Mabini, Linawan",
+      "road_name": "Tablas Circumferential Road"
+    },
+    {
+      "source_row": 732,
+      "region": "MIMAROPA",
+      "deo": "Romblon",
+      "city_municipality": "San Agustin",
+      "barangay": "Cabolutan, Cagboaya",
+      "road_name": "Tablas Circumferential Road"
+    },
+    {
+      "source_row": 733,
+      "region": "MIMAROPA",
+      "deo": "Romblon",
+      "city_municipality": "Alcantara",
+      "barangay": "Madalag",
+      "road_name": "Tablas Circumferential Road"
+    },
+    {
+      "source_row": 734,
+      "region": "MIMAROPA",
+      "deo": "Romblon",
+      "city_municipality": "Looc",
+      "barangay": "Balatucan, Poblacion, Limon Sur, Manhac",
+      "road_name": "Tablas Circumferential Road, Looc (Cogon-Tulay) Odiongan Road, Jct. Guinhayaan-Malbog Port Road"
+    },
+    {
+      "source_row": 735,
+      "region": "MIMAROPA",
+      "deo": "Romblon",
+      "city_municipality": "Ferrol",
+      "barangay": "Tubigon",
+      "road_name": "Tablas Circumferential Road"
+    },
+    {
+      "source_row": 736,
+      "region": "MIMAROPA",
+      "deo": "Romblon",
+      "city_municipality": "San Fernando",
+      "barangay": "Canjalon, Otod, Azagra, Campalingo, Taclobo, España, Mabulo, Mabini",
+      "road_name": "Sibuyan Circumferential Road"
+    },
+    {
+      "source_row": 737,
+      "region": "MIMAROPA",
+      "deo": "Romblon",
+      "city_municipality": "Magdiwang",
+      "barangay": "Agsao, Ipil, Ambulong, Agnocnoc, Silum",
+      "road_name": "Sibuyan Circumferential Road"
+    },
+    {
+      "source_row": 738,
+      "region": "MIMAROPA",
+      "deo": "Romblon",
+      "city_municipality": "Cajidiocan",
+      "barangay": "Cambalo",
+      "road_name": "Sibuyan Circumferential Road"
+    }
+  ],
+  "raw_count": 585,
+  "duplicate_count": 20
+}

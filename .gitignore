@@ -1,0 +1,5 @@
+_scratch/
+web/web/
+web/supabase/.temp/
+.DS_Store
+Thumbs.db

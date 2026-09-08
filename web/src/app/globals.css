@@ -1,0 +1,667 @@
+@import "tailwindcss";
+@import "leaflet/dist/leaflet.css";
+
+:root {
+  --canvas: #061018;
+  --panel: rgba(8, 22, 34, 0.78);
+  --panel-solid: #0b1a26;
+  --ink: #f4fbf8;
+  --muted: #8fb0b6;
+  --line: rgba(126, 230, 214, 0.16);
+  --teal: #4ee0c8;
+  --teal-deep: #1b8f8a;
+  --flood: #ff5d73;
+  --amber: #efc56a;
+  --good: #5ee9a5;
+  --violet: #6f8cff;
+  --shadow: 0 24px 60px rgba(0, 8, 16, 0.45);
+  color-scheme: dark;
+}
+
+.light {
+  --canvas: #e7f3f1;
+  --panel: rgba(255, 255, 255, 0.86);
+  --panel-solid: #ffffff;
+  --ink: #123038;
+  --muted: #5b7680;
+  --line: rgba(16, 72, 78, 0.12);
+  --teal: #0d8b82;
+  --teal-deep: #0a6b66;
+  --flood: #d62851;
+  --amber: #b7791f;
+  --good: #178a4c;
+  --violet: #3b5bfd;
+  --shadow: 0 18px 44px rgba(18, 48, 56, 0.12);
+  color-scheme: light;
+}
+
+@theme inline {
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-fraunces);
+  --color-canvas: var(--canvas);
+  --color-panel: var(--panel-solid);
+  --color-ink: var(--ink);
+  --color-muted: var(--muted);
+  --color-teal: var(--teal);
+  --color-flood: var(--flood);
+  --color-amber: var(--amber);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  min-height: 100dvh;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background: var(--canvas);
+  font-family: var(--font-outfit), sans-serif;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100dvh;
+  overflow: hidden;
+  background: var(--canvas);
+}
+
+.atmosphere {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.atmosphere-glow {
+  position: absolute;
+  border-radius: 999px;
+  filter: blur(40px);
+}
+
+.atmosphere-glow-a {
+  width: 46vw;
+  height: 36vh;
+  left: -8%;
+  top: -12%;
+  background: rgba(78, 224, 200, 0.22);
+  animation: drift 18s ease-in-out infinite;
+}
+
+.atmosphere-glow-b {
+  width: 38vw;
+  height: 32vh;
+  right: -10%;
+  top: -8%;
+  background: rgba(255, 93, 115, 0.14);
+  animation: drift 22s ease-in-out infinite reverse;
+}
+
+.atmosphere-rain {
+  position: absolute;
+  inset: 0;
+  background-image: repeating-linear-gradient(
+    -18deg,
+    transparent 0 14px,
+    rgba(126, 230, 214, 0.07) 14px 15px
+  );
+  animation: rainfall 1.4s linear infinite;
+  opacity: 0.55;
+}
+
+.atmosphere-waves {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 28vh;
+  width: 100%;
+}
+
+.wave-path {
+  fill: rgba(78, 224, 200, 0.06);
+}
+
+.wave-path-b {
+  fill: rgba(255, 93, 115, 0.05);
+}
+
+.light .atmosphere-glow-a {
+  background: rgba(13, 139, 130, 0.16);
+}
+
+.light .atmosphere-glow-b {
+  background: rgba(214, 40, 81, 0.08);
+}
+
+.light .atmosphere-rain {
+  opacity: 0.22;
+}
+
+.app-shell > :not(.atmosphere) {
+  position: relative;
+  z-index: 1;
+}
+
+/* Keep add/edit and other overlays on the viewport. The rule above is more
+   specific than Tailwind `fixed`/`absolute` and would otherwise push them
+   below the dashboard, requiring a scroll to see the form. */
+.app-shell > .overlay {
+  position: fixed;
+  z-index: 2000;
+}
+
+.glass-panel {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(22px);
+}
+
+.hero-panel {
+  position: relative;
+  overflow: hidden;
+}
+
+.display-title {
+  font-family: var(--font-fraunces), serif;
+  letter-spacing: -0.03em;
+}
+
+.kicker {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--teal);
+}
+
+.lede {
+  max-width: 36rem;
+  font-size: 0.925rem;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  height: 2.35rem;
+  width: 2.35rem;
+  flex-shrink: 0;
+  border-radius: 0.8rem;
+  background: linear-gradient(160deg, rgba(78, 224, 200, 0.2), rgba(255, 93, 115, 0.08));
+  border: 1px solid rgba(78, 224, 200, 0.28);
+  box-shadow: inset 0 0 18px rgba(78, 224, 200, 0.12);
+}
+
+.brand-mark svg {
+  height: 1.75rem;
+  width: 1.75rem;
+}
+
+.stat-icon {
+  display: grid;
+  place-items: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 0.55rem;
+  background: rgba(78, 224, 200, 0.12);
+  color: var(--teal);
+}
+
+.brand-ripple {
+  fill: none;
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 1.4;
+  transform-origin: 24px 31px;
+  animation: ripple 2.6s ease-out infinite;
+}
+
+.archipelago-art .art-rain {
+  animation: drizzle 1.8s linear infinite;
+}
+
+.archipelago-art .art-wave {
+  stroke-dasharray: 8 6;
+  animation: tide 4.5s linear infinite;
+}
+
+.archipelago-art .art-pin {
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+.stat-tile {
+  position: relative;
+  overflow: hidden;
+  animation: rise-in 0.7s ease both;
+}
+
+.stat-tile:nth-child(2) {
+  animation-delay: 0.08s;
+}
+
+.stat-tile:nth-child(3) {
+  animation-delay: 0.16s;
+}
+
+.stat-tile:nth-child(4) {
+  animation-delay: 0.24s;
+}
+
+.stat-tile::after {
+  content: "";
+  position: absolute;
+  inset: auto -20% -60% auto;
+  width: 70px;
+  height: 70px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(78, 224, 200, 0.2), transparent 70%);
+  pointer-events: none;
+}
+
+.map-caption {
+  pointer-events: none;
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 500;
+  max-width: 180px;
+  border-radius: 16px;
+  border: 1px solid var(--line);
+  background: var(--panel);
+  padding: 8px 10px;
+  backdrop-filter: blur(16px);
+}
+
+.scrollbar-thin {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(62, 207, 196, 0.35) transparent;
+}
+
+.leaflet-container {
+  background: #081018;
+  font-family: var(--font-outfit), sans-serif;
+}
+
+.leaflet-dark-tiles .leaflet-tile-pane {
+  filter: invert(0.92) hue-rotate(180deg) saturate(0.45) brightness(0.95);
+}
+
+.light .leaflet-container {
+  background: #d9e4e8;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+  background: var(--panel-solid);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  box-shadow: var(--shadow);
+}
+
+.leaflet-popup-content {
+  margin: 8px 10px 6px;
+  line-height: 1.25;
+}
+
+.leaflet-popup-content p {
+  margin: 0;
+}
+
+.leaflet-container .leaflet-popup-close-button {
+  top: 2px;
+  right: 4px;
+  width: 18px;
+  height: 18px;
+  font-size: 16px;
+}
+
+.leaflet-control-attribution {
+  background: rgba(8, 16, 24, 0.7) !important;
+  color: #9bb0ba !important;
+}
+
+.light .leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.8) !important;
+  color: #4b616c !important;
+}
+
+.flood-marker {
+  width: 18px;
+  height: 18px;
+  border-radius: 999px;
+  background: #e11d48;
+  border: 2px solid #fff;
+  box-shadow: 0 0 0 6px rgba(225, 29, 72, 0.18);
+}
+
+.flood-marker.selected {
+  width: 22px;
+  height: 22px;
+  box-shadow: 0 0 0 8px rgba(225, 29, 72, 0.28);
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 14px rgba(225, 29, 72, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(225, 29, 72, 0);
+  }
+}
+
+.field {
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink);
+  padding: 10px 12px;
+  outline: none;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.field:focus {
+  border-color: rgba(62, 207, 196, 0.7);
+  box-shadow: 0 0 0 4px rgba(62, 207, 196, 0.12);
+}
+
+.light .field {
+  background: rgba(16, 32, 40, 0.03);
+}
+
+select.field {
+  color-scheme: dark;
+}
+
+.light select.field {
+  color-scheme: light;
+}
+
+select.field option,
+select.field optgroup {
+  background-color: #0b1a26;
+  color: #f4fbf8;
+}
+
+.light select.field option,
+.light select.field optgroup {
+  background-color: #ffffff;
+  color: #123038;
+}
+
+.search-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  border-radius: 14px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0 12px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.search-field:focus-within {
+  border-color: rgba(62, 207, 196, 0.7);
+  box-shadow: 0 0 0 4px rgba(62, 207, 196, 0.12);
+}
+
+.search-field input {
+  min-width: 0;
+  flex: 1;
+  border: 0;
+  background: transparent;
+  color: var(--ink);
+  padding: 10px 0;
+  outline: none;
+}
+
+.light .search-field {
+  background: rgba(16, 32, 40, 0.03);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  padding: 9px 14px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  transition: transform 160ms ease, background 160ms ease, opacity 160ms ease;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  transform: none;
+}
+
+.btn-primary {
+  background: linear-gradient(180deg, #7ff0e0, #2aa8b0);
+  color: #062226;
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: var(--line);
+  color: var(--ink);
+}
+
+.btn-danger {
+  background: rgba(255, 93, 115, 0.12);
+  border-color: rgba(255, 93, 115, 0.28);
+  color: #fb7185;
+}
+
+.light .btn-danger {
+  color: #be123c;
+}
+
+.panel-tab {
+  border: 0;
+  border-radius: 999px;
+  padding: 8px 14px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  background: transparent;
+  transition: background 180ms ease, color 180ms ease, transform 180ms ease;
+}
+
+.panel-tab:hover {
+  color: var(--ink);
+}
+
+.panel-tab.is-active {
+  background: linear-gradient(180deg, #4ee0c8, #1b8f8a);
+  color: #062226;
+}
+
+.data-table-wrap {
+  border-top: 1px solid var(--line);
+}
+
+.data-table {
+  width: 100%;
+  min-width: 560px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.data-table th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: linear-gradient(90deg, #134e4a 0%, #0f766e 55%, #155e75 100%);
+  color: #f4fffc;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-align: left;
+  padding: 11px 12px;
+  white-space: nowrap;
+}
+
+.data-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+
+.data-table tbody tr {
+  cursor: pointer;
+  transition: background 140ms ease;
+}
+
+.data-table tbody tr:hover {
+  background: rgba(78, 224, 200, 0.08);
+}
+
+.data-table tbody tr.is-selected {
+  background: rgba(78, 224, 200, 0.16);
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 3px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.status-pill-critical {
+  background: #fecaca;
+  color: #b91c1c;
+}
+
+.status-pill-moderate {
+  background: #fde68a;
+  color: #b45309;
+}
+
+.status-pill-low {
+  background: #bbf7d0;
+  color: #15803d;
+}
+
+.table-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  border: 0;
+  border-radius: 8px;
+  padding: 5px 10px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.table-btn-edit {
+  background: #0f766e;
+}
+
+.table-btn-delete {
+  background: #e11d48;
+}
+
+@keyframes rainfall {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 18px 42px;
+  }
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(4%, 6%) scale(1.08);
+  }
+}
+
+@keyframes rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ripple {
+  0% {
+    transform: scale(0.7);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+@keyframes drizzle {
+  from {
+    transform: translateY(0);
+    opacity: 0.25;
+  }
+  to {
+    transform: translateY(10px);
+    opacity: 0.85;
+  }
+}
+
+@keyframes tide {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -56;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .atmosphere-rain,
+  .atmosphere-glow-a,
+  .atmosphere-glow-b,
+  .brand-ripple,
+  .archipelago-art .art-rain,
+  .archipelago-art .art-wave,
+  .archipelago-art .art-pin,
+  .stat-tile,
+  .flood-marker.selected {
+    animation: none;
+  }
+}
