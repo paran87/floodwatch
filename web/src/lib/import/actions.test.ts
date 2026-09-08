@@ -189,15 +189,16 @@ test("merge writes before/after audit data", async () => {
 });
 
 test("supabase error diagnostics include message, code, details, and hint", () => {
-  const fields = supabaseErrorFields({
+  const insertError = {
     message: "duplicate key value violates unique constraint \"flood_prone_areas_dedup_idx\"",
     code: "23505",
     details: "Key (region, deo, city_municipality, barangay, road_name)=(...) already exists.",
     hint: "Review and merge instead.",
-  });
+  };
+  const fields = supabaseErrorFields(insertError);
   assert.deepEqual(Object.keys(fields).sort(), ["code", "details", "hint", "message"]);
   assert.equal(fields.code, "23505");
-  const described = describeSupabaseError(fields);
+  const described = describeSupabaseError(insertError);
   assert.match(described, /duplicate key value/);
   assert.match(described, /code=23505/);
   assert.match(described, /details=/);

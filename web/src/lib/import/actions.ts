@@ -11,9 +11,17 @@ export type SupabaseErrorFields = {
   hint: string | null;
 };
 
-export function supabaseErrorFields(
-  error: Pick<PostgrestError, "message" | "code" | "details" | "hint"> | null | undefined,
-): SupabaseErrorFields {
+type SupabaseErrorLike =
+  | Pick<PostgrestError, "message" | "code" | "details" | "hint">
+  | SupabaseErrorFields
+  | {
+      message?: string | null;
+      code?: string | null;
+      details?: string | null;
+      hint?: string | null;
+    };
+
+export function supabaseErrorFields(error: SupabaseErrorLike | null | undefined): SupabaseErrorFields {
   return {
     message: error?.message ?? null,
     code: error?.code ?? null,
@@ -22,9 +30,7 @@ export function supabaseErrorFields(
   };
 }
 
-export function describeSupabaseError(
-  error: Pick<PostgrestError, "message" | "code" | "details" | "hint"> | null | undefined,
-): string {
+export function describeSupabaseError(error: SupabaseErrorLike | null | undefined): string {
   const fields = supabaseErrorFields(error);
   const parts = [
     fields.message,
@@ -37,7 +43,7 @@ export function describeSupabaseError(
 
 function logFloodProneInsertError(
   importId: string,
-  error: Pick<PostgrestError, "message" | "code" | "details" | "hint"> | null | undefined,
+  error: SupabaseErrorLike | null | undefined,
   fallbackMessage?: string,
 ) {
   console.error("flood_prone_areas insert failed", {
