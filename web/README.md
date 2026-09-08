@@ -52,11 +52,11 @@ FloodWatch remains the source of truth. Google Sheets rows are staged, validated
 
 1. Apply `supabase/migrations/20260907_google_sheet_imports.sql` in the **FloodWatch** Supabase SQL editor (not another project). If you are creating a new database, `supabase/schema.sql` already includes these tables.
 2. Share the spreadsheet with the Google service-account email.
-3. Set `GOOGLE_SHEETS_SPREADSHEET_ID`, `GOOGLE_SHEETS_CREDENTIALS`, and `CRON_SECRET` in `.env.local` and in Vercel. Keep `SUPABASE_SECRET_KEY` server-side.
+3. Set `GOOGLE_SHEETS_SPREADSHEET_ID` and `GOOGLE_SHEETS_CREDENTIALS` in `.env.local` and in Vercel. Keep `SUPABASE_SECRET_KEY` server-side.
 4. Open [http://localhost:3000/admin/google-import](http://localhost:3000/admin/google-import) and click **Sync Now**.
 5. Approve new rows or merge possible duplicates. The dashboard map and table already subscribe to Supabase Realtime on `flood_prone_areas`, so approved changes appear without a refresh.
 
-Scheduled sync uses Vercel Cron (`web/vercel.json`) every 5 minutes. Set `GOOGLE_SHEETS_SYNC_INTERVAL_MINUTES` to skip extra runs. Set the Vercel project root to `web`.
+Vercel Hobby does not run scheduled Sheet sync. Use **Sync Now** on `/admin/google-import`. The cron route is kept for later; do not add a `crons` entry in `vercel.json` until the project is on Pro. Then you can schedule `/api/cron/google-sheets-sync` and set `CRON_SECRET`. Set the Vercel project root to `web`.
 
 AI is optional. If `AI_API_KEY` is missing or the model fails, deterministic mapping/normalization/duplicate detection still runs.
 
