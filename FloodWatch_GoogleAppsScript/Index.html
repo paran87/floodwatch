@@ -205,6 +205,7 @@
   .panel-left{
     width:44%;
     min-width:380px;
+    min-height:0;
     display:flex;
     flex-direction:column;
     background:#fff;
@@ -215,6 +216,7 @@
   }
   .panel-right{
     flex:1;
+    min-height:0;
     display:flex;
     flex-direction:column;
     background:#fff;
@@ -507,6 +509,7 @@
   #map{
     flex:1;
     width:100%;
+    min-height:0;
   }
   .leaflet-marker-icon.flood-marker{
     filter:drop-shadow(0 2px 3px rgba(0,0,0,.35));
@@ -680,14 +683,51 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 980px){
-    .body-wrap{flex-direction:column;padding:12px 14px 18px;}
-    .panel-left{width:100%;min-width:0;order:1;}
-    .panel-right{min-height:380px;order:2;}
+    html,body{
+      height:auto;
+      min-height:100%;
+      overflow-x:hidden;
+    }
+    .app{
+      height:auto;
+      min-height:100vh;
+      min-height:100dvh;
+    }
+    .body-wrap{
+      flex:none;
+      min-height:auto;
+      flex-direction:column;
+      padding:12px 14px calc(18px + env(safe-area-inset-bottom, 0px));
+    }
+    .panel-left{
+      width:100%;
+      min-width:0;
+      flex:none;
+      order:2;
+    }
+    .panel-right{
+      flex:none;
+      order:1;
+      width:100%;
+      height:clamp(280px, 42dvh, 440px);
+      min-height:280px;
+    }
+    #map{
+      height:100%;
+      min-height:280px;
+    }
+    .table-scroll{
+      flex:none;
+      max-height:min(52dvh, 520px);
+    }
     .stats-row{grid-template-columns:1fr 1fr;}
   }
 
   @media (max-width: 640px){
-    .topbar{padding:14px 14px 16px;}
+    .topbar{
+      padding:14px 14px 16px;
+      padding-top:calc(14px + env(safe-area-inset-top, 0px));
+    }
     .brand{width:100%;}
     .brand-text h1{font-size:21px;}
     .brand-text p{display:none;}
@@ -699,13 +739,18 @@
     .stat-card{padding:10px 12px;}
     .stat-value{font-size:20px;}
 
-    .body-wrap{padding:10px 10px 14px;gap:10px;}
-    .panel-right{min-height:320px;}
+    .body-wrap{padding:10px 10px calc(14px + env(safe-area-inset-bottom, 0px));gap:10px;}
+    .panel-right{
+      height:clamp(260px, 40dvh, 400px);
+      min-height:260px;
+    }
+    #map{min-height:260px;}
+    .table-scroll{max-height:min(48dvh, 460px);}
 
     .tabs-row{padding:12px 12px 0;flex-direction:column;align-items:stretch;}
     .tabs{overflow-x:auto;scrollbar-width:none;}
     .tabs::-webkit-scrollbar{display:none;}
-    .tab{flex:1 1 auto;text-align:center;}
+    .tab{flex:0 0 auto;text-align:center;white-space:nowrap;}
     .tabs-row .btn-primary{width:100%;justify-content:center;}
 
     .filters{padding:12px 12px 0;}
@@ -715,9 +760,15 @@
 
     .table-scroll{padding:8px 10px 12px;}
     thead th, tbody td{padding:9px 10px;font-size:12px;}
+    table{min-width:680px;}
 
-    .map-toolbar{top:10px;right:10px;padding:6px 10px;}
-    .map-hint{left:10px;bottom:10px;font-size:11px;padding:7px 11px;}
+    .map-toolbar{top:10px;right:10px;padding:6px 10px;max-width:calc(100% - 20px);}
+    .map-hint{
+      left:10px;right:10px;bottom:10px;
+      max-width:calc(100% - 20px);
+      font-size:11px;padding:7px 11px;
+      text-align:center;
+    }
 
     .form-grid{grid-template-columns:1fr;}
     .form-grid label:nth-child(5),.form-grid label:nth-child(6){grid-column:auto;}
@@ -730,6 +781,11 @@
   @media (max-width: 420px){
     .stats-row{grid-template-columns:1fr;}
     .topbar-actions .btn{flex:1 1 40%;}
+    .panel-right{
+      height:clamp(240px, 38dvh, 360px);
+      min-height:240px;
+    }
+    #map{min-height:240px;}
   }
 </style>
 </head>
@@ -1223,6 +1279,25 @@ const map = L.map('map', {zoomControl:true}).setView([14.58, 121.03], 11);
 L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
   attribution: '&copy; OpenStreetMap contributors'
 }).addTo(map);
+
+function refreshMapSize(){
+  if(!map) return;
+  map.invalidateSize({animate:false});
+}
+let mapResizeTimer = null;
+function scheduleMapResize(){
+  clearTimeout(mapResizeTimer);
+  mapResizeTimer = setTimeout(refreshMapSize, 120);
+}
+window.addEventListener('resize', scheduleMapResize);
+window.addEventListener('orientationchange', ()=> setTimeout(refreshMapSize, 350));
+if(typeof ResizeObserver !== 'undefined'){
+  const mapPanel = document.querySelector('.panel-right');
+  if(mapPanel){
+    new ResizeObserver(scheduleMapResize).observe(mapPanel);
+  }
+}
+scheduleMapResize();
 
 const floodIcon = L.divIcon({
   className:'flood-marker',
