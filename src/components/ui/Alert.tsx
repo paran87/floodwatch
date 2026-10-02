@@ -4,9 +4,9 @@ import type { ReactNode } from "react";
 type Tone = "info" | "danger" | "warning";
 
 const toneClasses: Record<Tone, string> = {
-  info: "border-sky-200 bg-sky-50 text-sky-800",
+  info: "border-navy-200 bg-navy-50 text-navy-800",
   danger: "border-red-200 bg-red-50 text-red-800",
-  warning: "border-amber-200 bg-amber-50 text-amber-800",
+  warning: "border-brand-100 bg-brand-50 text-brand-600",
 };
 
 export function Alert({ tone = "info", title, children }: { tone?: Tone; title?: string; children: ReactNode }) {

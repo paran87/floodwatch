@@ -1,13 +1,14 @@
 import { cn } from "@/lib/utils";
 import type { ButtonHTMLAttributes } from "react";
 
-type Variant = "primary" | "secondary" | "ghost" | "danger";
+type Variant = "primary" | "accent" | "secondary" | "ghost" | "danger";
 type Size = "sm" | "md";
 
 const variantClasses: Record<Variant, string> = {
-  primary: "bg-sky-600 text-white hover:bg-sky-700 disabled:bg-sky-300",
-  secondary: "bg-slate-100 text-slate-900 hover:bg-slate-200 disabled:bg-slate-50 disabled:text-slate-400",
-  ghost: "bg-transparent text-slate-700 hover:bg-slate-100 disabled:text-slate-300",
+  primary: "bg-navy-700 text-white hover:bg-navy-800 disabled:bg-navy-200",
+  accent: "bg-brand-500 text-white hover:bg-brand-600 disabled:bg-brand-100",
+  secondary: "border border-navy-200 bg-white text-navy-800 hover:bg-navy-50 disabled:bg-slate-50 disabled:text-slate-400",
+  ghost: "bg-transparent text-slate-700 hover:bg-navy-50 disabled:text-slate-300",
   danger: "bg-red-600 text-white hover:bg-red-700 disabled:bg-red-300",
 };
 
@@ -25,7 +26,7 @@ export function Button({ variant = "primary", size = "md", className, ...props }
   return (
     <button
       className={cn(
-        "inline-flex items-center justify-center gap-2 rounded-md font-medium transition-colors disabled:cursor-not-allowed",
+        "inline-flex items-center justify-center gap-2 rounded-lg font-semibold transition-colors disabled:cursor-not-allowed",
         variantClasses[variant],
         sizeClasses[size],
         className,

@@ -15,7 +15,7 @@ import { BottomNav } from "./BottomNav";
  */
 export function AppShell({ title, children, fill = false }: { title: string; children: ReactNode; fill?: boolean }) {
   return (
-    <div className="flex h-dvh flex-col bg-slate-50 md:flex-row">
+    <div className="flex h-dvh flex-col bg-surface md:flex-row">
       <Sidebar />
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
         <Topbar title={title} />

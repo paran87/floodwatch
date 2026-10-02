@@ -13,8 +13,8 @@ export function RegionBreakdown({ stats }: { stats: DashboardStats }) {
         {stats.byRegion.map((row) => (
           <div key={row.region} className="flex items-center gap-3 text-sm">
             <span className="w-28 shrink-0 truncate text-slate-600">{row.region}</span>
-            <div className="h-2 flex-1 overflow-hidden rounded-full bg-slate-100">
-              <div className="h-full rounded-full bg-sky-500" style={{ width: `${(row.count / max) * 100}%` }} />
+            <div className="h-2 flex-1 overflow-hidden rounded-full bg-navy-50">
+              <div className="h-full rounded-full bg-brand-500" style={{ width: `${(row.count / max) * 100}%` }} />
             </div>
             <span className="w-10 shrink-0 text-right font-medium text-slate-900">{row.count}</span>
           </div>

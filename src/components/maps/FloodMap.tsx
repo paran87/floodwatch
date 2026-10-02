@@ -89,8 +89,8 @@ export function FloodMap({
           center={[marker.latitude, marker.longitude]}
           radius={marker.id === selectedId ? 11 : 7}
           pathOptions={{
-            color: marker.id === selectedId ? "#be123c" : marker.isProposed ? "#d97706" : "#0284c7",
-            fillColor: marker.isProposed ? "#fbbf24" : "#38bdf8",
+            color: marker.id === selectedId ? "#071a4a" : marker.isProposed ? "#e0560b" : "#1a4aa8",
+            fillColor: marker.isProposed ? "#f26a1b" : "#4f86e8",
             fillOpacity: 0.8,
             weight: marker.id === selectedId ? 3 : 2,
           }}
@@ -98,7 +98,7 @@ export function FloodMap({
           <Popup>
             <p className="font-medium">{marker.title}</p>
             <p className="text-xs text-slate-500">{marker.subtitle}</p>
-            {marker.isProposed ? <p className="mt-1 text-xs text-amber-600">Needs location review — not yet verified.</p> : null}
+            {marker.isProposed ? <p className="mt-1 text-xs text-brand-600">Needs location review — not yet verified.</p> : null}
           </Popup>
         </CircleMarker>
       ))}

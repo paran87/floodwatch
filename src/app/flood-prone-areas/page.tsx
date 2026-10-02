@@ -78,7 +78,7 @@ export default function FloodProneAreasPage() {
 
         {/* Mobile: the map fills this region and stays put while the sheet slides over it. md+: map on top, list below. */}
         <div className="relative min-h-0 flex-1 md:flex md:flex-col md:gap-3">
-          <div className="absolute inset-0 overflow-hidden rounded-lg border border-slate-200 md:static md:h-72 md:shrink-0">
+          <div className="absolute inset-0 overflow-hidden rounded-xl border border-t-[3px] border-slate-200 border-t-brand-500 md:static md:h-72 md:shrink-0">
             {markers.length > 0 ? (
               <FloodMap markers={markers} selectedId={selectedId} bottomInset={sheetHeight} />
             ) : (
@@ -90,7 +90,7 @@ export default function FloodProneAreasPage() {
               {locating ? <p className="rounded-md bg-white/95 px-2.5 py-1 text-slate-600 shadow">Locating on map…</p> : null}
               {locateError ? <p className="rounded-md bg-white/95 px-2.5 py-1 text-red-600 shadow">{locateError}</p> : null}
               {selectedMissing ? (
-                <p className="rounded-md bg-white/95 px-2.5 py-1 text-amber-700 shadow">No map location could be found for the selected area.</p>
+                <p className="rounded-md bg-white/95 px-2.5 py-1 text-brand-600 shadow">No map location could be found for the selected area.</p>
               ) : null}
             </div>
           </div>
