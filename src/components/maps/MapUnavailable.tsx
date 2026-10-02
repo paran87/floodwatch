@@ -7,8 +7,8 @@ import { MapPinOff } from "lucide-react";
  */
 export function MapUnavailable({ reason }: { reason?: string }) {
   return (
-    <div className="flex h-full min-h-[200px] flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-slate-300 bg-slate-50 p-6 text-center">
-      <MapPinOff className="h-8 w-8 text-slate-400" aria-hidden />
+    <div className="flex h-full min-h-[200px] flex-col items-center justify-center gap-2 rounded-lg border border-dashed border-navy-200 bg-navy-50 p-6 text-center">
+      <MapPinOff className="h-8 w-8 text-navy-200" aria-hidden />
       <p className="text-sm font-medium text-slate-700">No map location available yet</p>
       <p className="max-w-sm text-xs text-slate-500">
         {reason ??

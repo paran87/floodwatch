@@ -22,12 +22,12 @@ export function AreaTable({
     <table className="w-full min-w-[720px] divide-y divide-slate-200 text-sm">
       <Thead>
         <tr>
-          <Th className="sticky top-0 z-10 bg-slate-50 shadow-[inset_0_-1px_0_#e2e8f0]">Province</Th>
-          <Th className="sticky top-0 z-10 bg-slate-50 shadow-[inset_0_-1px_0_#e2e8f0]">Municipality/City</Th>
-          <Th className="sticky top-0 z-10 bg-slate-50 shadow-[inset_0_-1px_0_#e2e8f0]">Barangay</Th>
-          <Th className="sticky top-0 z-10 bg-slate-50 shadow-[inset_0_-1px_0_#e2e8f0]">Road / Waterway</Th>
-          <Th className="sticky top-0 z-10 bg-slate-50 shadow-[inset_0_-1px_0_#e2e8f0]">DEO</Th>
-          <Th className="sticky top-0 z-10 bg-slate-50 shadow-[inset_0_-1px_0_#e2e8f0]">Location</Th>
+          <Th className="sticky top-0 z-10">Province</Th>
+          <Th className="sticky top-0 z-10">Municipality/City</Th>
+          <Th className="sticky top-0 z-10">Barangay</Th>
+          <Th className="sticky top-0 z-10">Road / Waterway</Th>
+          <Th className="sticky top-0 z-10">DEO</Th>
+          <Th className="sticky top-0 z-10">Location</Th>
         </tr>
       </Thead>
       <Tbody>
@@ -36,13 +36,13 @@ export function AreaTable({
             key={item.rowIndex}
             onClick={onSelect ? () => onSelect(item) : undefined}
             aria-selected={item.rowIndex === selectedId}
-            className={`${onSelect ? "cursor-pointer" : ""} ${item.rowIndex === selectedId ? "bg-sky-50" : "hover:bg-slate-50"}`}
+            className={`${onSelect ? "cursor-pointer" : ""} ${item.rowIndex === selectedId ? "bg-brand-50" : "hover:bg-navy-50"}`}
           >
             <Td>{item.province}</Td>
             <Td>{item.municipalityCity}</Td>
             <Td>{item.barangay}</Td>
             <Td>
-              <Link href={`/flood-prone-areas/${item.rowIndex}`} onClick={(e) => e.stopPropagation()} className="text-sky-700 hover:underline">
+              <Link href={`/flood-prone-areas/${item.rowIndex}`} onClick={(e) => e.stopPropagation()} className="font-medium text-navy-700 hover:underline">
                 {item.roadNameWaterways}
               </Link>
             </Td>

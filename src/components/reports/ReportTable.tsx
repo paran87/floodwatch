@@ -24,9 +24,9 @@ export function ReportTable({ items }: { items: FloodReport[] }) {
       </Thead>
       <Tbody>
         {items.map((report) => (
-          <tr key={report.id} className="hover:bg-slate-50">
+          <tr key={report.id} className="hover:bg-navy-50">
             <Td>
-              <Link href={`/reports/${report.id}`} className="font-medium text-sky-700 hover:underline">
+              <Link href={`/reports/${report.id}`} className="font-medium text-navy-700 hover:underline">
                 {report.title}
               </Link>
             </Td>
