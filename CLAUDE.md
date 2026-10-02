@@ -240,27 +240,61 @@ Code.js (doGet/doPost router)
 
 ## 11. clasp workflow
 
-**Status as of this scaffold:** `clasp` is not installed and no
-`~/.clasprc.json` auth token exists in this container, so the Apps Script
-project could not be connected, pulled, or pushed to during initial setup.
-`.clasp.json.example` is provided as a template; the real `.clasp.json` is
-git-ignored (it contains the real `scriptId`, which is project-specific).
+**Status: connected.** The Apps Script project is created, pushed, and
+deployed:
+- Script ID: `1jLSfgr-miuS8Xz8eGtTxMC3KYGzmX97lq20mMkmYGkwRBaiuwOe_Zk4f`
+  (standalone project, titled "FloodWatch", owned by the same account that
+  owns the "Flood Prone Areas" spreadsheet — not one of the pre-existing
+  "flood"/"flood prone areas"/"Untitled project" scripts found during
+  discovery, which all point at a *different*, unrelated spreadsheet).
+- Versioned deployment `AKfycbzswWIUKAA75uLTHiWCxNE_KjMYFH_oRZhrOEilAa7gRjnRZPPHsPTxBMjonb2fq0LK`
+  (`@1`, web app, access `ANYONE_ANONYMOUS` / execute as `USER_DEPLOYING`),
+  exec URL `https://script.google.com/macros/s/AKfycbzswWIUKAA75uLTHiWCxNE_KjMYFH_oRZhrOEilAa7gRjnRZPPHsPTxBMjonb2fq0LK/exec`.
+- Script Properties (`SPREADSHEET_ID`, `API_KEY`, `GEOCODING_PROVIDER=none`)
+  are set — see `apps-script/Bootstrap.js` for how, since the obvious path
+  didn't work:
 
-Once clasp is available in an environment with Google auth:
+**Two Apps Script gotchas hit during setup, for next time:**
+1. `clasp create-script` overwrites the local `appsscript.json` with
+   Google's generic default manifest (wrong timezone, no `webapp` block).
+   Always `git diff apps-script/appsscript.json` right after creating a
+   project and restore it before pushing.
+2. `clasp run` (the Execution API) fails with a generic `NOT_FOUND` on a
+   script using Apps Script's default (hidden) GCP project — it only works
+   on a script linked to a custom, standard GCP project, which requires IDE
+   access to set up. So Script Properties can't be set via `clasp run`
+   without that extra setup. `Bootstrap.js` works around this with two
+   actions reachable through the public web app endpoint instead —
+   `bootstrapProperties` and `checkScriptProperties` — both listed in
+   `Code.js`'s `UNAUTHENTICATED_ACTIONS_` map (the only entries that skip
+   `authenticateRequest_`, because there's no `API_KEY` yet to check on the
+   very first call). `bootstrapProperties` is self-disabling: it refuses
+   to run again once `API_KEY` is set, so the unauthenticated window is
+   only ever open until the first successful call. Never add another
+   action to that map.
+3. A freshly API-deployed web app also returns a blanket 403 to everyone,
+   including the owner, until the deploying account completes a one-time
+   manual OAuth consent for the project's scopes (normally handled
+   automatically by the "Deploy" button in the Apps Script IDE, skipped
+   entirely when deploying via `clasp`/the API). Fix: open
+   `https://script.google.com/d/<scriptId>/edit`, pick any function in the
+   toolbar dropdown (parameterless ones only — `doGet`/`doPost` are
+   special-cased into that list even though they take `e`), click **Run**,
+   and click through the "unverified app" consent prompt. The function can
+   error after that (e.g. `doGet` with no real request object) — the
+   authorization is granted before the function body runs, so that's fine.
+
+Ongoing workflow:
 ```bash
-npm install -g @google/clasp
-clasp login
-# If an Apps Script project already exists for this app, connect to it:
-cp .clasp.json.example .clasp.json   # then fill in the real scriptId
-clasp pull                           # verify what's actually deployed before pushing over it
-# Otherwise, create one explicitly (do not do this silently):
-clasp create --title "FloodWatch" --type webapp --rootDir apps-script
+clasp pull    # before pushing, to see what's actually deployed
+clasp push    # uploads apps-script/* to the connected project
+clasp create-deployment --description "..."   # only with explicit approval — creates a new versioned deployment
 ```
-- `clasp push` uploads `apps-script/*` to the connected project.
 - Review the diff and confirm no secret is embedded before every push.
-- Do not run `clasp deploy` (create a versioned production deployment)
-  without explicit approval — `clasp push` alone updates the `HEAD`
-  (development) deployment only.
+- Do not run `clasp create-deployment` (a new versioned production
+  deployment) without explicit approval — `clasp push` alone updates the
+  `@HEAD` (development) deployment, which has its own separate exec URL
+  and is not what Next.js should ever point at.
 
 ## 12. API conventions
 
