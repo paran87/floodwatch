@@ -10,6 +10,7 @@ import { ErrorState } from "@/components/shared/ErrorState";
 import { Button } from "@/components/ui/Button";
 import { useFloodProneAreas } from "@/hooks/useFloodProneAreas";
 import { toMapMarker } from "@/components/maps/types";
+import { MapUnavailable } from "@/components/maps/MapUnavailable";
 import { DEFAULT_PAGE_SIZE } from "@/lib/constants";
 import type { FloodProneAreaFilters } from "@/lib/types";
 
@@ -46,11 +47,15 @@ export default function FloodProneAreasPage() {
         <AreaFilters value={filters} onChange={setFilters} facets={facets} />
 
         <div className="h-80 overflow-hidden rounded-lg border border-slate-200">
-          <FloodMap markers={markers} />
+          {markers.length > 0 ? (
+            <FloodMap markers={markers} />
+          ) : (
+            <MapUnavailable reason="None of the records on this page have a resolved map location yet — most are waiting on geocoding, which hasn't been run on this dataset yet. They're still listed below." />
+          )}
         </div>
-        {markers.length === 0 ? (
+        {markers.length > 0 && markers.length < items.length ? (
           <p className="text-xs text-slate-500">
-            No records on this page have a resolved map location yet. They remain listed below — see CLAUDE.md &quot;Location Resolution&quot;.
+            {items.length - markers.length} of {items.length} records on this page aren&apos;t shown on the map above — they&apos;re still listed below.
           </p>
         ) : null}
 

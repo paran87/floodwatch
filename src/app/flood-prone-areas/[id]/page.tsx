@@ -10,6 +10,7 @@ import { LoadingState } from "@/components/shared/LoadingState";
 import { ErrorState } from "@/components/shared/ErrorState";
 import { Alert } from "@/components/ui/Alert";
 import { toMapMarker } from "@/components/maps/types";
+import { MapUnavailable } from "@/components/maps/MapUnavailable";
 import type { FloodProneArea } from "@/lib/types";
 
 const FloodMap = dynamic(() => import("@/components/maps/FloodMap").then((m) => m.FloodMap), { ssr: false });
@@ -85,7 +86,6 @@ export default function FloodProneAreaDetailPage() {
                       {area.location.reviewReason}
                     </Alert>
                   ) : null}
-                  {!marker ? <p className="text-xs text-slate-500">Location unavailable — not enough information to place a map marker yet.</p> : null}
                 </>
               ) : null}
             </CardBody>
@@ -101,7 +101,9 @@ export default function FloodProneAreaDetailPage() {
                   <FloodMap markers={[marker]} />
                 </div>
               ) : (
-                <p className="text-sm text-slate-500">Location unavailable — needs location review.</p>
+                <div className="h-72">
+                  <MapUnavailable reason={mapUnavailableReason(area)} />
+                </div>
               )}
             </CardBody>
           </Card>
@@ -118,4 +120,21 @@ function Field({ label, value }: { label: string; value: string }) {
       <dd className="mt-0.5 text-slate-900">{value || "—"}</dd>
     </div>
   );
+}
+
+/** A specific, accurate explanation of why this record has no map point yet — never a generic "unavailable." */
+function mapUnavailableReason(area: FloodProneArea): string {
+  const loc = area.location;
+  if (!loc) return "Location information for this record could not be loaded.";
+
+  if (loc.accuracy === "unresolved") {
+    return "None of this record's Region, Province, Municipality, Barangay, or Road fields have enough information to estimate a map location.";
+  }
+  if (loc.geocodingStatus === "pending") {
+    const strongEnough = loc.accuracy === "exact" || loc.accuracy === "address" || loc.accuracy === "road" || loc.accuracy === "barangay";
+    return strongEnough
+      ? "This record has enough location information (road/barangay/municipality/province) to estimate a point, but geocoding hasn't been run on this dataset yet — see CLAUDE.md §8."
+      : `Only ${loc.accuracy}-level information is available for this record, so an estimated point would be approximate at best — and geocoding hasn't been run yet regardless.`;
+  }
+  return "This record's location hasn't been resolved to coordinates yet.";
 }
