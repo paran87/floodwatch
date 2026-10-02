@@ -12,16 +12,16 @@ interface AreaFiltersProps {
 
 export function AreaFilters({ value, onChange, facets }: AreaFiltersProps) {
   function set<K extends keyof FloodProneAreaFilters>(key: K, next: FloodProneAreaFilters[K]) {
-    onChange({ ...value, [key]: next || undefined, page: 1 });
+    onChange({ ...value, [key]: next || undefined });
   }
 
   return (
-    <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-5">
+    <div className="grid grid-cols-3 gap-2 md:gap-3 lg:grid-cols-5">
       <Input
         placeholder="Search road, barangay, municipality…"
         value={value.search ?? ""}
         onChange={(e) => set("search", e.target.value)}
-        className="lg:col-span-2"
+        className="col-span-3 lg:col-span-2"
       />
       <Select value={value.region ?? ""} onChange={(e) => set("region", e.target.value)}>
         <option value="">All regions</option>

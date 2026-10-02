@@ -24,3 +24,21 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Always-visible scrollbars for scrollable data regions (mobile browsers otherwise hide them). */
+.scrollbar-visible {
+  scrollbar-width: auto;
+  scrollbar-color: #94a3b8 #e2e8f0;
+}
+.scrollbar-visible::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.scrollbar-visible::-webkit-scrollbar-track {
+  background: #e2e8f0;
+}
+.scrollbar-visible::-webkit-scrollbar-thumb {
+  background: #94a3b8;
+  border-radius: 9999px;
+  border: 2px solid #e2e8f0;
+}

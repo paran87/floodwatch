@@ -20,14 +20,36 @@ const ZOOM_BY_ACCURACY: Partial<Record<LocationAccuracy, number>> = {
   region: 7,
 };
 
-function FlyToSelected({ marker, markerRefs }: { marker: FloodMapMarker | undefined; markerRefs: React.RefObject<Map<number, LeafletCircleMarker>> }) {
+function FlyToSelected({
+  marker,
+  markerRefs,
+  bottomInset,
+}: {
+  marker: FloodMapMarker | undefined;
+  markerRefs: React.RefObject<Map<number, LeafletCircleMarker>>;
+  bottomInset: number;
+}) {
   const map = useMap();
+  // Read through a ref so dragging the sheet (which changes the inset) doesn't re-trigger the fly-to.
+  const insetRef = useRef(bottomInset);
   useEffect(() => {
-    if (!marker) return;
-    map.flyTo([marker.latitude, marker.longitude], ZOOM_BY_ACCURACY[marker.accuracy] ?? 13, { duration: 0.8 });
-    const timer = setTimeout(() => markerRefs.current.get(marker.id)?.openPopup(), 850);
+    insetRef.current = bottomInset;
+  }, [bottomInset]);
+
+  const id = marker?.id;
+  const latitude = marker?.latitude;
+  const longitude = marker?.longitude;
+  const accuracy = marker?.accuracy;
+
+  useEffect(() => {
+    if (id === undefined || latitude === undefined || longitude === undefined) return;
+    const zoom = ZOOM_BY_ACCURACY[accuracy as LocationAccuracy] ?? 13;
+    // Shift the target down by half the covered strip so the pin lands in the visible part of the map.
+    const target = map.unproject(map.project([latitude, longitude], zoom).add([0, insetRef.current / 2]), zoom);
+    map.flyTo(target, zoom, { duration: 0.8 });
+    const timer = setTimeout(() => markerRefs.current.get(id)?.openPopup(), 850);
     return () => clearTimeout(timer);
-  }, [map, marker, markerRefs]);
+  }, [map, id, latitude, longitude, accuracy, markerRefs]);
   return null;
 }
 
@@ -37,7 +59,16 @@ function FlyToSelected({ marker, markerRefs }: { marker: FloodMapMarker | undefi
  * location simply don't appear here; they stay visible in the data table
  * instead (see CLAUDE.md "Map Behavior").
  */
-export function FloodMap({ markers, selectedId }: { markers: FloodMapMarker[]; selectedId?: number | null }) {
+export function FloodMap({
+  markers,
+  selectedId,
+  bottomInset = 0,
+}: {
+  markers: FloodMapMarker[];
+  selectedId?: number | null;
+  /** Pixels at the bottom of the map covered by an overlay (the mobile sheet). */
+  bottomInset?: number;
+}) {
   const markerRefs = useRef(new Map<number, LeafletCircleMarker>());
   const selected = selectedId == null ? undefined : markers.find((m) => m.id === selectedId);
 
@@ -47,7 +78,7 @@ export function FloodMap({ markers, selectedId }: { markers: FloodMapMarker[]; s
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
       />
-      <FlyToSelected marker={selected} markerRefs={markerRefs} />
+      <FlyToSelected marker={selected} markerRefs={markerRefs} bottomInset={bottomInset} />
       {markers.map((marker) => (
         <CircleMarker
           key={marker.id}

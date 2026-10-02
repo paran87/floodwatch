@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Table, Thead, Tbody, Th, Td } from "@/components/ui/Table";
+import { Thead, Tbody, Th, Td } from "@/components/ui/Table";
 import { LocationBadge } from "./LocationBadge";
 import { EmptyState } from "@/components/shared/EmptyState";
 import type { FloodProneArea } from "@/lib/types";
@@ -18,15 +18,16 @@ export function AreaTable({
   }
 
   return (
-    <Table>
+    // No wrapping overflow container: the parent scroll region owns both scroll axes so the sticky header works.
+    <table className="w-full min-w-[720px] divide-y divide-slate-200 text-sm">
       <Thead>
         <tr>
-          <Th>Province</Th>
-          <Th>Municipality/City</Th>
-          <Th>Barangay</Th>
-          <Th>Road / Waterway</Th>
-          <Th>DEO</Th>
-          <Th>Location</Th>
+          <Th className="sticky top-0 z-10">Province</Th>
+          <Th className="sticky top-0 z-10">Municipality/City</Th>
+          <Th className="sticky top-0 z-10">Barangay</Th>
+          <Th className="sticky top-0 z-10">Road / Waterway</Th>
+          <Th className="sticky top-0 z-10">DEO</Th>
+          <Th className="sticky top-0 z-10">Location</Th>
         </tr>
       </Thead>
       <Tbody>
@@ -50,6 +51,6 @@ export function AreaTable({
           </tr>
         ))}
       </Tbody>
-    </Table>
+    </table>
   );
 }
