@@ -171,7 +171,8 @@ export interface DashboardStats {
   locationResolution: Record<LocationAccuracy, number>;
   openReports: number;
   reportsBySeverity: Record<ReportSeverity, number>;
-  pendingLocationReviews: number;
+  /** null when Supabase (the secondary datastore) is unavailable or not yet provisioned — never 0 for "unknown." */
+  pendingLocationReviews: number | null;
 }
 
 /** Standard API envelope returned by every Apps Script endpoint and every Next.js API route. */

@@ -15,7 +15,7 @@ export function StatsCards({ stats }: { stats: DashboardStats }) {
         <Card key={card.label}>
           <CardBody>
             <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{card.label}</p>
-            <p className="mt-1 text-2xl font-semibold text-slate-900">{card.value.toLocaleString()}</p>
+            <p className="mt-1 text-2xl font-semibold text-slate-900">{card.value === null ? "—" : card.value.toLocaleString()}</p>
           </CardBody>
         </Card>
       ))}
