@@ -3,11 +3,14 @@
  * "Flood Prone Areas" Google Sheet). Every call goes through here — do not
  * scatter raw fetch() calls to the Apps Script URL anywhere else.
  *
- * SERVER-ONLY. The Apps Script web app is guarded by a shared-secret header
+ * SERVER-ONLY. The Apps Script web app is guarded by a shared-secret value
  * (APPS_SCRIPT_API_KEY) that must never reach the browser, so this module
  * may only be imported from Server Components and Route Handlers
- * (src/app/api/**). Client Components call those Next.js API routes
- * instead — see src/hooks/useFloodProneAreas.ts for the pattern.
+ * (src/app/api/**). It travels as a query param, not a header — Apps
+ * Script's doGet/doPost cannot read arbitrary request headers — see the
+ * comment on the `apiKey` param below and apps-script/Auth.js. Client
+ * Components call this app's own Next.js API routes instead — see
+ * src/hooks/useFloodProneAreas.ts for the pattern.
  *
  * The Apps Script web app exposes a single endpoint that takes an `action`
  * parameter and routes internally (see apps-script/Code.js). GET is used for
