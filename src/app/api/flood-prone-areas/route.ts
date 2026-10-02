@@ -1,12 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
-import { getFloodProneAreas, AppsScriptError } from "@/lib/apps-script";
+import { AppsScriptError } from "@/lib/apps-script";
+import { queryAreas } from "@/lib/areasCache";
 import { overlayLocationCache } from "@/lib/overlayLocations";
 import type { ApiResponse } from "@/lib/types";
 
 export async function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams;
   try {
-    const result = await getFloodProneAreas({
+    const result = await queryAreas({
       search: params.get("search") ?? undefined,
       region: params.get("region") ?? undefined,
       province: params.get("province") ?? undefined,
