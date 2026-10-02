@@ -28,11 +28,14 @@ export type SheetSnap = "hidden" | "half" | "full";
  */
 export function BottomSheet({
   title,
+  actions,
   children,
   onHeightChange,
   snapRequest,
 }: {
   title: ReactNode;
+  /** A toolbar row under the drag handle (e.g. export buttons). Not part of the drag target. */
+  actions?: ReactNode;
   children: ReactNode;
   /** Reports the sheet's pixel height once it settles (0 on md+, where it isn't an overlay). */
   onHeightChange?: (height: number) => void;
@@ -151,6 +154,7 @@ export function BottomSheet({
           {title}
         </span>
       </div>
+      {actions ? <div className="shrink-0 border-b border-slate-100 px-3 py-1.5">{actions}</div> : null}
       <div className="scrollbar-visible min-h-0 flex-1 overflow-auto overscroll-contain">{children}</div>
     </div>
   );

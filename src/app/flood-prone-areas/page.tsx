@@ -7,6 +7,7 @@ import { AreaFilters } from "@/components/flood-prone-areas/AreaFilters";
 import { AreaTable } from "@/components/flood-prone-areas/AreaTable";
 import { LoadingState } from "@/components/shared/LoadingState";
 import { ErrorState } from "@/components/shared/ErrorState";
+import { ExportButtons } from "@/components/flood-prone-areas/ExportButtons";
 import { BottomSheet, type SheetSnap } from "@/components/flood-prone-areas/BottomSheet";
 import { useFloodProneAreas } from "@/hooks/useFloodProneAreas";
 import { toMapMarker } from "@/components/maps/types";
@@ -69,6 +70,16 @@ export default function FloodProneAreasPage() {
   }, []);
 
   const markers = useMemo(() => items.map(toMapMarker).filter((m): m is NonNullable<typeof m> => m !== null), [items]);
+  const filterSummary = useMemo(
+    () =>
+      [
+        filters.search ? `Search: “${filters.search}”` : "",
+        filters.region ? `Region: ${filters.region}` : "",
+        filters.province ? `Province: ${filters.province}` : "",
+        filters.municipalityCity ? `Municipality/City: ${filters.municipalityCity}` : "",
+      ].filter(Boolean),
+    [filters],
+  );
   const selectedMissing = selectedId !== null && !locating && !locateError && !markers.some((m) => m.id === selectedId);
 
   return (
@@ -96,6 +107,7 @@ export default function FloodProneAreasPage() {
           </div>
 
           <BottomSheet
+            actions={<ExportButtons items={items} filterSummary={filterSummary} disabled={loading || Boolean(error)} />}
             onHeightChange={setSheetHeight}
             snapRequest={snapRequest}
             title={
