@@ -12,6 +12,10 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Google Apps Script runtime code: plain-script globals called by the
+    // Apps Script platform itself (doGet/doPost/etc.), not a Next.js/module
+    // codebase — the no-unused-vars rule has no way to know that.
+    "apps-script/**",
   ]),
 ]);
 
