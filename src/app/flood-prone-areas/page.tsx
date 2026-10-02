@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { AppShell } from "@/components/layout/AppShell";
 import { AreaFilters } from "@/components/flood-prone-areas/AreaFilters";
@@ -37,7 +37,7 @@ export default function FloodProneAreasPage() {
   const [snapRequest, setSnapRequest] = useState<{ snap: SheetSnap; nonce: number }>({ snap: "half", nonce: 0 });
   const items = useMemo(() => fetchedItems.map((item) => located[item.rowIndex] ?? item), [fetchedItems, located]);
 
-  async function handleSelect(area: FloodProneArea) {
+  const handleSelect = useCallback(async (area: FloodProneArea) => {
     setSelectedId(area.rowIndex);
     setLocateError(null);
     // On mobile, make sure the sheet isn't covering most of the map.
@@ -55,7 +55,7 @@ export default function FloodProneAreasPage() {
     } finally {
       setLocating(false);
     }
-  }
+  }, [located]);
 
   useEffect(() => {
     fetch("/api/flood-prone-areas/facets")
