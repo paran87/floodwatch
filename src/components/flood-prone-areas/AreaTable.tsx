@@ -1,10 +1,11 @@
+import { memo } from "react";
 import Link from "next/link";
 import { Thead, Tbody, Th, Td } from "@/components/ui/Table";
 import { LocationBadge } from "./LocationBadge";
 import { EmptyState } from "@/components/shared/EmptyState";
 import type { FloodProneArea } from "@/lib/types";
 
-export function AreaTable({
+function AreaTableImpl({
   items,
   selectedId,
   onSelect,
@@ -54,3 +55,6 @@ export function AreaTable({
     </table>
   );
 }
+
+// ~1,763 rows: skip re-rendering them unless the data or selection actually changes.
+export const AreaTable = memo(AreaTableImpl);
