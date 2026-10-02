@@ -18,7 +18,7 @@ export function Tbody({ className, ...props }: HTMLAttributes<HTMLTableSectionEl
 }
 
 export function Th({ className, ...props }: ThHTMLAttributes<HTMLTableCellElement>) {
-  return <th className={cn("px-3 py-2.5 text-left font-mono text-[11px] font-semibold uppercase tracking-wider text-white", className)} {...props} />;
+  return <th className={cn("bg-navy-900 px-3 py-2.5 text-left font-mono text-[11px] font-semibold uppercase tracking-wider text-white", className)} {...props} />;
 }
 
 export function Td({ className, ...props }: TdHTMLAttributes<HTMLTableCellElement>) {
