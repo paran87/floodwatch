@@ -1,12 +1,13 @@
 import { NextResponse } from "next/server";
 import { getFloodProneArea, AppsScriptError } from "@/lib/apps-script";
+import { peekArea } from "@/lib/areasCache";
 import { overlayLocationCache } from "@/lib/overlayLocations";
 import type { ApiResponse } from "@/lib/types";
 
 export async function GET(_request: Request, { params }: { params: Promise<{ rowIndex: string }> }) {
   const { rowIndex } = await params;
   try {
-    const raw = await getFloodProneArea(Number(rowIndex));
+    const raw = peekArea(Number(rowIndex)) ?? (await getFloodProneArea(Number(rowIndex)));
     let data = raw;
     try {
       [data] = await overlayLocationCache([raw]);

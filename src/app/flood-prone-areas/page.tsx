@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { AppShell } from "@/components/layout/AppShell";
 import { AreaFilters } from "@/components/flood-prone-areas/AreaFilters";
@@ -12,7 +12,7 @@ import { useFloodProneAreas } from "@/hooks/useFloodProneAreas";
 import { toMapMarker } from "@/components/maps/types";
 import { MapUnavailable } from "@/components/maps/MapUnavailable";
 import { DEFAULT_PAGE_SIZE } from "@/lib/constants";
-import type { FloodProneAreaFilters } from "@/lib/types";
+import type { FloodProneArea, FloodProneAreaFilters } from "@/lib/types";
 
 // Leaflet touches `window` at import time — never render it during SSR.
 const FloodMap = dynamic(() => import("@/components/maps/FloodMap").then((m) => m.FloodMap), {
@@ -25,7 +25,33 @@ type Facets = { regions: string[]; provinces: string[]; municipalities: string[]
 export default function FloodProneAreasPage() {
   const [filters, setFilters] = useState<FloodProneAreaFilters>({ page: 1, pageSize: DEFAULT_PAGE_SIZE });
   const [facets, setFacets] = useState<Facets | null>(null);
-  const { items, total, loading, error } = useFloodProneAreas(filters);
+  const { items: fetchedItems, total, loading, error } = useFloodProneAreas(filters);
+  const [selectedId, setSelectedId] = useState<number | null>(null);
+  const [locating, setLocating] = useState(false);
+  const [locateError, setLocateError] = useState<string | null>(null);
+  // Areas geocoded on demand after selection, layered over the fetched page.
+  const [located, setLocated] = useState<Record<number, FloodProneArea>>({});
+  const mapRef = useRef<HTMLDivElement>(null);
+  const items = useMemo(() => fetchedItems.map((item) => located[item.rowIndex] ?? item), [fetchedItems, located]);
+
+  async function handleSelect(area: FloodProneArea) {
+    setSelectedId(area.rowIndex);
+    setLocateError(null);
+    mapRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (toMapMarker(located[area.rowIndex] ?? area)) return;
+
+    setLocating(true);
+    try {
+      const res = await fetch(`/api/flood-prone-areas/${area.rowIndex}/locate`, { method: "POST" });
+      const json = await res.json();
+      if (!json.success) throw new Error(json.message);
+      setLocated((prev) => ({ ...prev, [area.rowIndex]: json.data }));
+    } catch (err) {
+      setLocateError(err instanceof Error ? err.message : "Could not locate this area.");
+    } finally {
+      setLocating(false);
+    }
+  }
 
   useEffect(() => {
     fetch("/api/flood-prone-areas/facets")
@@ -46,13 +72,20 @@ export default function FloodProneAreasPage() {
       <div className="space-y-4">
         <AreaFilters value={filters} onChange={setFilters} facets={facets} />
 
-        <div className="h-80 overflow-hidden rounded-lg border border-slate-200">
+        <div ref={mapRef} className="relative h-80 overflow-hidden rounded-lg border border-slate-200">
           {markers.length > 0 ? (
-            <FloodMap markers={markers} />
+            <FloodMap markers={markers} selectedId={selectedId} />
           ) : (
-            <MapUnavailable reason="None of the records on this page have a resolved map location yet — most are waiting on geocoding, which hasn't been run on this dataset yet. They're still listed below." />
+            <MapUnavailable reason="Select a flood-prone area below to find it on the map." />
           )}
+          {locating ? (
+            <div className="absolute left-3 top-3 z-[1000] rounded-md bg-white/95 px-3 py-1.5 text-xs text-slate-600 shadow">Locating on map…</div>
+          ) : null}
         </div>
+        {locateError ? <p className="text-xs text-red-600">{locateError}</p> : null}
+        {selectedId !== null && !locating && !locateError && !markers.some((m) => m.id === selectedId) ? (
+          <p className="text-xs text-amber-700">No map location could be found for the selected area. It&apos;s still listed below.</p>
+        ) : null}
         {markers.length > 0 && markers.length < items.length ? (
           <p className="text-xs text-slate-500">
             {items.length - markers.length} of {items.length} records on this page aren&apos;t shown on the map above — they&apos;re still listed below.
@@ -63,7 +96,7 @@ export default function FloodProneAreasPage() {
         {error ? <ErrorState message={error} /> : null}
         {!loading && !error ? (
           <>
-            <AreaTable items={items} />
+            <AreaTable items={items} selectedId={selectedId} onSelect={handleSelect} />
             <div className="flex items-center justify-between text-sm text-slate-500">
               <span>
                 Page {filters.page ?? 1} of {totalPages} — {total.toLocaleString()} records

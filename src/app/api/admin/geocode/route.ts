@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getFloodProneAreas, AppsScriptError } from "@/lib/apps-script";
-import { getCachedLocations, upsertLocationCache, enqueueLocationReview } from "@/lib/locationCache";
-import { buildGeocodingQueries, classifyGeocodeResult, geocodeWithFallback } from "@/lib/geocoding";
-import { logActivity } from "@/lib/api";
+import { getCachedLocations } from "@/lib/locationCache";
+import { geocodeAndPersistArea } from "@/lib/geocodeArea";
 import type { ApiResponse } from "@/lib/types";
 
 /**
@@ -77,94 +76,18 @@ export async function POST(request: NextRequest) {
     };
 
     for (const area of toProcess) {
-      const queries = buildGeocodingQueries(area);
       summary.processed++;
+      const result = await geocodeAndPersistArea(area);
 
-      if (queries.length === 0) {
-        await upsertLocationCache({
-          sheetRowIndex: area.rowIndex,
-          latitude: null,
-          longitude: null,
-          accuracy: "unresolved",
-          source: "unresolved",
-          geocodingQuery: null,
-          geocodingStatus: "failed",
-        });
+      if (result.status === "resolved") summary.resolved++;
+      else if (result.status === "needs_review") summary.needsReview++;
+      else {
         summary.failed++;
-        continue;
-      }
-
-      const outcome = await geocodeWithFallback(queries);
-
-      if (outcome.status === "resolved") {
-        const classification = classifyGeocodeResult(outcome.queryTierIndex, outcome.candidate.displayName, area.province);
-
-        if (classification.needsReview) {
-          await upsertLocationCache({
-            sheetRowIndex: area.rowIndex,
-            latitude: null,
-            longitude: null,
-            accuracy: classification.accuracy,
-            source: "approximate",
-            geocodingQuery: outcome.queryUsed,
-            geocodingStatus: "needs_review",
-          });
-          await enqueueLocationReview({
-            sheetRowIndex: area.rowIndex,
-            proposedLatitude: outcome.candidate.latitude,
-            proposedLongitude: outcome.candidate.longitude,
-            proposedAccuracy: classification.accuracy,
-            reason: classification.reason ?? "Low-confidence geocoding result.",
-          });
-          summary.needsReview++;
-        } else {
-          await upsertLocationCache({
-            sheetRowIndex: area.rowIndex,
-            latitude: outcome.candidate.latitude,
-            longitude: outcome.candidate.longitude,
-            accuracy: classification.accuracy,
-            source: "geocoded",
-            geocodingQuery: outcome.queryUsed,
-            geocodingStatus: "resolved",
-            geocodedAt: new Date().toISOString(),
-          });
-          summary.resolved++;
+        if (result.error) {
+          summary.errors.push(`row ${area.rowIndex}: ${result.error}`);
+          // Stop early on a rate limit rather than continuing to hammer a provider that just rejected a request.
+          if (result.isRateLimit) break;
         }
-        await logActivity(
-          "LOCATION_GEOCODED",
-          null,
-          "location",
-          String(area.rowIndex),
-          `${classification.needsReview ? "Needs review" : "Resolved"} at ${classification.accuracy} tier via query "${outcome.queryUsed}".`,
-        );
-      } else if (outcome.status === "no_result") {
-        await upsertLocationCache({
-          sheetRowIndex: area.rowIndex,
-          latitude: null,
-          longitude: null,
-          accuracy: "unresolved",
-          source: "unresolved",
-          geocodingQuery: queries[0],
-          geocodingStatus: "failed",
-        });
-        summary.failed++;
-        await logActivity("VALIDATION_FAILURE", null, "location", String(area.rowIndex), `No geocoding result for any query tier (tried: ${queries.join(" | ")}).`);
-      } else {
-        // API/network/rate-limit error: record as failed (retried on a future run) and stop the batch early
-        // rather than continuing to hammer a provider that just rejected or failed a request.
-        await upsertLocationCache({
-          sheetRowIndex: area.rowIndex,
-          latitude: null,
-          longitude: null,
-          accuracy: "unresolved",
-          source: "unresolved",
-          geocodingQuery: queries[0],
-          geocodingStatus: "failed",
-        });
-        summary.failed++;
-        summary.errors.push(`row ${area.rowIndex}: ${outcome.message}`);
-        await logActivity("VALIDATION_FAILURE", null, "location", String(area.rowIndex), `Geocoding provider error: ${outcome.message}`);
-        if (outcome.isRateLimit) break;
       }
     }
 

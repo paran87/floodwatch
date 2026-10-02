@@ -1,10 +1,11 @@
 import { NextResponse } from "next/server";
-import { getFloodProneAreaFacets, AppsScriptError } from "@/lib/apps-script";
+import { AppsScriptError } from "@/lib/apps-script";
+import { getFacets } from "@/lib/areasCache";
 import type { ApiResponse } from "@/lib/types";
 
 export async function GET() {
   try {
-    const data = await getFloodProneAreaFacets();
+    const data = await getFacets();
     return NextResponse.json<ApiResponse<typeof data>>({ success: true, data });
   } catch (err) {
     const message = err instanceof AppsScriptError ? err.message : "Failed to load filter options.";
