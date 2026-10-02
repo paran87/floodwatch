@@ -1,11 +1,5 @@
 import Link from "next/link";
-import { LayoutDashboard, MapPinned, FileWarning } from "lucide-react";
-
-const links = [
-  { href: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-  { href: "/flood-prone-areas", label: "Flood-Prone Areas", icon: MapPinned },
-  { href: "/reports", label: "Reports", icon: FileWarning },
-];
+import { NAV_LINKS } from "./navLinks";
 
 export function Sidebar() {
   return (
@@ -14,7 +8,7 @@ export function Sidebar() {
         <span className="text-lg font-semibold text-sky-700">FloodWatch</span>
       </div>
       <nav className="flex flex-col gap-1 p-3">
-        {links.map(({ href, label, icon: Icon }) => (
+        {NAV_LINKS.map(({ href, label, icon: Icon }) => (
           <Link
             key={href}
             href={href}
