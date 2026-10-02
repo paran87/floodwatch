@@ -20,7 +20,7 @@ data, not the other way around.
 | Frontend | Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4 |
 | Flood-prone-area backend | Google Apps Script (the only thing allowed to read/write the Sheet) |
 | Flood-prone-area datastore | Google Sheets — "Flood Prone Areas" spreadsheet, tab "FLOOD PRONE" |
-| Secondary datastore | Supabase (Postgres) — geocode cache, location review queue, reports, activity logs, user roles |
+| Secondary datastore | Supabase (Postgres) — project **"floodwatch"** (`afoikqgiqcxiaavoaytg`, org "bragz's Org", region ap-southeast-1) — geocode cache, location review queue, reports, activity logs, user roles. A dedicated project: two pre-existing, unrelated Supabase projects on this account were found and deliberately not reused — see §17. |
 | Auth | NextAuth v5 + Google Sign-In |
 | Hosting | Vercel (Next.js), continuous deployment from `main` |
 | Source control | GitHub — `paran87/floodwatch` |
@@ -173,31 +173,96 @@ and mirrored in `src/lib/constants.ts`:
 8. Insufficient information → `unresolved`
 
 **Never invent coordinates.** A record with only municipality-level
-information gets a `municipality`-level accuracy classification and (once
-geocoding is wired up) an approximate point — the UI must show it as
-approximate, not plot it as if it were exact.
+information gets a `municipality`-level accuracy classification and an
+approximate point — the UI shows it as approximate (amber marker, "needs
+review" badge), never plotted as if it were exact.
 
-**Geocoding provider:** intentionally **not chosen yet**
-(`GEOCODING_PROVIDER=none` in Apps Script Script Properties,
-`apps-script/LocationResolver.js callGeocodingProvider_` throws until a
-provider is picked). ~1,763 Philippine records is enough volume that
-provider coverage, Philippines accuracy, rate limits, and cost should be
-evaluated deliberately (spec §29) before committing — don't default to one
-just to make the map "work."
+**Geocoding provider: Nominatim (OpenStreetMap)**, chosen over Google's
+Geocoding API because it needs no API key or billing-enabled GCP project
+(the same custom-GCP-project requirement that blocked `clasp run` — see
+§11). Tradeoff: its usage policy caps requests at 1/sec and requires a
+descriptive User-Agent, and rural/remote-area road coverage is
+inconsistent (confirmed directly: several Davao Oriental road segments
+had no OSM match at all and correctly fell back to municipality-level).
+Apps Script's `LocationResolver.js callGeocodingProvider_` seam is
+**unused** — see "Where geocoding actually runs" below for why.
 
-**Caching:** once a provider exists, resolved coordinates belong in
-Supabase's `location_cache` table (keyed by `sheet_row_index`), reused
-across loads — never re-geocode a row that's already resolved.
+### Where geocoding actually runs
+
+Not in Apps Script. Supabase is Next.js-exclusive by design (Apps Script
+has no visibility into it), so the geocoding call and the Supabase write
+both had to happen on the same side — Next.js was the natural fit, since
+Apps Script's job is strictly "Sheets gateway."
+
+```
+src/app/api/admin/geocode (POST, shared-secret gated)
+   → getFloodProneAreas()              Apps Script — candidate rows + their query
+   → getCachedLocations()              Supabase — skip anything already done
+   → buildGeocodingQueries()           src/lib/geocoding.ts — road→barangay→municipality→province→region fallback tiers
+   → geocodeWithFallback()             src/lib/geocoding.ts — Nominatim, 1 req/sec, tries tiers until one hits
+   → classifyGeocodeResult()           src/lib/geocoding.ts — decides resolved vs needs_review
+   → upsertLocationCache() / enqueueLocationReview()   Supabase — persists the outcome
+```
+
+**Idempotency:** a row already `resolved` or `needs_review` in
+`location_cache` is never reprocessed — only `not_attempted`-equivalent
+(no cache row) or a previous `failed` (transient error) are eligible.
+Verified directly: re-running the same province twice advanced to the
+next batch of rows both times, with zero duplicate processing.
+
+**Confidence/ambiguity handling** (`classifyGeocodeResult`): a match is
+trusted as exact only if (a) it came from the road or barangay query tier,
+**and** (b) the result's `display_name` mentions the record's province.
+Anything that only matched at municipality/province/region tier, or
+whose result doesn't clearly mention the right province, goes to
+`needs_review` with a specific, human-readable reason — never silently
+trusted. Confirmed with a real case: a mismatched/low-specificity result
+correctly produced `"Only municipality-level location information was
+specific enough to geocode..."` rather than a false "resolved."
+
+**Rate limits & errors:** `geocodeWithFallback` throttles to ≤1 req/sec
+across all tiers tried (shared module-level timestamp). An HTTP 429 stops
+the whole batch immediately (not just that record) rather than continuing
+to hammer a provider that just rejected a request; other errors are
+logged per-record and marked `failed` (retried on a future run) without
+aborting the batch. All non-success paths write to `activity_logs` with a
+specific message (no result / API error / rate limit) via the existing
+`VALIDATION_FAILURE` event type — no schema change needed, since
+`activity_logs.message` is free text and `location_cache.geocoding_status`
+already has the right granularity (`not_attempted` / `pending` / `resolved`
+/ `needs_review` / `failed`).
+
+**Caching:** resolved coordinates live in Supabase's `location_cache`
+(keyed by `sheet_row_index`), overlaid onto Apps Script's live
+classification by `src/lib/overlayLocations.ts` in both
+`/api/flood-prone-areas` routes — the only place the two are merged.
+That overlay is wrapped in try/catch in both routes: if Supabase is ever
+unreachable, the Sheet-derived listing still succeeds (same lesson as the
+`/api/dashboard` fix).
 
 **Manual verification:** `location_review_queue` holds low-confidence
-results (including the stray-coordinate quirk in §6) for an authorized user
-to accept, adjust, or reject. This UI is not yet built — see §14 "Not yet
-implemented."
+results (including the stray-coordinate quirk in §6) for an authorized
+user to accept, adjust, or reject. The review **UI** is still not built —
+the data model and the proposed-coordinate surfacing to the frontend are
+done (a `needs_review` row's `proposedLatitude/Longitude` already renders
+as the amber marker), but there's no admin page yet to act on
+`location_review_queue.status`. See §14.
+
+**Running it:** `POST /api/admin/geocode` with header `x-admin-key:
+<GEOCODING_ADMIN_KEY>` and JSON body `{"province": "...", "batchSize": N}`
+(both optional — omit `province` to pull from the whole dataset, omit
+`batchSize` for the default of 20, max 100). Not gated by real user
+auth yet (see §13) since Google Sign-In isn't configured in this
+environment — gate it behind `canPerform(role, ...)` once it is, same as
+reports.
 
 **Map behavior:** `src/components/maps/types.ts toMapMarker()` returns
-`null` for any record without a real point, and nothing renders a marker
-for it. It stays visible in the data table with a "needs location review"
-badge instead. See `src/components/flood-prone-areas/LocationBadge.tsx`.
+`null` for any record without a real or proposed point, and nothing
+renders a marker for it. It stays visible in the data table with a
+"needs location review" badge instead, now rendered as a clear
+`MapUnavailable` empty state rather than a blank map — see
+`src/components/maps/MapUnavailable.tsx` and
+`src/components/flood-prone-areas/LocationBadge.tsx`.
 
 ## 9. Next.js conventions
 
@@ -287,14 +352,20 @@ deployed:
 Ongoing workflow:
 ```bash
 clasp pull    # before pushing, to see what's actually deployed
-clasp push    # uploads apps-script/* to the connected project
-clasp create-deployment --description "..."   # only with explicit approval — creates a new versioned deployment
+clasp push    # uploads apps-script/* to the connected project (updates @HEAD only)
+clasp redeploy <deploymentId> -d "..."   # updates the EXISTING versioned deployment (same exec URL) to current code
+clasp create-deployment --description "..."   # only with explicit approval — creates a NEW deployment, a different exec URL
 ```
 - Review the diff and confirm no secret is embedded before every push.
-- Do not run `clasp create-deployment` (a new versioned production
-  deployment) without explicit approval — `clasp push` alone updates the
-  `@HEAD` (development) deployment, which has its own separate exec URL
-  and is not what Next.js should ever point at.
+- `clasp push` alone updates only the `@HEAD` (development) deployment,
+  which Next.js does **not** point at — a code change (e.g. the single-row
+  read optimization in FloodProneAreas.js) isn't live until you also run
+  `clasp redeploy` against the deployment ID Next.js actually uses.
+- Do not run `clasp create-deployment` (a brand new deployment, a
+  different exec URL) without explicit approval, since every existing
+  config (`.env.local`, Next.js) points at one specific exec URL —
+  creating a new deployment instead of redeploying the existing one
+  silently breaks that until every consumer is updated.
 
 ## 12. API conventions
 
@@ -330,13 +401,21 @@ No stack traces or internal details ever reach the client.
 These are real gaps, not accidents, left for a deliberate next phase after
 review:
 - Write/update/delete actions for flood-prone areas (Apps Script side).
-- An actual geocoding provider wired into `LocationResolver.js`.
-- The manual-verification review UI for `location_review_queue`.
+- The manual-verification review **UI** for `location_review_queue` —
+  the data model, the batch job that populates it, and the frontend's
+  rendering of a `needs_review` row (amber marker) are done; there's no
+  admin page yet to accept/adjust/reject a queued entry.
 - A report-creation form in the UI (the API route `POST /api/reports`
   exists and works; there's no form calling it yet).
-- Merging Supabase's `location_cache` (verified/geocodedAt) into the
-  `/api/flood-prone-areas` response — today that route only reflects
-  Apps Script's live, uncached classification.
+- Gating `POST /api/admin/geocode` behind real user auth/role instead of
+  a shared secret — see §8 "Running it."
+- Running the geocoding batch job across the full dataset. As of this
+  writing it's been run across 5 provinces (Cebu, Nueva Ecija, Pangasinan,
+  Davao Oriental, Camarines Sur — 85 records, spanning Luzon/Visayas/
+  Mindanao) as a deliberate, verified sample; the ~1,700 remaining
+  road-tier records are untouched. Re-running the same endpoint with
+  different/no `province` filters continues the job — it's idempotent and
+  safe to resume.
 
 ## 15. Testing
 
@@ -368,6 +447,15 @@ Before calling any feature "done":
 - Supabase holds no flood-prone-area records and should stay that way —
   if a future feature seems to need it to, that's a sign the architecture
   needs a conversation, not a quiet migration.
+- **This account has other Supabase and Apps Script projects that are not
+  FloodWatch's**, discovered during setup and deliberately left untouched:
+  Supabase project "bragz" (shared with an unrelated video/photo-sharing
+  app, and paused "bragz87@gmail.com's Project") and three Apps Script
+  projects ("flood", "flood prone areas", "Untitled project") bound to a
+  *different* spreadsheet shared by another account. Never assume a
+  same-ish-named existing resource is this project's — verify its actual
+  contents first, the way both of those were checked before FloodWatch's
+  own dedicated project/deployment were created instead.
 - Never log secrets (API keys, tokens, service-role key) anywhere,
   including `activity_logs.message`.
 

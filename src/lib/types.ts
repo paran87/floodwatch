@@ -74,14 +74,14 @@ export interface FloodProneAreaRaw {
 }
 
 /**
- * Location resolution result. `accuracy`/`source`/`geocodingQuery`/
- * `geocodingStatus`/`needsReview`/`reviewReason`/`proposed*` are computed
- * fresh on every request by apps-script/Locations.js from the live sheet —
- * they are NOT yet merged with Supabase's `location_cache` persistence
- * (geocodedAt/verified/verifiedBy/verifiedAt). That merge is a follow-up
- * phase: once a geocoding provider is wired up and results are cached in
- * Supabase, src/app/api/flood-prone-areas/route.ts should overlay the
- * cached fields here before this type gains them as non-optional.
+ * Location resolution result. Apps Script's Locations.js computes a fresh
+ * classification from the live sheet on every request; src/lib/overlayLocations.ts
+ * then overlays Supabase's persisted `location_cache`/`location_review_queue`
+ * on top for any row that's actually been geocoded, replacing `latitude`/
+ * `longitude`/`accuracy`/`source`/`geocodingStatus` (resolved rows) or
+ * `proposedLatitude`/`proposedLongitude`/`reviewReason` (needs-review rows).
+ * `geocodedAt`/`verified`/`verifiedBy`/`verifiedAt` only ever come from that
+ * overlay — Apps Script never sets them, hence still optional.
  */
 export interface ResolvedLocation {
   rowIndex: number;

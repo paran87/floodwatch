@@ -66,9 +66,14 @@ function containsIgnoreCase_(haystack, needle) {
   return toTrimmedString_(haystack).toLowerCase().indexOf(String(needle).toLowerCase()) !== -1;
 }
 
+// Capped at 2000, not a tighter UI-sized limit: the list action already
+// loads the whole sheet into memory regardless of pageSize (see
+// loadFloodProneAreaRows_), so a low cap doesn't save sheet-read cost — it
+// would only force server-side batch jobs (the geocoding pipeline) into
+// needlessly re-reading the whole sheet multiple times to see it all.
 function paginate_(items, page, pageSize) {
   const p = Math.max(1, Number(page) || 1);
-  const size = Math.min(200, Math.max(1, Number(pageSize) || 25));
+  const size = Math.min(2000, Math.max(1, Number(pageSize) || 25));
   const start = (p - 1) * size;
   return items.slice(start, start + size);
 }

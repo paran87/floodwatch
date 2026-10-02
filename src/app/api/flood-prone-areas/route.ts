@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getFloodProneAreas, AppsScriptError } from "@/lib/apps-script";
+import { overlayLocationCache } from "@/lib/overlayLocations";
 import type { ApiResponse } from "@/lib/types";
 
 export async function GET(request: NextRequest) {
@@ -16,7 +17,14 @@ export async function GET(request: NextRequest) {
       page: params.get("page") ? Number(params.get("page")) : undefined,
       pageSize: params.get("pageSize") ? Number(params.get("pageSize")) : undefined,
     });
-    return NextResponse.json<ApiResponse<typeof result>>({ success: true, data: result });
+    let items = result.items;
+    try {
+      items = await overlayLocationCache(result.items);
+    } catch (err) {
+      // Supabase being unreachable must never take down the Sheet-derived listing (see /api/dashboard's fix for the same lesson).
+      console.warn("[flood-prone-areas] location cache overlay unavailable:", err instanceof Error ? err.message : err);
+    }
+    return NextResponse.json<ApiResponse<typeof result>>({ success: true, data: { ...result, items } });
   } catch (err) {
     const message = err instanceof AppsScriptError ? err.message : "Failed to load flood-prone areas.";
     const code = err instanceof AppsScriptError ? err.code : "UNKNOWN_ERROR";

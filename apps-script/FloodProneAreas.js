@@ -67,17 +67,56 @@ function action_getFloodProneAreas_(e) {
   return { items: page, total: finalFiltered.length };
 }
 
+/**
+ * Single-row lookup, deliberately NOT built on loadFloodProneAreaRows_ —
+ * that reads and forward-fills all ~1,763 rows just to return one, adding
+ * several seconds of latency to every detail-page load. Instead: read the
+ * header row, read only the target row, and — only if its Region cell is
+ * blank (the merged-cell display quirk, see CLAUDE.md §6) — scan backward
+ * through just the Region column up to that row to find the last non-blank
+ * value. Still correct for the forward-fill, far cheaper than a full scan.
+ */
 function action_getFloodProneArea_(e) {
   const rowIndex = Number(e.parameter.rowIndex);
   if (!rowIndex) throw AppError_("VALIDATION_FAILURE", "rowIndex is required.");
 
-  const rows = loadFloodProneAreaRows_();
-  const match = rows.filter(function (row) {
-    return row.dataRowIndex === rowIndex;
-  })[0];
-  if (!match) throw AppError_("NOT_FOUND", "No flood-prone area at row " + rowIndex + ".");
+  const sheet = getSheet_(SHEET_TAB_NAME);
+  const targetSheetRow = SHEET_DATA_START_ROW + rowIndex - 1;
+  const lastRow = sheet.getLastRow();
+  const lastCol = sheet.getLastColumn();
 
-  return serializeRow_(match);
+  if (targetSheetRow < SHEET_DATA_START_ROW || targetSheetRow > lastRow) {
+    throw AppError_("NOT_FOUND", "No flood-prone area at row " + rowIndex + ".");
+  }
+
+  const headers = sheet
+    .getRange(SHEET_HEADER_ROW, 1, 1, lastCol)
+    .getValues()[0]
+    .map(function (h) {
+      return String(h || "").trim();
+    });
+  const rowValues = sheet.getRange(targetSheetRow, 1, 1, lastCol).getValues()[0];
+
+  const row = { sheetRow: targetSheetRow, dataRowIndex: rowIndex };
+  headers.forEach(function (header, colIndex) {
+    if (header) row[header] = rowValues[colIndex];
+  });
+
+  if (!toTrimmedString_(row["Region"])) {
+    const regionColumnIndex = headers.indexOf("Region");
+    if (regionColumnIndex >= 0) {
+      const regionValues = sheet.getRange(SHEET_DATA_START_ROW, regionColumnIndex + 1, targetSheetRow - SHEET_DATA_START_ROW + 1, 1).getValues();
+      for (let i = regionValues.length - 1; i >= 0; i--) {
+        const value = toTrimmedString_(regionValues[i][0]);
+        if (value) {
+          row["Region"] = value;
+          break;
+        }
+      }
+    }
+  }
+
+  return serializeRow_(row);
 }
 
 function action_getFloodProneAreaFacets_(e) {
