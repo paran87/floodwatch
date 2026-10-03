@@ -20,7 +20,7 @@ function AreaTableImpl({
 
   return (
     // No wrapping overflow container: the parent scroll region owns both scroll axes so the sticky header works.
-    <table className="w-full min-w-[720px] divide-y divide-slate-200 text-sm">
+    <table className="w-full min-w-[660px] divide-y divide-slate-200 text-xs">
       <Thead>
         <tr>
           <Th className="sticky top-0 z-10">Province</Th>
@@ -39,16 +39,16 @@ function AreaTableImpl({
             aria-selected={item.rowIndex === selectedId}
             className={`${onSelect ? "cursor-pointer" : ""} ${item.rowIndex === selectedId ? "bg-brand-50" : "hover:bg-navy-50"}`}
           >
-            <Td>{item.province}</Td>
-            <Td>{item.municipalityCity}</Td>
-            <Td>{item.barangay}</Td>
-            <Td>
+            <Td className="whitespace-nowrap">{item.province}</Td>
+            <Td className="whitespace-nowrap">{item.municipalityCity}</Td>
+            <Td className="min-w-[110px]">{item.barangay}</Td>
+            <Td className="min-w-[140px]">
               <Link href={`/flood-prone-areas/${item.rowIndex}`} onClick={(e) => e.stopPropagation()} className="font-medium text-navy-700 hover:underline">
                 {item.roadNameWaterways}
               </Link>
             </Td>
-            <Td>{item.deo}</Td>
-            <Td>{item.location ? <LocationBadge accuracy={item.location.accuracy} /> : null}</Td>
+            <Td className="whitespace-nowrap">{item.deo}</Td>
+            <Td className="whitespace-nowrap">{item.location ? <LocationBadge accuracy={item.location.accuracy} /> : null}</Td>
           </tr>
         ))}
       </Tbody>

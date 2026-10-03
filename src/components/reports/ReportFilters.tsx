@@ -11,7 +11,7 @@ export function ReportFilters({ value, onChange }: { value: ReportFiltersType; o
   }
 
   return (
-    <div className="grid grid-cols-1 gap-2 rounded-xl border border-t-[3px] border-slate-200 border-t-navy-700 bg-white p-3 shadow-sm sm:grid-cols-3 sm:gap-3">
+    <div className="grid grid-cols-1 gap-1.5 rounded-xl border border-t-[3px] border-slate-200 border-t-navy-700 bg-white p-2 shadow-sm sm:grid-cols-3 sm:gap-2">
       <Input placeholder="Search by title…" value={value.search ?? ""} onChange={(e) => set("search", e.target.value)} />
       <Select value={value.status ?? ""} onChange={(e) => set("status", e.target.value as ReportFiltersType["status"])}>
         <option value="">All statuses</option>
