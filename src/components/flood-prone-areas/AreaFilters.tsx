@@ -16,7 +16,7 @@ export function AreaFilters({ value, onChange, facets }: AreaFiltersProps) {
   }
 
   return (
-    <div className="grid grid-cols-3 gap-2 rounded-xl border border-t-[3px] border-slate-200 border-t-navy-700 bg-white p-2 shadow-sm md:gap-3 md:p-3 lg:grid-cols-5">
+    <div className="grid grid-cols-3 gap-1.5 rounded-xl border border-t-[3px] border-slate-200 border-t-navy-700 bg-white p-1.5 shadow-sm md:gap-2 md:p-2 lg:grid-cols-5">
       <Input
         placeholder="Search road, barangay, municipality…"
         value={value.search ?? ""}

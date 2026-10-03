@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { ChevronUp } from "lucide-react";
 
-const HANDLE_HEIGHT = 56;
+const HANDLE_HEIGHT = 48;
 const HALF = 0.45;
 const FULL = 0.92;
 /** Past this share of the parent, a map selection pulls the sheet back down so the pin isn't hidden. */
@@ -145,16 +145,16 @@ export function BottomSheet({
         onPointerCancel={onPointerUp}
         role="button"
         aria-label="Drag up or down to show or hide the list"
-        className="flex shrink-0 cursor-grab touch-none select-none flex-col items-center gap-1 border-b border-slate-100 px-4 pb-2 pt-2 active:cursor-grabbing md:cursor-default md:flex-row md:justify-between md:pt-2"
+        className="flex shrink-0 cursor-grab touch-none select-none flex-col items-center gap-1 border-b border-slate-100 px-3 pb-1.5 pt-1.5 active:cursor-grabbing md:cursor-default md:flex-row md:justify-between md:pt-1.5"
         style={{ minHeight: HANDLE_HEIGHT }}
       >
         <span className="h-1.5 w-10 rounded-full bg-navy-200 md:hidden" aria-hidden />
-        <span className="flex items-center gap-1 font-mono text-[11px] font-medium uppercase tracking-wider text-navy-800 md:font-display md:text-xl md:font-bold md:tracking-wide">
+        <span className="flex items-center gap-1 font-mono text-[11px] font-medium uppercase tracking-wider text-navy-800 md:font-display md:text-lg md:font-bold md:tracking-wide">
           <ChevronUp className="h-3.5 w-3.5 md:hidden" aria-hidden />
           {title}
         </span>
       </div>
-      {actions ? <div className="shrink-0 border-b border-slate-100 px-3 py-1.5">{actions}</div> : null}
+      {actions ? <div className="shrink-0 border-b border-slate-100 px-2.5 py-1">{actions}</div> : null}
       <div className="scrollbar-visible min-h-0 flex-1 overflow-auto overscroll-contain">{children}</div>
     </div>
   );

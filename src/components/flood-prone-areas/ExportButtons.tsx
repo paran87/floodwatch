@@ -26,14 +26,14 @@ export function ExportButtons({ items, filterSummary, disabled }: { items: Flood
   }
 
   return (
-    <div className="flex items-center gap-2">
-      {error ? <span className="mr-auto text-xs text-red-600">{error}</span> : <span className="mr-auto text-[11px] text-slate-500">Download {items.length.toLocaleString()} listed records</span>}
+    <div className="flex items-center gap-1.5">
+      {error ? <span className="mr-auto text-xs text-red-600">{error}</span> : <span className="mr-auto text-[10px] text-slate-500">Download {items.length.toLocaleString()} listed records</span>}
       <Button size="sm" variant="secondary" disabled={disabled || empty || busy !== null} onClick={() => run("csv")}>
-        {busy === "csv" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Download className="h-4 w-4" aria-hidden />}
+        {busy === "csv" ? <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden /> : <Download className="h-3.5 w-3.5" aria-hidden />}
         CSV
       </Button>
       <Button size="sm" variant="accent" disabled={disabled || empty || busy !== null} onClick={() => run("pdf")}>
-        {busy === "pdf" ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <FileText className="h-4 w-4" aria-hidden />}
+        {busy === "pdf" ? <Loader2 className="h-3.5 w-3.5 animate-spin" aria-hidden /> : <FileText className="h-3.5 w-3.5" aria-hidden />}
         PDF
       </Button>
     </div>
