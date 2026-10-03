@@ -351,6 +351,15 @@ state — see `src/components/maps/MapUnavailable.tsx` and
   copies the worker into `public/maplibre/` (gitignored, generated) on
   `postinstall`/`predev`/`prebuild`, and `FloodMap` points the library at it
   with `setWorkerUrl()`. Don't remove either half.
+- Phone layout robustness (`BottomSheet.tsx`, `ViewportHeight.tsx`, `AppShell`):
+  phones change the visible height without telling the page (browser toolbars
+  appear, a background tab is resumed), so the list sheet's height is stored
+  as a **fraction** of its container (or "hidden"), never in pixels, and is
+  capped with `max-height: 92%`; a stored pixel height once became taller than
+  the space left and pushed the handle, filters and map off-screen. The fill
+  layout's `main` uses `overflow-clip` (not `hidden`) so a focused element can
+  never scroll it out of place, and `--app-h` is also recomputed on
+  `visibilitychange`/`focus`/`pageshow`. Don't reintroduce pixel heights here.
 - Base maps (`src/components/maps/baseLayers.ts`) are key-less raster tile
   services — OpenStreetMap, Esri World Imagery (+ labels), OpenTopoMap, CARTO
   Light — each with its required attribution. They are fair-use services, not

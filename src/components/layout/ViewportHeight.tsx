@@ -28,11 +28,15 @@ export function ViewportHeight() {
     window.addEventListener("resize", update);
     window.addEventListener("orientationchange", update);
     window.addEventListener("pageshow", update);
+    window.addEventListener("focus", update);
+    document.addEventListener("visibilitychange", update);
     return () => {
       vv?.removeEventListener("resize", update);
       window.removeEventListener("resize", update);
       window.removeEventListener("orientationchange", update);
       window.removeEventListener("pageshow", update);
+      window.removeEventListener("focus", update);
+      document.removeEventListener("visibilitychange", update);
     };
   }, []);
 

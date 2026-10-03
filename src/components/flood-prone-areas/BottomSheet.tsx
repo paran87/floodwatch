@@ -25,7 +25,18 @@ export type SheetSnap = "hidden" | "half" | "full";
  * state), coalesced to one write per frame. Re-rendering the page on every
  * pointer move would re-render the whole table; the height is only
  * committed to state and reported to the parent on release.
+ *
+ * The settled height is remembered as a FRACTION of the available space
+ * (or "hidden"), never as pixels. Phones change the visible height behind
+ * the page's back (browser toolbars appearing, a tab being resumed), and a
+ * stored pixel height then ended up taller than the space it lived in,
+ * pushing the handle, the filters and the map off-screen. A percentage
+ * follows the space automatically, a CSS max-height caps it as a safety
+ * net, and a size observer keeps the map's offset in step.
  */
+type Layout = "default" | "hidden" | number; // number = fraction of the parent (0–FULL)
+
+const cssHeight = (layout: Layout) => (layout === "hidden" ? `${HANDLE_HEIGHT}px` : layout === "default" ? `${HALF * 100}%` : `${layout * 100}%`);
 export function BottomSheet({
   title,
   actions,
@@ -43,7 +54,8 @@ export function BottomSheet({
   snapRequest?: { snap: SheetSnap; nonce: number };
 }) {
   const panelRef = useRef<HTMLDivElement>(null);
-  const [height, setHeight] = useState<number | null>(null); // null → CSS default (HALF of parent)
+  const [layout, setLayout] = useState<Layout>("default");
+  const layoutRef = useRef<Layout>("default");
   const drag = useRef<{ startY: number; startHeight: number; moved: boolean } | null>(null);
   const pendingHeight = useRef(0);
   const frame = useRef<number | null>(null);
@@ -54,26 +66,36 @@ export function BottomSheet({
 
   const writeHeight = (h: number) => panelRef.current?.style.setProperty("--sheet-h", `${h}px`);
 
+  /** Height in px the current layout occupies in the current space. */
+  const layoutPx = (l: Layout) => (l === "hidden" ? HANDLE_HEIGHT : Math.round(parentHeight() * (l === "default" ? HALF : l)));
+
   const report = useCallback((h: number) => onHeightChange?.(isOverlay() ? h : 0), [onHeightChange]);
 
+  /** Stores a settled pixel height as a fraction of the space (or "hidden") and reports it. */
   const settle = useCallback(
-    (h: number) => {
-      writeHeight(h);
-      setHeight(h);
-      report(h);
+    (px: number) => {
+      const parent = parentHeight();
+      const next: Layout = parent <= 0 || px <= HANDLE_HEIGHT + 1 ? "hidden" : Math.min(FULL, px / parent);
+      layoutRef.current = next;
+      setLayout(next);
+      // React only rewrites the style when `layout` changed; the drag wrote raw pixels, so always set the final value.
+      panelRef.current?.style.setProperty("--sheet-h", cssHeight(next));
+      report(layoutPx(next));
     },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [report],
   );
 
+  // Track the available space: whenever it changes (toolbars, resume, rotation) the percentage height follows by itself,
+  // and the map's bottom offset is re-reported.
   useEffect(() => {
-    report(panelRef.current?.offsetHeight ?? 0);
-    const onResize = () => {
-      setHeight(null);
-      panelRef.current?.style.removeProperty("--sheet-h");
-      report(panelRef.current?.offsetHeight ?? 0);
-    };
-    window.addEventListener("resize", onResize);
-    return () => window.removeEventListener("resize", onResize);
+    const parent = panelRef.current?.parentElement;
+    report(layoutPx(layoutRef.current));
+    if (!parent || typeof ResizeObserver === "undefined") return;
+    const observer = new ResizeObserver(() => report(layoutPx(layoutRef.current)));
+    observer.observe(parent);
+    return () => observer.disconnect();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [report]);
 
   useEffect(() => {
@@ -135,8 +157,8 @@ export function BottomSheet({
   return (
     <div
       ref={panelRef}
-      style={{ ["--sheet-h" as string]: height === null ? `${HALF * 100}%` : `${height}px` }}
-      className="absolute inset-x-0 bottom-0 z-[1100] flex h-[var(--sheet-h)] flex-col overflow-hidden rounded-t-xl border border-t-2 border-slate-200 border-t-navy-700 md:border-t-[3px] bg-white shadow-[0_-4px_16px_rgba(11,42,107,0.18)] transition-[height] duration-200 data-[dragging=true]:transition-none md:static md:z-auto md:order-1 md:h-auto md:min-h-0 md:w-[55%] md:flex-none md:rounded-xl md:shadow-none md:transition-none xl:w-1/2"
+      style={{ ["--sheet-h" as string]: cssHeight(layout) }}
+      className="absolute inset-x-0 bottom-0 z-[1100] flex h-[var(--sheet-h)] max-h-[92%] flex-col overflow-clip rounded-t-xl border border-t-2 border-slate-200 border-t-navy-700 md:border-t-[3px] bg-white shadow-[0_-4px_16px_rgba(11,42,107,0.18)] transition-[height] duration-200 data-[dragging=true]:transition-none md:static md:z-auto md:order-1 md:h-auto md:max-h-none md:min-h-0 md:w-[55%] md:flex-none md:rounded-xl md:shadow-none md:transition-none xl:w-1/2"
     >
       <div
         onPointerDown={onPointerDown}
