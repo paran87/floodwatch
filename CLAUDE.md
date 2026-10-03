@@ -268,9 +268,19 @@ minutes, served stale for up to 30 while a refresh runs in the background
 locate route patches it (`patchArea`) and the batch geocoder invalidates it.
 If Supabase is unreachable the listing still succeeds without locations
 (and retries after 20 s) — same lesson as the `/api/dashboard` fix. The
-snapshot is per server instance, so a cold start still pays one full Apps
-Script read; making that faster means optimizing the Apps Script action
-(e.g. its own CacheService), which needs a `clasp push` + `redeploy`.
+in-memory snapshot is per server instance, so beneath it sits a second,
+**shared** layer: the raw Sheet read is wrapped in `unstable_cache` (Next's
+Data Cache — shared by all serverless instances and kept across deployments),
+stored gzipped + base64 to stay far below the cache's 2 MB item limit, with a
+5-minute revalidate that serves the old copy instantly and refreshes behind it
+(`SHEET_CACHE_VERSION` in `areasCache.ts` must be bumped if the shape of an
+Apps Script row ever changes). Why it matters: Apps Script is slow and
+erratic — a trivial call took 1.3–1.8 s normally and 18 s once, and a full read
+is much heavier — so without this every cold instance and every deploy made a
+visitor wait on it. Only the very first read ever (or after the cache is
+purged) still pays it. Making that read itself faster means optimizing the
+Apps Script action (e.g. its own CacheService), which needs a `clasp push` +
+`redeploy`.
 
 **Dashboard:** `/api/dashboard` is computed by `src/lib/dashboardStats.ts`
 from the same snapshot (so it never pays its own Apps Script read, and
@@ -282,6 +292,11 @@ counts the post-overlay accuracy, so it matches the list's badges. The
 Apps Script `getDashboardStats` action still exists but Next.js no longer
 calls it. The browser keeps the last numbers in memory and `localStorage`
 and shows them instantly (with an "Updating…" note) while it refreshes.
+
+**Remembered list:** the browser also keeps the last list in `localStorage`
+(`floodwatch.areas.v1`), so a reload or new visit paints real rows
+immediately — marked "updating…" in the list header — while the fresh copy
+loads. A failed refresh doesn't replace visible rows with an error.
 
 **Client loading:** the browser fetches the whole list once
 (`useFloodProneAreas`) and filters/searches it locally with the shared
