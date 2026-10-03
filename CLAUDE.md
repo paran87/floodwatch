@@ -178,13 +178,21 @@ information gets a `municipality`-level accuracy classification and an
 approximate point — the UI shows it as approximate (amber marker, "needs
 review" badge), never plotted as if it were exact.
 
-**Geocoding provider: Nominatim (OpenStreetMap)**, chosen over Google's
-Geocoding API because it needs no API key or billing-enabled GCP project
-(the same custom-GCP-project requirement that blocked `clasp run` — see
-§11). Tradeoff: its usage policy caps requests at 1/sec and requires a
-descriptive User-Agent, and rural/remote-area road coverage is
-inconsistent (confirmed directly: several Davao Oriental road segments
-had no OSM match at all and correctly fell back to municipality-level).
+**Geocoding providers: Photon first, Nominatim as fallback** — both
+key-less OpenStreetMap geocoders, chosen over Google's Geocoding API because
+neither needs an API key or billing-enabled GCP project (the same
+custom-GCP-project requirement that blocked `clasp run` — see §11).
+Photon (komoot's public instance) has no 1-request-per-second rule and was
+~2× faster per request, and on 37 real sheet rows it found a
+province-confirmed road/barangay match for 35 vs 30 for Nominatim. Any Photon
+error or timeout falls back to Nominatim for that query (and after 3
+failures Photon is skipped for 2 minutes); `GEOCODER=nominatim` turns Photon
+off. Nominatim's usage policy caps requests at 1/sec and requires a
+descriptive User-Agent — `src/lib/geocoding.ts` keeps one serial slot queue
+so that holds even under concurrency. Both are best-effort public services:
+keep to about one lookup per user click. Rural/remote-area road coverage is
+inconsistent (several Davao Oriental road segments had no OSM match at all
+and correctly fell back to municipality-level).
 Apps Script's `LocationResolver.js callGeocodingProvider_` seam is
 **unused** — see "Where geocoding actually runs" below for why.
 
@@ -199,9 +207,9 @@ Apps Script's job is strictly "Sheets gateway."
 src/app/api/admin/geocode (POST, shared-secret gated)
    → getFloodProneAreas()              Apps Script — candidate rows + their query
    → getCachedLocations()              Supabase — skip anything already done
-   → buildGeocodingQueries()           src/lib/geocoding.ts — road→barangay→municipality→province→region fallback tiers
-   → geocodeWithFallback()             src/lib/geocoding.ts — Nominatim, 1 req/sec, tries tiers until one hits
-   → classifyGeocodeResult()           src/lib/geocoding.ts — decides resolved vs needs_review
+   → buildGeocodingTiers()             src/lib/geocodeQuery.ts — road→barangay→municipality→province→region tiers, each with its own accuracy; the Sheet's decoration ("(S00322PN)", "Multiple /", "A, B & C") is stripped from the QUERY only
+   → geocodeWithFallback()             src/lib/geocoding.ts — Photon then Nominatim, cached per query, tries tiers until one hits
+   → classifyGeocodeResult()           src/lib/geocoding.ts — decides resolved vs needs_review (province must match, and for road/barangay tiers so must the municipality; "NCR" = "Metro Manila")
    → upsertLocationCache() / enqueueLocationReview()   Supabase — persists the outcome
 ```
 
@@ -221,8 +229,23 @@ trusted. Confirmed with a real case: a mismatched/low-specificity result
 correctly produced `"Only municipality-level location information was
 specific enough to geocode..."` rather than a false "resolved."
 
-**Rate limits & errors:** `geocodeWithFallback` throttles to ≤1 req/sec
-across all tiers tried (shared module-level timestamp). An HTTP 429 stops
+**Locate-on-click speed (`POST /api/flood-prone-areas/[rowIndex]/locate`):**
+measured on 22 realistic clicks against the real providers, median 2.4 s →
+0.43 s (p90 3.5 s → 0.56 s). What makes it fast: already-located rows are
+answered from the cached snapshot with no geocoder or database call; lookups
+are cached by query string (including "no result") and shared in flight, so
+sibling rows in the same barangay/municipality reuse the broad tiers; the
+Supabase writes (cache, review queue, audit log, in parallel) happen in
+`after()` and the response is built locally from the outcome
+(`applyOutcome`) instead of re-reading the database; duplicate clicks share
+one lookup and an abandoned one is cancelled. In the browser, picking an
+unlocated row immediately shows a temporary, labelled-approximate pin from
+already-located neighbours (`src/lib/approximateLocation.ts`; never saved,
+dropped when the precise result arrives) and cancels the previous lookup.
+
+**Rate limits & errors:** all Nominatim calls share one serial queue that
+spaces request starts ≥1.1 s apart (the old timestamp throttle let
+concurrent callers fire together). An HTTP 429 stops
 the whole batch immediately (not just that record) rather than continuing
 to hammer a provider that just rejected a request; other errors are
 logged per-record and marked `failed` (retried on a future run) without
