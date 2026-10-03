@@ -12,7 +12,7 @@ export default function LoginPage() {
           className="mt-6"
           action={async () => {
             "use server";
-            await signIn("google", { redirectTo: "/dashboard" });
+            await signIn("google", { redirectTo: "/flood-prone-areas" });
           }}
         >
           <Button type="submit" className="w-full">
