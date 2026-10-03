@@ -11,7 +11,7 @@ export function BottomNav() {
   return (
     <nav
       aria-label="Primary"
-      className="grid shrink-0 grid-cols-3 border-t-[3px] border-t-navy-900 bg-white shadow-[0_-4px_12px_rgba(11,42,107,0.08)] pb-[env(safe-area-inset-bottom)] md:hidden"
+      className="grid shrink-0 grid-cols-3 border-t-2 border-t-navy-900 bg-white shadow-[0_-4px_12px_rgba(11,42,107,0.08)] pb-[env(safe-area-inset-bottom)] md:hidden"
     >
       {NAV_LINKS.map(({ href, label, icon: Icon }) => {
         const active = pathname === href || pathname.startsWith(`${href}/`);
@@ -20,9 +20,9 @@ export function BottomNav() {
             key={href}
             href={href}
             aria-current={active ? "page" : undefined}
-            className={`flex h-16 flex-col items-center justify-center gap-1 text-[11px] font-medium ${active ? "text-brand-500" : "text-navy-700"}`}
+            className={`flex h-10 flex-col items-center justify-center gap-px text-[9px] leading-none font-medium ${active ? "text-brand-500" : "text-navy-700"}`}
           >
-            <Icon className="h-5 w-5" aria-hidden />
+            <Icon className="h-4 w-4" aria-hidden />
             <span className="max-w-full truncate px-1 font-semibold">{label}</span>
           </Link>
         );
