@@ -1,6 +1,6 @@
 import "server-only";
 import { getSupabaseClient } from "./supabase";
-import type { ActivityEventType, FloodReport, ReportFilters } from "./types";
+import type { ActivityEventType, FloodReport, ReportFilters, ReportSeverity } from "./types";
 
 /**
  * Server-only data access for everything that lives in Supabase (the
@@ -86,6 +86,24 @@ export async function logActivity(
     target_id: targetId,
     message,
   });
+}
+
+/** Reports that still need attention: not yet resolved or dismissed. */
+const UNRESOLVED_STATUSES = ["open", "investigating"] as const;
+
+/** Unresolved report count, broken down by severity. Counted in the database (parallel head queries), not by fetching rows. */
+export async function getReportStats(): Promise<{ open: number; bySeverity: Record<ReportSeverity, number> }> {
+  const supabase = getSupabaseClient();
+  const severities: ReportSeverity[] = ["low", "moderate", "severe", "critical"];
+  const count = async (severity?: ReportSeverity) => {
+    let query = supabase.from("reports").select("*", { count: "exact", head: true }).in("status", [...UNRESOLVED_STATUSES]);
+    if (severity) query = query.eq("severity", severity);
+    const { count: n, error } = await query;
+    if (error) throw new Error(error.message);
+    return n ?? 0;
+  };
+  const [open, ...bySeverityCounts] = await Promise.all([count(), ...severities.map((s) => count(s))]);
+  return { open, bySeverity: Object.fromEntries(severities.map((s, i) => [s, bySeverityCounts[i]])) as Record<ReportSeverity, number> };
 }
 
 export async function getPendingLocationReviewCount(): Promise<number> {

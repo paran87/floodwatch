@@ -272,6 +272,17 @@ snapshot is per server instance, so a cold start still pays one full Apps
 Script read; making that faster means optimizing the Apps Script action
 (e.g. its own CacheService), which needs a `clasp push` + `redeploy`.
 
+**Dashboard:** `/api/dashboard` is computed by `src/lib/dashboardStats.ts`
+from the same snapshot (so it never pays its own Apps Script read, and
+whichever page loads first warms the other), plus Supabase counts — pending
+location reviews and **open reports (= open + investigating, i.e. not
+resolved/dismissed)** — read in parallel, cached 30 s, refreshed in the
+background; `null`, never 0, if Supabase is down. "Location Resolution" now
+counts the post-overlay accuracy, so it matches the list's badges. The
+Apps Script `getDashboardStats` action still exists but Next.js no longer
+calls it. The browser keeps the last numbers in memory and `localStorage`
+and shows them instantly (with an "Updating…" note) while it refreshes.
+
 **Client loading:** the browser fetches the whole list once
 (`useFloodProneAreas`) and filters/searches it locally with the shared
 `src/lib/areaFilter.ts` — no request per keystroke or dropdown change.
@@ -346,7 +357,7 @@ Code.js (doGet/doPost router)
   (`Utils.js readSheetAsObjects_`).
 - Only **read** actions are wired up today
   (`getFloodProneAreas`, `getFloodProneArea`, `getFloodProneAreaFacets`,
-  `getDashboardStats`). Write actions are out of scope until explicitly
+  `getDashboardStats` — the last is no longer called by Next.js, see §8). Write actions are out of scope until explicitly
   approved — see §14.
 - `Reports.js` and `Users.js` are intentionally near-empty: reports and
   user roles live in Supabase, not in this sheet. Don't add sheet-reading
