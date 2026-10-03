@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useDeferredValue, useMemo, useState } from "react";
+import { useCallback, useDeferredValue, useMemo, useRef, useState } from "react";
 import dynamic from "next/dynamic";
 import { AppShell } from "@/components/layout/AppShell";
 import { AreaFilters } from "@/components/flood-prone-areas/AreaFilters";
@@ -12,6 +12,7 @@ import { BottomSheet, type SheetSnap } from "@/components/flood-prone-areas/Bott
 import { useFloodProneAreas } from "@/hooks/useFloodProneAreas";
 import { toMapMarker } from "@/components/maps/types";
 import { computeFacets, filterAreas } from "@/lib/areaFilter";
+import { approximateFromNeighbours } from "@/lib/approximateLocation";
 import type { FloodProneArea, FloodProneAreaFilters } from "@/lib/types";
 
 // The map library needs WebGL and `window` — never render it during SSR.
@@ -37,27 +38,74 @@ export default function FloodProneAreasPage() {
   const [snapRequest, setSnapRequest] = useState<{ snap: SheetSnap; nonce: number }>({ snap: "half", nonce: 0 });
   const items = useMemo(() => fetchedItems.map((item) => located[item.rowIndex] ?? item), [fetchedItems, located]);
 
-  const handleSelect = useCallback(async (area: FloodProneArea) => {
-    setSelectedId(area.rowIndex);
-    setLocateError(null);
-    // On mobile, make sure the sheet isn't covering most of the map.
-    setSnapRequest((r) => ({ snap: "half", nonce: r.nonce + 1 }));
-    if (toMapMarker(located[area.rowIndex] ?? area)) return;
+  // The precise lookup can take a moment. Meanwhile a temporary, clearly-labelled pin from already-located neighbours is shown.
+  const [approx, setApprox] = useState<{ rowIndex: number; latitude: number; longitude: number; basis: "municipality" | "province"; title: string; subtitle: string } | null>(null);
+  const locateAbort = useRef<AbortController | null>(null);
 
-    setLocating(true);
-    try {
-      const res = await fetch(`/api/flood-prone-areas/${area.rowIndex}/locate`, { method: "POST" });
-      const json = await res.json();
-      if (!json.success) throw new Error(json.message);
-      setLocated((prev) => ({ ...prev, [area.rowIndex]: json.data }));
-    } catch (err) {
-      setLocateError(err instanceof Error ? err.message : "Could not locate this area.");
-    } finally {
-      setLocating(false);
-    }
-  }, [located]);
+  const handleSelect = useCallback(
+    async (area: FloodProneArea) => {
+      setSelectedId(area.rowIndex);
+      setLocateError(null);
+      // On mobile, make sure the sheet isn't covering most of the map.
+      setSnapRequest((r) => ({ snap: "half", nonce: r.nonce + 1 }));
 
-  const markers = useMemo(() => items.map(toMapMarker).filter((m): m is NonNullable<typeof m> => m !== null), [items]);
+      // Picking another row abandons the previous lookup, so the server doesn't queue this one behind it.
+      locateAbort.current?.abort();
+      if (toMapMarker(located[area.rowIndex] ?? area)) {
+        setApprox(null);
+        setLocating(false);
+        return;
+      }
+
+      const near = approximateFromNeighbours(area, allItems);
+      setApprox(
+        near
+          ? {
+              rowIndex: area.rowIndex,
+              ...near,
+              title: area.roadNameWaterways || area.barangay,
+              subtitle: [area.barangay, area.municipalityCity, area.province].filter(Boolean).join(", "),
+            }
+          : null,
+      );
+
+      const controller = new AbortController();
+      locateAbort.current = controller;
+      setLocating(true);
+      try {
+        const res = await fetch(`/api/flood-prone-areas/${area.rowIndex}/locate`, { method: "POST", signal: controller.signal });
+        if (res.status === 204) return; // the server saw us move on
+        const json = await res.json();
+        if (!json.success) throw new Error(json.message);
+        setLocated((prev) => ({ ...prev, [area.rowIndex]: json.data }));
+        setApprox(null);
+      } catch (err) {
+        if (controller.signal.aborted) return;
+        setApprox(null);
+        setLocateError(err instanceof Error ? err.message : "Could not locate this area.");
+      } finally {
+        if (locateAbort.current === controller) setLocating(false);
+      }
+    },
+    [located, allItems],
+  );
+
+  const markers = useMemo(() => {
+    const real = items.map(toMapMarker).filter((m): m is NonNullable<typeof m> => m !== null);
+    if (!approx || approx.rowIndex !== selectedId || real.some((m) => m.id === approx.rowIndex)) return real;
+    return [
+      ...real,
+      {
+        id: approx.rowIndex,
+        latitude: approx.latitude,
+        longitude: approx.longitude,
+        accuracy: approx.basis,
+        isProposed: true,
+        title: approx.title,
+        subtitle: `${approx.subtitle} — approximate, locating precisely…`,
+      },
+    ];
+  }, [items, approx, selectedId]);
   const filterSummary = useMemo(
     () =>
       [
@@ -84,7 +132,7 @@ export default function FloodProneAreasPage() {
               {!loading && !error && markers.length === 0 ? (
                 <p className="rounded-md bg-white/95 px-2.5 py-1 text-slate-600 shadow">No area here is located yet — pick one in the list to find it on the map.</p>
               ) : null}
-              {locating ? <p className="rounded-md bg-white/95 px-2.5 py-1 text-slate-600 shadow">Locating on map…</p> : null}
+              {locating ? <p className="rounded-md bg-white/95 px-2.5 py-1 text-slate-600 shadow">{approx ? "Locating precisely…" : "Locating on map…"}</p> : null}
               {locateError ? <p className="rounded-md bg-white/95 px-2.5 py-1 text-red-600 shadow">{locateError}</p> : null}
               {selectedMissing ? (
                 <p className="rounded-md bg-white/95 px-2.5 py-1 text-brand-600 shadow">No map location could be found for the selected area.</p>
