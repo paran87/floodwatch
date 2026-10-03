@@ -10,12 +10,12 @@ export function StatsCards({ stats }: { stats: DashboardStats }) {
   ];
 
   return (
-    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="grid grid-cols-2 gap-2 md:gap-4 lg:grid-cols-4">
       {cards.map((card) => (
         <Card key={card.label} className="border-t-brand-500">
-          <CardBody>
-            <p className="font-mono text-[11px] font-medium uppercase tracking-wider text-navy-700">{card.label}</p>
-            <p className="mt-1 font-display text-5xl font-bold leading-none text-brand-500">{card.value === null ? "—" : card.value.toLocaleString()}</p>
+          <CardBody className="px-2 py-1.5 md:px-4 md:py-3">
+            <p className="font-mono text-[8px] font-medium uppercase leading-tight tracking-wider md:leading-normal text-navy-700 md:text-[11px]">{card.label}</p>
+            <p className="mt-0.5 font-display text-2xl font-bold leading-none text-brand-500 md:mt-1 md:text-5xl">{card.value === null ? "—" : card.value.toLocaleString()}</p>
           </CardBody>
         </Card>
       ))}
