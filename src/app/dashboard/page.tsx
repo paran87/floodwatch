@@ -16,7 +16,7 @@ export default function DashboardPage() {
       {loading ? <DashboardSkeleton /> : null}
       {error ? <ErrorState message={error} onRetry={reload} /> : null}
       {stats ? (
-        <div className="space-y-6">
+        <div className="space-y-2 md:space-y-6">
           {updating ? (
             <p className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-navy-700" role="status">
               <span className="h-3 w-3 animate-spin rounded-full border-2 border-navy-100 border-t-brand-500" aria-hidden />
@@ -24,7 +24,7 @@ export default function DashboardPage() {
             </p>
           ) : null}
           <StatsCards stats={stats} />
-          <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
+          <div className="grid grid-cols-1 gap-2 md:gap-6 lg:grid-cols-2">
             <RegionBreakdown stats={stats} />
             <LocationResolutionBreakdown stats={stats} />
           </div>

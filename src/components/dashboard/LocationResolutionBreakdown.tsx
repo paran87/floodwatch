@@ -5,15 +5,15 @@ import type { DashboardStats } from "@/lib/types";
 export function LocationResolutionBreakdown({ stats }: { stats: DashboardStats }) {
   return (
     <Card>
-      <CardHeader>
-        <CardTitle>Location Resolution</CardTitle>
+      <CardHeader className="px-2 py-1 md:px-4 md:py-3">
+        <CardTitle className="text-xs md:text-lg">Location Resolution</CardTitle>
       </CardHeader>
-      <CardBody>
+      <CardBody className="px-2 py-0.5 md:px-4 md:py-3">
         <ul className="divide-y divide-slate-100">
           {LOCATION_RESOLUTION_HIERARCHY.map((tier) => (
-            <li key={tier} className="flex items-center justify-between py-2 text-sm">
+            <li key={tier} className="flex items-center justify-between py-0.5 text-[10px] md:py-2 md:text-sm">
               <span className="text-slate-600">{LOCATION_ACCURACY_LABELS[tier]}</span>
-              <span className="font-display text-lg font-bold text-navy-900">{(stats.locationResolution[tier] ?? 0).toLocaleString()}</span>
+              <span className="font-display text-sm font-bold text-navy-900 md:text-lg">{(stats.locationResolution[tier] ?? 0).toLocaleString()}</span>
             </li>
           ))}
         </ul>

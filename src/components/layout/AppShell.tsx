@@ -21,7 +21,7 @@ export function AppShell({ title, children, fill = false }: { title: string; chi
       <Sidebar />
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
         <Topbar title={title} />
-        <main className={fill ? "min-h-0 flex-1 overflow-hidden p-2 md:p-6" : "min-h-0 flex-1 overflow-y-auto p-4 md:p-6"}>{children}</main>
+        <main className={fill ? "min-h-0 flex-1 overflow-hidden p-2 md:p-6" : "min-h-0 flex-1 overflow-y-auto p-2 md:p-6"}>{children}</main>
       </div>
       <BottomNav />
     </div>
