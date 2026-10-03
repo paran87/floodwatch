@@ -21,6 +21,13 @@
   --font-mono: var(--font-plex-mono);
 }
 
+/* The shell scrolls inside `main`, never the document, so the page itself must never pan sideways. */
+html,
+body {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
 body {
   background: var(--color-surface);
   color: #0f172a;

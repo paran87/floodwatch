@@ -16,7 +16,10 @@ export function ViewportHeight() {
 
     function update() {
       if (vv && vv.scale > 1.01) return;
-      const height = Math.round(vv ? vv.height : window.innerHeight);
+      // Embedded (e.g. in the OKB Command Center iframe), visualViewport can report the
+      // top-level page's size rather than this frame's, so trust the frame's own height.
+      const embedded = window.self !== window.top;
+      const height = Math.round(vv && !embedded ? vv.height : window.innerHeight);
       root.style.setProperty("--app-h", `${height}px`);
     }
 
@@ -24,10 +27,12 @@ export function ViewportHeight() {
     vv?.addEventListener("resize", update);
     window.addEventListener("resize", update);
     window.addEventListener("orientationchange", update);
+    window.addEventListener("pageshow", update);
     return () => {
       vv?.removeEventListener("resize", update);
       window.removeEventListener("resize", update);
       window.removeEventListener("orientationchange", update);
+      window.removeEventListener("pageshow", update);
     };
   }, []);
 
