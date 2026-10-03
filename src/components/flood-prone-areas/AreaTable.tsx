@@ -58,11 +58,11 @@ function AreaTableImpl({
 
   return (
     // No wrapping overflow container: the parent scroll region owns both scroll axes so the sticky header works.
-    <table ref={tableRef} className="w-full min-w-[660px] divide-y divide-slate-200 text-xs">
+    <table ref={tableRef} className="w-full min-w-[520px] divide-y divide-slate-200 text-[10px] leading-snug md:min-w-[660px] md:text-xs md:leading-normal">
       <Thead>
         <tr>
           {COLUMNS.map((name) => (
-            <Th key={name} className="sticky top-0 z-10">
+            <Th key={name} className="sticky top-0 z-10 px-1.5 py-1 text-[9px] md:px-2.5 md:py-1.5 md:text-[10px]">
               {name}
             </Th>
           ))}
@@ -76,16 +76,16 @@ function AreaTableImpl({
             aria-selected={item.rowIndex === selectedId}
             className={`${onSelect ? "cursor-pointer" : ""} ${item.rowIndex === selectedId ? "bg-brand-50" : "hover:bg-navy-50"}`}
           >
-            <Td className="whitespace-nowrap">{item.province}</Td>
-            <Td className="whitespace-nowrap">{item.municipalityCity}</Td>
-            <Td className="min-w-[110px]">{item.barangay}</Td>
-            <Td className="min-w-[140px]">
+            <Td className="whitespace-nowrap px-1.5 py-1 md:px-2.5 md:py-1.5">{item.province}</Td>
+            <Td className="whitespace-nowrap px-1.5 py-1 md:px-2.5 md:py-1.5">{item.municipalityCity}</Td>
+            <Td className="min-w-[84px] px-1.5 py-1 md:px-2.5 md:py-1.5 md:min-w-[110px]">{item.barangay}</Td>
+            <Td className="min-w-[100px] px-1.5 py-1 md:px-2.5 md:py-1.5 md:min-w-[140px]">
               <Link href={`/flood-prone-areas/${item.rowIndex}`} onClick={(e) => e.stopPropagation()} className="font-medium text-navy-700 hover:underline">
                 {item.roadNameWaterways}
               </Link>
             </Td>
-            <Td className="whitespace-nowrap">{item.deo}</Td>
-            <Td className="whitespace-nowrap">{item.location ? <LocationBadge accuracy={item.location.accuracy} /> : null}</Td>
+            <Td className="whitespace-nowrap px-1.5 py-1 md:px-2.5 md:py-1.5">{item.deo}</Td>
+            <Td className="whitespace-nowrap px-1.5 py-1 md:px-2.5 md:py-1.5">{item.location ? <LocationBadge accuracy={item.location.accuracy} /> : null}</Td>
           </tr>
         ))}
         {hasMore ? (
@@ -103,11 +103,11 @@ function AreaTableImpl({
 /** Placeholder shown while the dataset loads: same header and row rhythm as the real table, so nothing jumps. */
 export function AreaTableSkeleton() {
   return (
-    <table className="w-full min-w-[660px] divide-y divide-slate-200 text-xs" aria-busy="true" aria-label="Loading flood-prone areas">
+    <table className="w-full min-w-[520px] divide-y divide-slate-200 text-[10px] md:min-w-[660px] md:text-xs" aria-busy="true" aria-label="Loading flood-prone areas">
       <Thead>
         <tr>
           {COLUMNS.map((name) => (
-            <Th key={name} className="sticky top-0 z-10">
+            <Th key={name} className="sticky top-0 z-10 px-1.5 py-1 text-[9px] md:px-2.5 md:py-1.5 md:text-[10px]">
               {name}
             </Th>
           ))}

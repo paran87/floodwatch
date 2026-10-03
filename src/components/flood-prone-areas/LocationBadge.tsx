@@ -14,5 +14,5 @@ const toneByAccuracy: Record<LocationAccuracy, "success" | "info" | "warning" | 
 };
 
 export function LocationBadge({ accuracy }: { accuracy: LocationAccuracy }) {
-  return <Badge tone={toneByAccuracy[accuracy]}>{LOCATION_ACCURACY_LABELS[accuracy]}</Badge>;
+  return <Badge tone={toneByAccuracy[accuracy]} className="px-1.5 text-[9px] md:px-2 md:text-[10px]">{LOCATION_ACCURACY_LABELS[accuracy]}</Badge>;
 }
