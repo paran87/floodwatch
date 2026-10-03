@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getFloodProneArea, AppsScriptError } from "@/lib/apps-script";
-import { peekArea } from "@/lib/areasCache";
+import { patchArea, peekArea } from "@/lib/areasCache";
 import { overlayLocationCache } from "@/lib/overlayLocations";
 import { getCachedLocation } from "@/lib/locationCache";
 import { geocodeAndPersistArea } from "@/lib/geocodeArea";
@@ -38,6 +38,7 @@ export async function POST(_request: Request, { params }: { params: Promise<{ ro
     }
 
     const [data] = await overlayLocationCache([area]);
+    patchArea(data); // list views see the new location straight away, not after the next refresh
     return NextResponse.json<ApiResponse<typeof data>>({ success: true, data });
   } catch (err) {
     const message = err instanceof AppsScriptError ? err.message : "Could not locate this area.";

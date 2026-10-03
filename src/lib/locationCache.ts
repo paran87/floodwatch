@@ -68,6 +68,25 @@ export async function getCachedLocations(sheetRowIndexes: number[]): Promise<Map
   return map;
 }
 
+const PAGE = 1000;
+
+/**
+ * Every row of location_cache. The table only holds rows that have been
+ * geocoded, so this is far cheaper than a giant `IN (…1,763 ids…)` query —
+ * and PostgREST caps one response at 1,000 rows, so it is read in pages.
+ */
+export async function getAllCachedLocations(): Promise<Map<number, LocationCacheRow>> {
+  const supabase = getSupabaseClient();
+  const map = new Map<number, LocationCacheRow>();
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await supabase.from("location_cache").select("*").order("sheet_row_index").range(from, from + PAGE - 1);
+    if (error) throw new Error(error.message);
+    for (const row of (data ?? []) as LocationCacheDbRow[]) map.set(row.sheet_row_index, fromDbRow(row));
+    if ((data?.length ?? 0) < PAGE) break;
+  }
+  return map;
+}
+
 export async function getCachedLocation(sheetRowIndex: number): Promise<LocationCacheRow | null> {
   const map = await getCachedLocations([sheetRowIndex]);
   return map.get(sheetRowIndex) ?? null;
@@ -122,6 +141,29 @@ export async function getReviewQueueEntries(sheetRowIndexes: number[]): Promise<
     if (!map.has(row.sheet_row_index)) {
       map.set(row.sheet_row_index, { proposedLatitude: row.proposed_latitude, proposedLongitude: row.proposed_longitude, reason: row.reason });
     }
+  }
+  return map;
+}
+
+/** Latest pending review entry per row, for every row (paged, newest first). */
+export async function getAllReviewQueueEntries(): Promise<Map<number, LocationReviewEntry>> {
+  const supabase = getSupabaseClient();
+  const map = new Map<number, LocationReviewEntry>();
+  for (let from = 0; ; from += PAGE) {
+    const { data, error } = await supabase
+      .from("location_review_queue")
+      .select("sheet_row_index, proposed_latitude, proposed_longitude, reason")
+      .eq("status", "pending")
+      .order("created_at", { ascending: false })
+      .range(from, from + PAGE - 1);
+    if (error) throw new Error(error.message);
+    const rows = (data ?? []) as Array<{ sheet_row_index: number; proposed_latitude: number | null; proposed_longitude: number | null; reason: string }>;
+    for (const row of rows) {
+      if (!map.has(row.sheet_row_index)) {
+        map.set(row.sheet_row_index, { proposedLatitude: row.proposed_latitude, proposedLongitude: row.proposed_longitude, reason: row.reason });
+      }
+    }
+    if (rows.length < PAGE) break;
   }
   return map;
 }

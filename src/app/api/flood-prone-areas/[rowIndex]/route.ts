@@ -7,12 +7,15 @@ import type { ApiResponse } from "@/lib/types";
 export async function GET(_request: Request, { params }: { params: Promise<{ rowIndex: string }> }) {
   const { rowIndex } = await params;
   try {
-    const raw = peekArea(Number(rowIndex)) ?? (await getFloodProneArea(Number(rowIndex)));
-    let data = raw;
-    try {
-      [data] = await overlayLocationCache([raw]);
-    } catch (err) {
-      console.warn("[flood-prone-area] location cache overlay unavailable:", err instanceof Error ? err.message : err);
+    const cached = peekArea(Number(rowIndex));
+    let data = cached ?? (await getFloodProneArea(Number(rowIndex)));
+    if (!cached) {
+      // Not in the snapshot: this came straight from the Sheet, so merge the geocoded location in.
+      try {
+        [data] = await overlayLocationCache([data]);
+      } catch (err) {
+        console.warn("[flood-prone-area] location cache overlay unavailable:", err instanceof Error ? err.message : err);
+      }
     }
     return NextResponse.json<ApiResponse<typeof data>>({ success: true, data });
   } catch (err) {
