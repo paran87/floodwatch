@@ -3,6 +3,9 @@ import { AppsScriptError } from "@/lib/apps-script";
 import { queryAreas } from "@/lib/areasCache";
 import type { ApiResponse } from "@/lib/types";
 
+// A cold read of the whole sheet can take several seconds; allow it (and its retries) to finish.
+export const maxDuration = 60;
+
 export async function GET(request: NextRequest) {
   const params = request.nextUrl.searchParams;
   try {

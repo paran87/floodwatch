@@ -9,12 +9,12 @@ import { ErrorState } from "@/components/shared/ErrorState";
 import { useDashboardStats } from "@/hooks/useDashboardStats";
 
 export default function DashboardPage() {
-  const { stats, loading, updating, error } = useDashboardStats();
+  const { stats, loading, updating, error, reload } = useDashboardStats();
 
   return (
     <AppShell title="Dashboard">
       {loading ? <DashboardSkeleton /> : null}
-      {error ? <ErrorState message={error} /> : null}
+      {error ? <ErrorState message={error} onRetry={reload} /> : null}
       {stats ? (
         <div className="space-y-6">
           {updating ? (

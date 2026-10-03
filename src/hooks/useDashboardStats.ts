@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
+import { useCallback, useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import type { DashboardStats } from "@/lib/types";
 
 /** Within this window a remount reuses the loaded numbers without refetching. */
@@ -35,6 +35,16 @@ export function useDashboardStats() {
   const [fetched, setFetched] = useState<DashboardStats | null>(loaded?.stats ?? null);
   const [error, setError] = useState<string | null>(null);
   const [pending, setPending] = useState(() => !(loaded && Date.now() - loaded.at < REUSE_MS));
+  const [attempt, setAttempt] = useState(0);
+
+  /** Clears a failure and loads again (the "Try again" button). */
+  const reload = useCallback(() => {
+    loaded = null;
+    setFetched(null);
+    setError(null);
+    setPending(true);
+    setAttempt((n) => n + 1);
+  }, []);
 
   // null on the server and during hydration, so the first client render matches the server's.
   const storedRaw = useSyncExternalStore(subscribeToStorage, readStored, () => null);
@@ -68,7 +78,7 @@ export function useDashboardStats() {
       });
 
     return () => controller.abort();
-  }, []);
+  }, [attempt]);
 
   const stats = fetched ?? stored;
   return {
@@ -79,5 +89,6 @@ export function useDashboardStats() {
     updating: Boolean(stats) && pending,
     // A failed refresh only becomes an error if there are no numbers to keep showing.
     error: stats ? null : error,
+    reload,
   };
 }

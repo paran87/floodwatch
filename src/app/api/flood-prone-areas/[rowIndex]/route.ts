@@ -4,6 +4,9 @@ import { peekArea } from "@/lib/areasCache";
 import { overlayLocationCache } from "@/lib/overlayLocations";
 import type { ApiResponse } from "@/lib/types";
 
+// A cold read of the whole sheet can take several seconds; allow it (and its retries) to finish.
+export const maxDuration = 60;
+
 export async function GET(_request: Request, { params }: { params: Promise<{ rowIndex: string }> }) {
   const { rowIndex } = await params;
   try {
