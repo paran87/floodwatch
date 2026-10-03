@@ -57,3 +57,25 @@ body {
   font-size: 18px;
   padding: 2px 8px;
 }
+
+/* Phones: the smallest popup that is still easy to read. The `.maplibregl-popup` prefix raises specificity, because
+   MapLibre's own stylesheet loads after this one and would otherwise win ties on padding and the close button. */
+@media (max-width: 767px) {
+  .maplibregl-popup {
+    max-width: 190px !important;
+  }
+  .maplibregl-popup .maplibregl-popup-content {
+    border-radius: 6px;
+    padding: 4px 16px 4px 6px;
+    font-size: 10px;
+    box-shadow: 0 3px 10px rgba(11, 42, 107, 0.25);
+  }
+  .maplibregl-popup .maplibregl-popup-close-button {
+    font-size: 13px;
+    line-height: 1;
+    padding: 1px 4px;
+  }
+  .maplibregl-popup .maplibregl-popup-tip {
+    border-width: 5px !important;
+  }
+}
