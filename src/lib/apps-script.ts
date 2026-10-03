@@ -19,7 +19,6 @@
 import "server-only";
 import type {
   ApiResponse,
-  DashboardStats,
   FloodProneArea,
   FloodProneAreaFilters,
 } from "./types";
@@ -123,10 +122,6 @@ export async function getFloodProneAreaFacets(): Promise<{
   deos: string[];
 }> {
   return callAction("getFloodProneAreaFacets");
-}
-
-export async function getDashboardStats(): Promise<DashboardStats> {
-  return callAction("getDashboardStats");
 }
 
 export { AppsScriptError };

@@ -169,7 +169,8 @@ export interface DashboardStats {
   byRegion: Array<{ region: string; count: number }>;
   byProvince: Array<{ province: string; count: number }>;
   locationResolution: Record<LocationAccuracy, number>;
-  openReports: number;
+  /** null when Supabase is unavailable — never 0 for "unknown." */
+  openReports: number | null;
   reportsBySeverity: Record<ReportSeverity, number>;
   /** null when Supabase (the secondary datastore) is unavailable or not yet provisioned — never 0 for "unknown." */
   pendingLocationReviews: number | null;
