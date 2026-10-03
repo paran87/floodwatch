@@ -139,7 +139,7 @@ floodwatch/
 │   │   ├── dashboard/           — StatsCards, RegionBreakdown, LocationResolutionBreakdown
 │   │   ├── flood-prone-areas/   — AreaTable, AreaFilters, LocationBadge
 │   │   ├── reports/             — ReportTable, ReportFilters, StatusBadge, SeverityBadge
-│   │   ├── maps/                — FloodMap (Leaflet), typed marker conversion
+│   │   ├── maps/                — FloodMap (MapLibre GL: rotate/tilt, base-layer switcher), baseLayers, typed marker conversion
 │   │   ├── layout/               — AppShell, Sidebar, Topbar
 │   │   └── shared/               — LoadingState, EmptyState, ErrorState
 │   ├── lib/
@@ -152,6 +152,7 @@ floodwatch/
 │   │   └── utils.ts
 │   └── hooks/                   — client hooks that call this app's own /api routes
 ├── apps-script/                 — pushed to Google Apps Script via clasp
+├── scripts/                     — build-time helpers (copy-maplibre-worker.mjs: puts the MapLibre worker in public/maplibre/)
 ├── supabase/migrations/         — SQL schema for the secondary datastore
 └── CLAUDE.md
 ```
@@ -268,16 +269,27 @@ renders a marker for it. It stays visible in the data table with a
 
 - App Router, Server Components by default; `"use client"` only where
   interactivity/hooks require it (filters, tables with client-side
-  pagination controls, the Leaflet map).
+  pagination controls, the MapLibre map).
 - `src/lib/apps-script.ts` and `src/lib/supabase.ts` carry `import
   "server-only"` — if a build ever fails because one of these got imported
   into a Client Component, that's the guard doing its job; fix the import,
   don't remove the guard.
 - All reads/writes to Apps Script or Supabase go through `src/lib/*`, never
   as raw `fetch()`/Supabase calls scattered in components.
-- Leaflet touches `window` at import time — always load `FloodMap` via
+- MapLibre needs WebGL and `window` — always load `FloodMap` via
   `next/dynamic(..., { ssr: false })` (see
   `src/app/flood-prone-areas/page.tsx`).
+- MapLibre runs marker/GeoJSON processing in a Web Worker whose default URL
+  doesn't survive bundling (symptom: base map shows but markers never
+  draw, console says "Worker failed to load"). `scripts/copy-maplibre-worker.mjs`
+  copies the worker into `public/maplibre/` (gitignored, generated) on
+  `postinstall`/`predev`/`prebuild`, and `FloodMap` points the library at it
+  with `setWorkerUrl()`. Don't remove either half.
+- Base maps (`src/components/maps/baseLayers.ts`) are key-less raster tile
+  services — OpenStreetMap, Esri World Imagery (+ labels), OpenTopoMap, CARTO
+  Light — each with its required attribution. They are fair-use services, not
+  CDNs; if traffic grows, move to a provider with a key/SLA rather than
+  hammering them. The chosen layer is remembered in `localStorage`.
 
 ## 10. Apps Script conventions
 

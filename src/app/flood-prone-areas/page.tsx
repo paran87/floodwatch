@@ -14,7 +14,7 @@ import { toMapMarker } from "@/components/maps/types";
 import { MapUnavailable } from "@/components/maps/MapUnavailable";
 import type { FloodProneArea, FloodProneAreaFilters } from "@/lib/types";
 
-// Leaflet touches `window` at import time — never render it during SSR.
+// The map library needs WebGL and `window` — never render it during SSR.
 const FloodMap = dynamic(() => import("@/components/maps/FloodMap").then((m) => m.FloodMap), {
   ssr: false,
   loading: () => <LoadingState label="Loading map…" />,

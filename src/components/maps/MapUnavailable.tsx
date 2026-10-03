@@ -2,7 +2,7 @@ import { MapPinOff } from "lucide-react";
 
 /**
  * Shown in place of the map whenever there's nothing resolved to plot —
- * never an empty Leaflet canvas with a small note elsewhere, which reads
+ * never an empty map canvas with a small note elsewhere, which reads
  * as broken rather than "coordinates genuinely aren't available yet."
  */
 export function MapUnavailable({ reason }: { reason?: string }) {

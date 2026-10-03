@@ -16,6 +16,8 @@ const eslintConfig = defineConfig([
     // Apps Script platform itself (doGet/doPost/etc.), not a Next.js/module
     // codebase — the no-unused-vars rule has no way to know that.
     "apps-script/**",
+    // Generated: MapLibre worker files copied here by scripts/copy-maplibre-worker.mjs.
+    "public/maplibre/**",
   ]),
 ]);
 
