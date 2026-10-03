@@ -1,4 +1,6 @@
 import "server-only";
+import { gunzipSync, gzipSync } from "node:zlib";
+import { unstable_cache } from "next/cache";
 import { after } from "next/server";
 import { getFloodProneAreas } from "./apps-script";
 import { getAllCachedLocations, getAllReviewQueueEntries } from "./locationCache";
@@ -22,6 +24,36 @@ import type { FloodProneArea, FloodProneAreaFilters } from "./types";
  * `IN (…)` queries on every request.
  */
 
+/**
+ * Layer 2: Next's persistent Data Cache, shared by every serverless instance
+ * and kept across deployments, holding the raw Sheet read. Apps Script is slow
+ * and erratic (a trivial call took 1.3–1.8 s normally and 18 s once), and the
+ * in-memory layer below is per instance — so without this, every cold
+ * instance, and every deploy, made a visitor wait on a full sheet read. When
+ * the entry is older than L2_REVALIDATE_S, Next serves the old copy at once
+ * and refreshes it in the background.
+ *
+ * The list is stored gzipped + base64 (about a tenth of its size) so it stays
+ * far below the Data Cache's 2 MB item limit. Bump SHEET_CACHE_VERSION if the
+ * shape of an Apps Script row ever changes, so old entries aren't misread.
+ */
+const SHEET_CACHE_VERSION = "v1";
+const L2_REVALIDATE_S = Number(process.env.AREAS_L2_REVALIDATE_S) || 300;
+
+const readSheetEncoded = unstable_cache(
+  async () => {
+    const { items } = await getFloodProneAreas({ pageSize: MAX_PAGE_SIZE });
+    return gzipSync(JSON.stringify(items)).toString("base64");
+  },
+  ["sheet-areas", SHEET_CACHE_VERSION],
+  { revalidate: L2_REVALIDATE_S, tags: ["sheet-areas"] },
+);
+
+async function readSheet(): Promise<FloodProneArea[]> {
+  const encoded = await readSheetEncoded();
+  return JSON.parse(gunzipSync(Buffer.from(encoded, "base64")).toString("utf8")) as FloodProneArea[];
+}
+
 const FRESH_MS = 2 * 60 * 1000;
 const STALE_MS = 30 * 60 * 1000;
 /** If Supabase was unreachable during a refresh, retry sooner than a normal TTL. */
@@ -39,15 +71,15 @@ interface Snapshot {
 const store = globalThis as unknown as { __floodAreasSnapshot?: Snapshot; __floodAreasInflight?: Promise<Snapshot> };
 
 async function build(): Promise<Snapshot> {
-  const [sheet, overlay] = await Promise.all([
-    getFloodProneAreas({ pageSize: MAX_PAGE_SIZE }),
+  const [sheetItems, overlay] = await Promise.all([
+    readSheet(),
     Promise.all([getAllCachedLocations(), getAllReviewQueueEntries()]).catch((err: unknown) => {
       // Supabase being unreachable must never take down the Sheet-derived listing.
       console.warn("[areas] location overlay unavailable:", err instanceof Error ? err.message : err);
       return null;
     }),
   ]);
-  const items = overlay ? applyLocationOverlay(sheet.items, overlay[0], overlay[1]) : sheet.items;
+  const items = overlay ? applyLocationOverlay(sheetItems, overlay[0], overlay[1]) : sheetItems;
   return { items, fetchedAt: Date.now(), overlayOk: overlay !== null };
 }
 
