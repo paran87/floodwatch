@@ -165,9 +165,9 @@ export function FloodMap({
             onClose={() => setDismissedId(popupMarker.id)}
             maxWidth="240px"
           >
-            <p className="font-medium">{popupMarker.title}</p>
-            <p className="text-xs text-slate-500">{popupMarker.subtitle}</p>
-            {popupMarker.isProposed ? <p className="mt-1 text-xs text-brand-600">Needs location review — not yet verified.</p> : null}
+            <p className="text-[10px] leading-tight font-medium md:text-[13px] md:leading-5">{popupMarker.title}</p>
+            <p className="text-[9px] leading-tight text-slate-500 md:text-xs md:leading-4">{popupMarker.subtitle}</p>
+            {popupMarker.isProposed ? <p className="mt-0.5 text-[9px] leading-tight text-brand-600 md:mt-1 md:text-xs md:leading-4">Needs location review — not yet verified.</p> : null}
           </Popup>
         ) : null}
       </Map>
