@@ -136,7 +136,7 @@ export function BottomSheet({
     <div
       ref={panelRef}
       style={{ ["--sheet-h" as string]: height === null ? `${HALF * 100}%` : `${height}px` }}
-      className="absolute inset-x-0 bottom-0 z-[1100] flex h-[var(--sheet-h)] flex-col overflow-hidden rounded-t-2xl border border-t-[3px] border-slate-200 border-t-navy-700 bg-white shadow-[0_-4px_16px_rgba(11,42,107,0.18)] transition-[height] duration-200 data-[dragging=true]:transition-none md:static md:z-auto md:h-auto md:min-h-0 md:flex-1 md:rounded-xl md:shadow-none md:transition-none"
+      className="absolute inset-x-0 bottom-0 z-[1100] flex h-[var(--sheet-h)] flex-col overflow-hidden rounded-t-2xl border border-t-[3px] border-slate-200 border-t-navy-700 bg-white shadow-[0_-4px_16px_rgba(11,42,107,0.18)] transition-[height] duration-200 data-[dragging=true]:transition-none md:static md:z-auto md:order-1 md:h-auto md:min-h-0 md:w-[55%] md:flex-none md:rounded-xl md:shadow-none md:transition-none xl:w-1/2"
     >
       <div
         onPointerDown={onPointerDown}
@@ -149,7 +149,7 @@ export function BottomSheet({
         style={{ minHeight: HANDLE_HEIGHT }}
       >
         <span className="h-1.5 w-10 rounded-full bg-navy-200 md:hidden" aria-hidden />
-        <span className="flex items-center gap-1 font-mono text-[11px] font-medium uppercase tracking-wider text-navy-800">
+        <span className="flex items-center gap-1 font-mono text-[11px] font-medium uppercase tracking-wider text-navy-800 md:font-display md:text-xl md:font-bold md:tracking-wide">
           <ChevronUp className="h-3.5 w-3.5 md:hidden" aria-hidden />
           {title}
         </span>
