@@ -3,7 +3,7 @@
 import { useCallback, useEffect, useRef, useState, type ReactNode } from "react";
 import { ChevronUp } from "lucide-react";
 
-const HANDLE_HEIGHT = 48;
+const HANDLE_HEIGHT = 32;
 const HALF = 0.45;
 const FULL = 0.92;
 /** Past this share of the parent, a map selection pulls the sheet back down so the pin isn't hidden. */
@@ -136,7 +136,7 @@ export function BottomSheet({
     <div
       ref={panelRef}
       style={{ ["--sheet-h" as string]: height === null ? `${HALF * 100}%` : `${height}px` }}
-      className="absolute inset-x-0 bottom-0 z-[1100] flex h-[var(--sheet-h)] flex-col overflow-hidden rounded-t-2xl border border-t-[3px] border-slate-200 border-t-navy-700 bg-white shadow-[0_-4px_16px_rgba(11,42,107,0.18)] transition-[height] duration-200 data-[dragging=true]:transition-none md:static md:z-auto md:order-1 md:h-auto md:min-h-0 md:w-[55%] md:flex-none md:rounded-xl md:shadow-none md:transition-none xl:w-1/2"
+      className="absolute inset-x-0 bottom-0 z-[1100] flex h-[var(--sheet-h)] flex-col overflow-hidden rounded-t-xl border border-t-2 border-slate-200 border-t-navy-700 md:border-t-[3px] bg-white shadow-[0_-4px_16px_rgba(11,42,107,0.18)] transition-[height] duration-200 data-[dragging=true]:transition-none md:static md:z-auto md:order-1 md:h-auto md:min-h-0 md:w-[55%] md:flex-none md:rounded-xl md:shadow-none md:transition-none xl:w-1/2"
     >
       <div
         onPointerDown={onPointerDown}
@@ -145,12 +145,11 @@ export function BottomSheet({
         onPointerCancel={onPointerUp}
         role="button"
         aria-label="Drag up or down to show or hide the list"
-        className="flex shrink-0 cursor-grab touch-none select-none flex-col items-center gap-1 border-b border-slate-100 px-3 pb-1.5 pt-1.5 active:cursor-grabbing md:cursor-default md:flex-row md:justify-between md:pt-1.5"
-        style={{ minHeight: HANDLE_HEIGHT }}
+        className="flex min-h-7 shrink-0 cursor-grab touch-none select-none flex-col items-center justify-center gap-0.5 border-b border-slate-100 px-2 py-0.5 active:cursor-grabbing md:min-h-12 md:cursor-default md:flex-row md:justify-between md:gap-1 md:px-3 md:py-1.5"
       >
-        <span className="h-1.5 w-10 rounded-full bg-navy-200 md:hidden" aria-hidden />
-        <span className="flex items-center gap-1 font-mono text-[11px] font-medium uppercase tracking-wider text-navy-800 md:font-display md:text-lg md:font-bold md:tracking-wide">
-          <ChevronUp className="h-3.5 w-3.5 md:hidden" aria-hidden />
+        <span className="h-1 w-8 rounded-full bg-navy-200 md:hidden" aria-hidden />
+        <span className="flex items-center gap-1 font-mono text-[9px] leading-none font-medium uppercase tracking-wider text-navy-800 md:text-[11px] md:font-display md:text-lg md:font-bold md:tracking-wide">
+          <ChevronUp className="h-3 w-3 md:hidden" aria-hidden />
           {title}
         </span>
       </div>
