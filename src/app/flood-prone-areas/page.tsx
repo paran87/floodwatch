@@ -87,9 +87,9 @@ export default function FloodProneAreasPage() {
       <div className="flex h-full min-h-0 flex-col gap-2 md:gap-3">
         <AreaFilters value={filters} onChange={setFilters} facets={facets} />
 
-        {/* Mobile: the map fills this region and stays put while the sheet slides over it. md+: map on top, list below. */}
-        <div className="relative min-h-0 flex-1 md:flex md:flex-col md:gap-3">
-          <div className="absolute inset-0 overflow-hidden rounded-xl border border-t-[3px] border-slate-200 border-t-brand-500 md:static md:h-72 md:shrink-0">
+        {/* Mobile: the map fills this region and stays put while the sheet slides over it. md+: two panels, list on the left and map on the right. */}
+        <div className="relative min-h-0 flex-1 md:flex md:flex-row md:gap-4">
+          <div className="absolute inset-0 overflow-hidden rounded-xl border border-t-[3px] border-slate-200 border-t-brand-500 md:relative md:order-2 md:h-auto md:min-w-0 md:flex-1">
             {markers.length > 0 ? (
               <FloodMap markers={markers} selectedId={selectedId} bottomInset={sheetHeight} />
             ) : (
@@ -97,13 +97,24 @@ export default function FloodProneAreasPage() {
                 <MapUnavailable reason="Select a flood-prone area in the list to find it on the map." />
               </div>
             )}
-            <div className="pointer-events-none absolute left-2 top-2 z-[1000] flex max-w-[80%] flex-col items-start gap-1 text-xs">
+            <div className="pointer-events-none absolute left-14 top-2 z-[1000] flex max-w-[80%] flex-col items-start gap-1 text-xs">
               {locating ? <p className="rounded-md bg-white/95 px-2.5 py-1 text-slate-600 shadow">Locating on map…</p> : null}
               {locateError ? <p className="rounded-md bg-white/95 px-2.5 py-1 text-red-600 shadow">{locateError}</p> : null}
               {selectedMissing ? (
                 <p className="rounded-md bg-white/95 px-2.5 py-1 text-brand-600 shadow">No map location could be found for the selected area.</p>
               ) : null}
             </div>
+            <ul className="pointer-events-none absolute bottom-3 left-3 z-[1000] hidden items-center gap-3 rounded-lg bg-white/95 px-3 py-1.5 font-mono text-[10px] font-medium uppercase tracking-wider text-navy-800 shadow md:flex" aria-label="Map legend">
+              <li className="flex items-center gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full border-2 border-navy-700 bg-[#4f86e8]" aria-hidden /> Located
+              </li>
+              <li className="flex items-center gap-1.5">
+                <span className="h-2.5 w-2.5 rounded-full border-2 border-brand-600 bg-brand-500" aria-hidden /> Needs review
+              </li>
+              <li className="flex items-center gap-1.5">
+                <span className="h-3 w-3 rounded-full border-[3px] border-navy-950 bg-brand-500" aria-hidden /> Selected
+              </li>
+            </ul>
           </div>
 
           <BottomSheet
