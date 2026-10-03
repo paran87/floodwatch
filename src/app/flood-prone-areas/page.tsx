@@ -120,7 +120,7 @@ export default function FloodProneAreasPage() {
 
   return (
     <AppShell title="Flood-Prone Areas" fill>
-      <div className="flex h-full min-h-0 flex-col gap-2 md:gap-3">
+      <div className="flex h-full min-h-0 flex-col gap-1.5 md:gap-3">
         <AreaFilters value={filters} onChange={setFilters} facets={facets} />
 
         {/* Mobile: the map fills this region and stays put while the sheet slides over it. md+: two panels, list on the left and map on the right. */}
