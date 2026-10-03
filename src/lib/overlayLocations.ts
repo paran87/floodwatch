@@ -1,5 +1,5 @@
 import "server-only";
-import { getCachedLocations, getReviewQueueEntries } from "./locationCache";
+import { getCachedLocations, getReviewQueueEntries, type LocationCacheRow, type LocationReviewEntry } from "./locationCache";
 import type { FloodProneArea } from "./types";
 
 /**
@@ -18,7 +18,15 @@ import type { FloodProneArea } from "./types";
 export async function overlayLocationCache(items: FloodProneArea[]): Promise<FloodProneArea[]> {
   const rowIndexes = items.map((item) => item.rowIndex);
   const [cacheMap, reviewMap] = await Promise.all([getCachedLocations(rowIndexes), getReviewQueueEntries(rowIndexes)]);
+  return applyLocationOverlay(items, cacheMap, reviewMap);
+}
 
+/** The merge itself, separated from the Supabase reads so a bulk-loaded snapshot can reuse it. */
+export function applyLocationOverlay(
+  items: FloodProneArea[],
+  cacheMap: Map<number, LocationCacheRow>,
+  reviewMap: Map<number, LocationReviewEntry>,
+): FloodProneArea[] {
   return items.map((item) => {
     const cached = cacheMap.get(item.rowIndex);
     if (!cached || !item.location) return item;

@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getFloodProneAreas, AppsScriptError } from "@/lib/apps-script";
 import { getCachedLocations } from "@/lib/locationCache";
 import { geocodeAndPersistArea } from "@/lib/geocodeArea";
+import { invalidateAreas } from "@/lib/areasCache";
 import type { ApiResponse } from "@/lib/types";
 
 /**
@@ -91,6 +92,7 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    invalidateAreas(); // the batch wrote new locations; let the next read pick them up
     return NextResponse.json<ApiResponse<BatchSummary>>({ success: true, data: summary });
   } catch (err) {
     const message = err instanceof AppsScriptError ? err.message : err instanceof Error ? err.message : "Batch geocoding failed.";

@@ -1,17 +1,17 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useDeferredValue, useMemo, useState } from "react";
 import dynamic from "next/dynamic";
 import { AppShell } from "@/components/layout/AppShell";
 import { AreaFilters } from "@/components/flood-prone-areas/AreaFilters";
-import { AreaTable } from "@/components/flood-prone-areas/AreaTable";
+import { AreaTable, AreaTableSkeleton } from "@/components/flood-prone-areas/AreaTable";
 import { LoadingState } from "@/components/shared/LoadingState";
 import { ErrorState } from "@/components/shared/ErrorState";
 import { ExportButtons } from "@/components/flood-prone-areas/ExportButtons";
 import { BottomSheet, type SheetSnap } from "@/components/flood-prone-areas/BottomSheet";
 import { useFloodProneAreas } from "@/hooks/useFloodProneAreas";
 import { toMapMarker } from "@/components/maps/types";
-import { MapUnavailable } from "@/components/maps/MapUnavailable";
+import { computeFacets, filterAreas } from "@/lib/areaFilter";
 import type { FloodProneArea, FloodProneAreaFilters } from "@/lib/types";
 
 // The map library needs WebGL and `window` — never render it during SSR.
@@ -20,15 +20,14 @@ const FloodMap = dynamic(() => import("@/components/maps/FloodMap").then((m) => 
   loading: () => <LoadingState label="Loading map…" />,
 });
 
-type Facets = { regions: string[]; provinces: string[]; municipalities: string[]; barangays: string[]; deos: string[] };
-
-// The API caps a single response at 2000 rows; the full dataset (~1,763) fits in one load, so there is no pagination.
-const ALL_ROWS = 2000;
-
 export default function FloodProneAreasPage() {
-  const [filters, setFilters] = useState<FloodProneAreaFilters>({ pageSize: ALL_ROWS });
-  const [facets, setFacets] = useState<Facets | null>(null);
-  const { items: fetchedItems, total, loading, error } = useFloodProneAreas(filters);
+  const [filters, setFilters] = useState<FloodProneAreaFilters>({});
+  const { items: allItems, loading, error } = useFloodProneAreas();
+  // Filtering is local; deferring the filters keeps typing responsive while the list catches up.
+  const deferredFilters = useDeferredValue(filters);
+  const fetchedItems = useMemo(() => filterAreas(allItems, deferredFilters), [allItems, deferredFilters]);
+  const total = fetchedItems.length;
+  const facets = useMemo(() => (allItems.length > 0 ? computeFacets(allItems) : null), [allItems]);
   const [selectedId, setSelectedId] = useState<number | null>(null);
   const [locating, setLocating] = useState(false);
   const [locateError, setLocateError] = useState<string | null>(null);
@@ -58,17 +57,6 @@ export default function FloodProneAreasPage() {
     }
   }, [located]);
 
-  useEffect(() => {
-    fetch("/api/flood-prone-areas/facets")
-      .then((res) => res.json())
-      .then((json) => {
-        if (json.success) setFacets(json.data);
-      })
-      .catch(() => {
-        /* facets are a progressive enhancement for filter dropdowns; failing silently is acceptable here */
-      });
-  }, []);
-
   const markers = useMemo(() => items.map(toMapMarker).filter((m): m is NonNullable<typeof m> => m !== null), [items]);
   const filterSummary = useMemo(
     () =>
@@ -90,14 +78,12 @@ export default function FloodProneAreasPage() {
         {/* Mobile: the map fills this region and stays put while the sheet slides over it. md+: two panels, list on the left and map on the right. */}
         <div className="relative min-h-0 flex-1 md:flex md:flex-row md:gap-4">
           <div className="absolute inset-0 overflow-hidden rounded-xl border border-t-[3px] border-slate-200 border-t-brand-500 md:relative md:order-2 md:h-auto md:min-w-0 md:flex-1">
-            {markers.length > 0 ? (
-              <FloodMap markers={markers} selectedId={selectedId} bottomInset={sheetHeight} />
-            ) : (
-              <div className="h-[55%] md:h-full">
-                <MapUnavailable reason="Select a flood-prone area in the list to find it on the map." />
-              </div>
-            )}
+            {/* Always mounted so the map code and base tiles load in parallel with the data, not after it. */}
+            <FloodMap markers={markers} selectedId={selectedId} bottomInset={sheetHeight} />
             <div className="pointer-events-none absolute left-14 top-2 z-[1000] flex max-w-[80%] flex-col items-start gap-1 text-xs">
+              {!loading && !error && markers.length === 0 ? (
+                <p className="rounded-md bg-white/95 px-2.5 py-1 text-slate-600 shadow">No area here is located yet — pick one in the list to find it on the map.</p>
+              ) : null}
               {locating ? <p className="rounded-md bg-white/95 px-2.5 py-1 text-slate-600 shadow">Locating on map…</p> : null}
               {locateError ? <p className="rounded-md bg-white/95 px-2.5 py-1 text-red-600 shadow">{locateError}</p> : null}
               {selectedMissing ? (
@@ -127,9 +113,9 @@ export default function FloodProneAreasPage() {
                 : `${total.toLocaleString()} records${markers.length < items.length ? ` · ${markers.length.toLocaleString()} on map` : ""}`
             }
           >
-            {loading ? <LoadingState label="Loading flood-prone areas…" /> : null}
+            {loading ? <AreaTableSkeleton /> : null}
             {error ? <ErrorState message={error} /> : null}
-            {!loading && !error ? <AreaTable items={items} selectedId={selectedId} onSelect={handleSelect} /> : null}
+            {!loading && !error ? <AreaTable items={items} selectedId={selectedId} onSelect={handleSelect} resetKey={JSON.stringify(deferredFilters)} /> : null}
           </BottomSheet>
         </div>
       </div>

@@ -235,11 +235,27 @@ already has the right granularity (`not_attempted` / `pending` / `resolved`
 
 **Caching:** resolved coordinates live in Supabase's `location_cache`
 (keyed by `sheet_row_index`), overlaid onto Apps Script's live
-classification by `src/lib/overlayLocations.ts` in both
-`/api/flood-prone-areas` routes — the only place the two are merged.
-That overlay is wrapped in try/catch in both routes: if Supabase is ever
-unreachable, the Sheet-derived listing still succeeds (same lesson as the
-`/api/dashboard` fix).
+classification by `src/lib/overlayLocations.ts` — the only place the two
+are merged. The list route does not merge per request: `src/lib/areasCache.ts`
+keeps one in-memory snapshot of the whole dataset *with the overlay already
+applied* (Sheet + both Supabase tables read in bulk, in parallel, paged at
+1,000 rows because PostgREST caps a response there). It is fresh for 2
+minutes, served stale for up to 30 while a refresh runs in the background
+(`after()`), and only blocks a request when there is nothing usable. The
+locate route patches it (`patchArea`) and the batch geocoder invalidates it.
+If Supabase is unreachable the listing still succeeds without locations
+(and retries after 20 s) — same lesson as the `/api/dashboard` fix. The
+snapshot is per server instance, so a cold start still pays one full Apps
+Script read; making that faster means optimizing the Apps Script action
+(e.g. its own CacheService), which needs a `clasp push` + `redeploy`.
+
+**Client loading:** the browser fetches the whole list once
+(`useFloodProneAreas`) and filters/searches it locally with the shared
+`src/lib/areaFilter.ts` — no request per keystroke or dropdown change.
+`AreaTable` draws rows in chunks as you scroll (first 80, then 150 at a
+time) instead of ~1,763 at once; exports use the full filtered set, not the
+rendered chunk. `FloodMap` is always mounted so its code and tiles load in
+parallel with the data.
 
 **Manual verification:** `location_review_queue` holds low-confidence
 results (including the stray-coordinate quirk in §6) for an authorized
@@ -260,9 +276,10 @@ reports.
 **Map behavior:** `src/components/maps/types.ts toMapMarker()` returns
 `null` for any record without a real or proposed point, and nothing
 renders a marker for it. It stays visible in the data table with a
-"needs location review" badge instead, now rendered as a clear
-`MapUnavailable` empty state rather than a blank map — see
-`src/components/maps/MapUnavailable.tsx` and
+"needs location review" badge instead. When none of the listed records is
+located, the map still renders (base layers are useful on their own) with a
+short notice on top, and the detail page uses the `MapUnavailable` empty
+state — see `src/components/maps/MapUnavailable.tsx` and
 `src/components/flood-prone-areas/LocationBadge.tsx`.
 
 ## 9. Next.js conventions
