@@ -56,6 +56,9 @@ function join(area: FloodProneArea, signal: AbortSignal): Promise<GeocodeAreaOut
 
 const ok = (data: FloodProneArea) => NextResponse.json<ApiResponse<FloodProneArea>>({ success: true, data });
 
+// A cold read of the whole sheet can take several seconds; allow it (and its retries) to finish.
+export const maxDuration = 60;
+
 export async function POST(request: Request, { params }: { params: Promise<{ rowIndex: string }> }) {
   const { rowIndex } = await params;
   const index = Number(rowIndex);

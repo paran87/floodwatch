@@ -35,6 +35,9 @@ interface BatchSummary {
   errors: string[];
 }
 
+// A cold read of the whole sheet can take several seconds; allow it (and its retries) to finish.
+export const maxDuration = 60;
+
 export async function POST(request: NextRequest) {
   const providedKey = request.nextUrl.searchParams.get("adminKey") ?? request.headers.get("x-admin-key");
   const expectedKey = process.env.GEOCODING_ADMIN_KEY;

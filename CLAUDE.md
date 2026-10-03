@@ -440,6 +440,17 @@ envelope (`src/lib/types.ts ApiResponse<T>`):
 ```
 No stack traces or internal details ever reach the client.
 
+**Apps Script reliability:** web apps occasionally answer with an HTML error
+page ("a server error occurred", quota or timeout pages) instead of JSON.
+`src/lib/apps-script.ts` therefore classifies every non-JSON reply (auth
+needed / rate-limited / timeout / generic), retries idempotent reads twice
+with backoff (writes are never retried), enforces a 40 s timeout, and logs
+the status, content type and a short body snippet — never the URL, which
+carries the shared secret. The user sees a specific message with a "Try
+again" button instead of "unexpected response". Routes that read the sheet
+set `maxDuration = 60` so a slow cold read plus retries isn't cut off by the
+platform. The cached snapshot is still served if a background refresh fails.
+
 ## 13. Authentication & authorization
 
 - **Authentication:** Google Sign-In via NextAuth (`src/lib/auth.ts`). No

@@ -9,6 +9,9 @@ import type { ApiResponse, DashboardStats } from "@/lib/types";
  * report `null` — not 0 — if Supabase is unavailable. See
  * src/lib/dashboardStats.ts.
  */
+// A cold read of the whole sheet can take several seconds; allow it (and its retries) to finish.
+export const maxDuration = 60;
+
 export async function GET() {
   try {
     const data = await getDashboardStats();

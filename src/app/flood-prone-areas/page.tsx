@@ -23,7 +23,7 @@ const FloodMap = dynamic(() => import("@/components/maps/FloodMap").then((m) => 
 
 export default function FloodProneAreasPage() {
   const [filters, setFilters] = useState<FloodProneAreaFilters>({});
-  const { items: allItems, loading, error } = useFloodProneAreas();
+  const { items: allItems, loading, error, reload } = useFloodProneAreas();
   // Filtering is local; deferring the filters keeps typing responsive while the list catches up.
   const deferredFilters = useDeferredValue(filters);
   const fetchedItems = useMemo(() => filterAreas(allItems, deferredFilters), [allItems, deferredFilters]);
@@ -162,7 +162,7 @@ export default function FloodProneAreasPage() {
             }
           >
             {loading ? <AreaTableSkeleton /> : null}
-            {error ? <ErrorState message={error} /> : null}
+            {error ? <ErrorState message={error} onRetry={reload} /> : null}
             {!loading && !error ? <AreaTable items={items} selectedId={selectedId} onSelect={handleSelect} resetKey={JSON.stringify(deferredFilters)} /> : null}
           </BottomSheet>
         </div>

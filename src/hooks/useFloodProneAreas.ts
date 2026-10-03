@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import type { FloodProneArea } from "@/lib/types";
 
 /** The API caps one response at 2000 rows; the whole dataset (~1,763) fits in one load, so there is no paging. */
@@ -21,6 +21,14 @@ export function useFloodProneAreas() {
   const [state, setState] = useState<{ items: FloodProneArea[]; error: string | null; ready: boolean }>(() =>
     loaded ? { items: loaded.items, error: null, ready: true } : { items: [], error: null, ready: false },
   );
+  const [attempt, setAttempt] = useState(0);
+
+  /** Forgets the failure and loads again (the "Try again" button). */
+  const reload = useCallback(() => {
+    loaded = null;
+    setState({ items: [], error: null, ready: false });
+    setAttempt((n) => n + 1);
+  }, []);
 
   useEffect(() => {
     if (loaded && Date.now() - loaded.at < REUSE_MS) return;
@@ -40,7 +48,7 @@ export function useFloodProneAreas() {
       });
 
     return () => controller.abort();
-  }, []);
+  }, [attempt]);
 
-  return { items: state.items, error: state.error, loading: !state.ready };
+  return { items: state.items, error: state.error, loading: !state.ready, reload };
 }
