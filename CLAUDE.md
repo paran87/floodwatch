@@ -133,7 +133,7 @@ touching the production sheet at all.
 ```
 floodwatch/
 ├── src/
-│   ├── app/                     — Next.js App Router pages + API routes
+│   ├── app/                     — Next.js App Router pages + API routes (/list = spreadsheet-style full list, no pagination)
 │   ├── components/
 │   │   ├── ui/                  — Button, Input, Select, Table, Card, Badge, Alert…
 │   │   ├── dashboard/           — StatsCards, RegionBreakdown, LocationResolutionBreakdown

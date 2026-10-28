@@ -11,7 +11,7 @@ export function BottomNav() {
   return (
     <nav
       aria-label="Primary"
-      className="grid shrink-0 grid-cols-3 border-t-2 border-t-navy-900 bg-white shadow-[0_-4px_12px_rgba(11,42,107,0.08)] pb-[env(safe-area-inset-bottom)] md:hidden"
+      className="grid shrink-0 grid-cols-4 border-t-2 border-t-navy-900 bg-white shadow-[0_-4px_12px_rgba(11,42,107,0.08)] pb-[env(safe-area-inset-bottom)] md:hidden"
     >
       {NAV_LINKS.map(({ href, label, icon: Icon }) => {
         const active = pathname === href || pathname.startsWith(`${href}/`);
