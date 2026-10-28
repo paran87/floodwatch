@@ -59,6 +59,7 @@ export function isBaseLayerId(value: unknown): value is BaseLayerId {
 export type AreaFeatureCollection = FeatureCollection<Point, { id: number; proposed: boolean; selected: boolean }>;
 
 export const AREAS_LAYER_ID = "areas";
+const AREAS_HALO_LAYER_ID = "areas-halo";
 
 /**
  * The whole map as one declarative style: the chosen base map, then the
@@ -78,17 +79,30 @@ export function buildMapStyle(baseId: BaseLayerId, areas: AreaFeatureCollection)
   });
 
   sources.areas = { type: "geojson", data: areas };
+  // Soft halo under each marker so points stand out on busy imagery and read as a flood "ripple".
+  layers.push({
+    id: AREAS_HALO_LAYER_ID,
+    type: "circle",
+    source: "areas",
+    paint: {
+      "circle-radius": ["case", ["get", "selected"], 20, 12],
+      "circle-color": ["case", ["get", "proposed"], "#f26a1b", "#2358c4"],
+      "circle-opacity": ["case", ["get", "selected"], 0.28, 0.18],
+      "circle-pitch-alignment": "viewport",
+      "circle-pitch-scale": "viewport",
+    },
+  });
   layers.push({
     id: AREAS_LAYER_ID,
     type: "circle",
     source: "areas",
     layout: { "circle-sort-key": ["case", ["get", "selected"], 1, 0] },
     paint: {
-      "circle-radius": ["case", ["get", "selected"], 11, 7],
-      "circle-color": ["case", ["get", "proposed"], "#f26a1b", "#4f86e8"],
-      "circle-opacity": 0.9,
-      "circle-stroke-width": ["case", ["get", "selected"], 3, 2],
-      "circle-stroke-color": ["case", ["get", "selected"], "#071a4a", ["get", "proposed"], "#e0560b", "#1a4aa8"],
+      "circle-radius": ["case", ["get", "selected"], 10, 6],
+      "circle-color": ["case", ["get", "selected"], "#071a4a", ["get", "proposed"], "#f26a1b", "#2358c4"],
+      "circle-opacity": 1,
+      "circle-stroke-width": ["case", ["get", "selected"], 3.5, 2],
+      "circle-stroke-color": "#ffffff",
       // Keep markers upright and round when the map is rotated or tilted.
       "circle-pitch-alignment": "viewport",
       "circle-pitch-scale": "viewport",
