@@ -165,13 +165,27 @@ export function FloodMap({
             onClose={() => setDismissedId(popupMarker.id)}
             maxWidth="240px"
           >
-            <p className="text-[10px] leading-tight font-medium md:text-[13px] md:leading-5">{popupMarker.title}</p>
+            <p className="text-[11px] leading-tight font-bold text-navy-900 md:text-sm md:leading-5">{popupMarker.title}</p>
             <p className="text-[9px] leading-tight text-slate-500 md:text-xs md:leading-4">{popupMarker.subtitle}</p>
-            {popupMarker.isProposed ? <p className="mt-0.5 text-[9px] leading-tight text-brand-600 md:mt-1 md:text-xs md:leading-4">Needs location review — not yet verified.</p> : null}
+            {popupMarker.isProposed ? (
+              <p className="mt-1 inline-block rounded-full bg-brand-50 px-1.5 py-px text-[8px] leading-tight font-semibold text-brand-600 ring-1 ring-brand-100 md:px-2 md:py-0.5 md:text-[11px]">
+                Approximate · needs review
+              </p>
+            ) : null}
           </Popup>
         ) : null}
       </Map>
       <LayerSwitcher value={baseLayer} onChange={chooseBaseLayer} />
+      <div className="pointer-events-none absolute bottom-6 left-2.5 hidden items-center gap-3 rounded-full bg-white/90 px-3 py-1.5 text-[11px] font-semibold text-slate-700 shadow-md backdrop-blur md:flex">
+        <span className="flex items-center gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-navy-600 ring-2 ring-white" aria-hidden />
+          Located
+        </span>
+        <span className="flex items-center gap-1.5">
+          <span className="h-2.5 w-2.5 rounded-full bg-brand-500 ring-2 ring-white" aria-hidden />
+          Approximate
+        </span>
+      </div>
     </div>
   );
 }
