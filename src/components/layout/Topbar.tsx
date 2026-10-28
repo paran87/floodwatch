@@ -9,7 +9,7 @@ export function Topbar({ title }: { title: string }) {
   const last = words.length > 1 ? words.pop() : null;
 
   return (
-    <header className="shrink-0 bg-gradient-to-r from-navy-950 via-navy-900 to-navy-700 px-3 py-1.5 text-white md:px-8 md:py-5">
+    <header className="shrink-0 bg-gradient-to-r from-navy-950 via-navy-900 to-navy-700 px-3 py-1.5 text-white md:px-8 md:py-3">
       <div className="flex items-center justify-between gap-4">
         <div className="min-w-0">
           <p className="truncate font-mono text-[8px] font-medium uppercase tracking-[0.16em] text-navy-200 md:text-[11px] md:tracking-[0.2em]">

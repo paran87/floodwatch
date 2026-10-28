@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "./navLinks";
 
-/** Mobile-only primary navigation at the bottom of the shell. The sidebar takes over from `md` up. */
+/** Mobile-only primary navigation at the bottom of the shell. The top tabs take over from `md` up. */
 export function BottomNav() {
   const pathname = usePathname();
 
