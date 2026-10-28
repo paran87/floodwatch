@@ -8,13 +8,13 @@ import { ErrorState } from "@/components/shared/ErrorState";
 import { useFloodProneAreas } from "@/hooks/useFloodProneAreas";
 import type { FloodProneArea } from "@/lib/types";
 
-const COLUMNS: Array<{ label: string; cell: (a: FloodProneArea) => string; className?: string }> = [
+const COLUMNS: Array<{ label: string; cell: (a: FloodProneArea) => string }> = [
   { label: "Region", cell: (a) => a.region },
   { label: "Province", cell: (a) => a.province },
   { label: "Municipality/City", cell: (a) => a.municipalityCity },
   { label: "DEO", cell: (a) => a.deo },
   { label: "Barangay", cell: (a) => a.barangay },
-  { label: "Road Name/Waterways", cell: (a) => a.roadNameWaterways, className: "min-w-64" },
+  { label: "Road Name/Waterways", cell: (a) => a.roadNameWaterways },
   { label: "KM Station Limit", cell: (a) => a.kmStationLimit },
   { label: "Latitude", cell: (a) => (a.latitude ?? a.location?.latitude)?.toString() ?? "" },
   { label: "Longitude", cell: (a) => (a.longitude ?? a.location?.longitude)?.toString() ?? "" },
@@ -66,7 +66,7 @@ export default function ListPage() {
         {error ? <ErrorState message={error} onRetry={reload} /> : null}
         {!loading && !error ? (
           <div className="min-h-0 flex-1 overflow-auto rounded-lg border border-slate-300 bg-white">
-            <table className="w-max min-w-full border-collapse text-left text-xs">
+            <table className="w-max border-collapse text-left text-xs">
               <thead className="sticky top-0 z-10">
                 <tr>
                   <th className="sticky left-0 z-20 w-12 border border-slate-300 bg-slate-100 px-2 py-1.5 text-right font-semibold text-slate-500">#</th>
@@ -82,7 +82,7 @@ export default function ListPage() {
                   <tr key={area.rowIndex} className="odd:bg-white even:bg-slate-50/60 hover:bg-navy-50">
                     <td className="sticky left-0 border border-slate-200 bg-slate-100 px-2 py-1 text-right tabular-nums text-slate-500">{area.rowIndex}</td>
                     {COLUMNS.map((c) => (
-                      <td key={c.label} className={`border border-slate-200 px-2 py-1 text-slate-800 ${c.className ?? "whitespace-nowrap"}`}>
+                      <td key={c.label} className="max-w-[22rem] border border-slate-200 px-2 py-1 text-slate-800">
                         {c.cell(area)}
                       </td>
                     ))}
