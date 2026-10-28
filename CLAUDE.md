@@ -140,7 +140,7 @@ floodwatch/
 │   │   ├── flood-prone-areas/   — AreaTable, AreaFilters, LocationBadge
 │   │   ├── reports/             — ReportTable, ReportFilters, StatusBadge, SeverityBadge
 │   │   ├── maps/                — FloodMap (MapLibre GL: rotate/tilt, base-layer switcher), baseLayers, typed marker conversion
-│   │   ├── layout/               — AppShell, Sidebar, Topbar
+│   │   ├── layout/               — AppShell, TopNav (desktop tabs), BottomNav (mobile), Topbar
 │   │   └── shared/               — LoadingState, EmptyState, ErrorState
 │   ├── lib/
 │   │   ├── apps-script.ts       — SERVER-ONLY typed client for the Sheets gateway

@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { Sidebar } from "./Sidebar";
+import { TopNav } from "./TopNav";
 import { Topbar } from "./Topbar";
 import { BottomNav } from "./BottomNav";
 import { ViewportHeight } from "./ViewportHeight";
@@ -16,13 +16,11 @@ import { ViewportHeight } from "./ViewportHeight";
  */
 export function AppShell({ title, children, fill = false }: { title: string; children: ReactNode; fill?: boolean }) {
   return (
-    <div className="flex h-[var(--app-h,100svh)] flex-col bg-surface md:flex-row">
+    <div className="flex h-[var(--app-h,100svh)] flex-col bg-surface">
       <ViewportHeight />
-      <Sidebar />
-      <div className="flex min-h-0 min-w-0 flex-1 flex-col">
-        <Topbar title={title} />
-        <main className={fill ? "min-h-0 flex-1 overflow-clip p-2 md:p-6" : "min-h-0 flex-1 overflow-y-auto p-2 md:p-6"}>{children}</main>
-      </div>
+      <TopNav />
+      <Topbar title={title} />
+      <main className={fill ? "min-h-0 flex-1 overflow-clip p-2 md:p-6" : "min-h-0 flex-1 overflow-y-auto p-2 md:p-6"}>{children}</main>
       <BottomNav />
     </div>
   );
