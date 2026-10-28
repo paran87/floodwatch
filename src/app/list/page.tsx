@@ -2,6 +2,7 @@
 
 import { useDeferredValue, useMemo, useState } from "react";
 import { Search, X } from "lucide-react";
+import { ExportButtons } from "@/components/flood-prone-areas/ExportButtons";
 import { AppShell } from "@/components/layout/AppShell";
 import { LoadingState } from "@/components/shared/LoadingState";
 import { ErrorState } from "@/components/shared/ErrorState";
@@ -60,6 +61,9 @@ export default function ListPage() {
           <p className="text-xs text-slate-500">
             {rows.length.toLocaleString()} of {items.length.toLocaleString()} records{updating ? " · updating…" : ""}
           </p>
+          <div className="ml-auto w-full max-w-xs">
+            <ExportButtons items={rows.map((r) => r.area)} filterSummary={deferred.trim() ? [`Search: ${deferred.trim()}`] : []} disabled={loading || Boolean(error)} />
+          </div>
         </div>
 
         {loading ? <LoadingState label="Loading flood-prone areas…" /> : null}
